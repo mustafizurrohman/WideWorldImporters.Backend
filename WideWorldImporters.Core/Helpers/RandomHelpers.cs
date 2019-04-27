@@ -17,7 +17,7 @@ namespace WideWorldImporters.Core.Helpers
 
         #endregion
 
-        #region Constructor
+        #region -- Constructor --
 
         /// <summary>
         /// Constructor
