@@ -10,11 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WideWorldImporters.API
 {
     public class Startup
     {
+        Info info = new Info();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +29,30 @@ namespace WideWorldImporters.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            #region -- Swagger --
+
+            Configuration.GetSection("Swagger").Bind(info);
+                        
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(info.Version, new Info
+                {
+                    Version = info.Version,
+                    Title = info.Title,
+                    Description = info.Description,
+                    TermsOfService = info.TermsOfService,
+                    Contact = new Contact()
+                    {
+                        Name = info.Contact.Name,
+                        Email = info.Contact.Email,
+                        Url = info.Contact.Url
+                    }
+                });
+            });
+
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +67,18 @@ namespace WideWorldImporters.API
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            #region -- Swagger --
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/"+ info.Version +"/swagger.json", info.Title + " v" + info.Version);
+            });
+
+            #endregion
 
             app.UseHttpsRedirection();
             app.UseMvc();
