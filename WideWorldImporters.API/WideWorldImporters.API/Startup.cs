@@ -11,12 +11,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using WideWorldImporters.API.Swagger;
 
 namespace WideWorldImporters.API
 {
     public class Startup
     {
         Info info = new Info();
+        ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
 
         public Startup(IConfiguration configuration)
         {
@@ -33,23 +35,8 @@ namespace WideWorldImporters.API
             #region -- Swagger --
 
             Configuration.GetSection("Swagger").Bind(info);
-                        
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc(info.Version, new Info
-                {
-                    Version = info.Version,
-                    Title = info.Title,
-                    Description = info.Description,
-                    TermsOfService = info.TermsOfService,
-                    Contact = new Contact()
-                    {
-                        Name = info.Contact.Name,
-                        Email = info.Contact.Email,
-                        Url = info.Contact.Url
-                    }
-                });
-            });
+            Configuration.GetSection("ApiKeyScheme").Bind(apiKeyScheme);
+            services.AddSwaggerDocumentation(info, apiKeyScheme);
 
             #endregion
 
@@ -68,17 +55,7 @@ namespace WideWorldImporters.API
                 app.UseHsts();
             }
 
-
-            #region -- Swagger --
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/"+ info.Version +"/swagger.json", info.Title + " v" + info.Version);
-            });
-
-            #endregion
+            app.UseSwaggerDocumentation(info);
 
             app.UseHttpsRedirection();
             app.UseMvc();
