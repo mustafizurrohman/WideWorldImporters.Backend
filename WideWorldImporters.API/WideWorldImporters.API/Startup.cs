@@ -17,19 +17,32 @@ using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API
 {
+    /// <summary>
+    /// Startup
+    /// </summary>
     public class Startup
     {
         readonly Info info = new Info();
         readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
 
+        /// <summary>
+        /// Startup
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
     
@@ -41,16 +54,24 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- Database Configuration --
+
             services.AddDbContext<WideWorldImportersContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WideWorldDb"));
             });
 
+            #endregion
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

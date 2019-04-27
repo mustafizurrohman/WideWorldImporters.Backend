@@ -1,18 +1,27 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WideWorldImporters.API.Swagger
 {
+    /// <summary>
+    /// Extensions for Swagger
+    /// </summary>
     public static class SwaggerExtensions
     {
 
+        /// <summary>
+        /// Extension method to configure swagger and add documentation
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="info"></param>
+        /// <param name="apiKeyScheme"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services, Info info, ApiKeyScheme apiKeyScheme)
         {
+            info ??= default;
+            apiKeyScheme ??= default;
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(info.Version, new Info
@@ -42,6 +51,12 @@ namespace WideWorldImporters.API.Swagger
             return services;
         }
 
+        /// <summary>
+        /// Extension method to use swagger documentation
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="info"></param>
+        /// <returns></returns>
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app, Info info)
         {
             app.UseSwagger();
