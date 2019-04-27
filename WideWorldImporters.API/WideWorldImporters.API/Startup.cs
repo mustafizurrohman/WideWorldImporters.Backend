@@ -17,8 +17,8 @@ namespace WideWorldImporters.API
 {
     public class Startup
     {
-        Info info = new Info();
-        ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
+        readonly Info info = new Info();
+        readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
 
         public Startup(IConfiguration configuration)
         {
