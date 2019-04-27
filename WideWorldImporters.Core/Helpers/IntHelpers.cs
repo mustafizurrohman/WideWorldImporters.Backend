@@ -8,7 +8,7 @@ namespace WideWorldImporters.Core.Helpers
     /// <summary>
     /// Utility functions for integers
     /// </summary>
-    public static class IntUtils
+    public static class IntHelpers
     {
 
         /// <summary>

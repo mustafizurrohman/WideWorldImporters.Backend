@@ -32,6 +32,10 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("VehicleTemperatures")]
         public async Task<IActionResult> GetDataAsync()
         {
+            DbSet<VehicleTemperatures> vehicleTemps = ApplicationDbContext.VehicleTemperatures;
+
+            vehicleTemps.AsQueryable().AsNoTracking();
+
             var data = await ApplicationDbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)
                 .Skip(1000)

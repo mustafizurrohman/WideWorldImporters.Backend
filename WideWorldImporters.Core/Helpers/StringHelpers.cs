@@ -5,7 +5,11 @@ using System.Text;
 
 namespace WideWorldImporters.Core.Helpers
 {
-    public static class StringUtils
+
+    /// <summary>
+    /// Helper functions for strings
+    /// </summary>
+    public static class StringHelpers
     {
 
         /// <summary>
@@ -41,7 +45,7 @@ namespace WideWorldImporters.Core.Helpers
 
             string generatedString = new string(Enumerable
                                                     .Repeat(availableCharacters, length)
-                                                    .Select(s => s[SecureRandom.Next(s.Count)]
+                                                    .Select(s => s[RandomHelpers.Next(s.Count)]
                                                ).ToArray());
 
             return generatedString;

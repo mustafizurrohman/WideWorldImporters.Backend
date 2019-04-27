@@ -8,7 +8,7 @@ namespace WideWorldImporters.Core.Helpers
     /// <summary>
     /// Generates Cryptographically secure random numbers using RNGCryptoServiceProvider
     /// </summary>
-    public static class SecureRandom
+    public static class RandomHelpers
     {
 
         #region -- Private Methods --
@@ -22,7 +22,7 @@ namespace WideWorldImporters.Core.Helpers
         /// <summary>
         /// Constructor
         /// </summary>
-        static SecureRandom()
+        static RandomHelpers()
         {
             _randomNumberGenerator = new RNGCryptoServiceProvider();
         }

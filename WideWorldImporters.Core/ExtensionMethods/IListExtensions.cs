@@ -26,7 +26,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
             for (var currentIndex = 0; currentIndex < length; currentIndex++)
             {
-                var swapIndex = SecureRandom.Next(length);
+                var swapIndex = RandomHelpers.Next(length);
                 destination.Swap(currentIndex, swapIndex);
             }
 

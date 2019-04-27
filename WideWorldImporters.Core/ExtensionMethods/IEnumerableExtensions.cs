@@ -52,7 +52,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             }
 
             // Get a random number
-            int randomNumber = IntUtils.GetRandomNumber(source.Count() - 1);
+            int randomNumber = IntHelpers.GetRandomNumber(source.Count() - 1);
 
             return source.ElementAt(randomNumber);
         }
