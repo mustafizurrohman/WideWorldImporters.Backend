@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
-using WideWorldImporters.API.Swagger;
+using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API

@@ -7,8 +7,9 @@ using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers.Base
 {
+
     /// <summary>
-    /// Base Controller for API
+    /// Base Controller for API Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]

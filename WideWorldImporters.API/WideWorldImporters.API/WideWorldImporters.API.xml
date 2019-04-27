@@ -6,7 +6,7 @@
     <members>
         <member name="T:WideWorldImporters.API.Controllers.Base.BaseAPIController">
             <summary>
-            Base Controller for API
+            Base Controller for API Controllers
             </summary>
         </member>
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.ApplicationDbContext">
@@ -115,28 +115,6 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
-        </member>
-        <member name="T:WideWorldImporters.API.Swagger.SwaggerExtensions">
-            <summary>
-            Extensions for Swagger
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.API.Swagger.SwaggerExtensions.AddSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection,Swashbuckle.AspNetCore.Swagger.Info,Swashbuckle.AspNetCore.Swagger.ApiKeyScheme)">
-            <summary>
-            Extension method to configure swagger and add documentation
-            </summary>
-            <param name="services"></param>
-            <param name="info"></param>
-            <param name="apiKeyScheme"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.API.Swagger.SwaggerExtensions.UseSwaggerDocumentation(Microsoft.AspNetCore.Builder.IApplicationBuilder,Swashbuckle.AspNetCore.Swagger.Info)">
-            <summary>
-            Extension method to use swagger documentation
-            </summary>
-            <param name="app"></param>
-            <param name="info"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>

@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace WideWorldImporters.API.Swagger
+namespace WideWorldImporters.Core.ExtensionMethods
 {
+
     /// <summary>
     /// Extensions for Swagger
     /// </summary>
@@ -59,6 +63,8 @@ namespace WideWorldImporters.API.Swagger
         /// <returns></returns>
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app, Info info)
         {
+            info ??= default;
+
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
