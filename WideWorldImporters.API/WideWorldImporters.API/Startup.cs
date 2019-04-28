@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Compression;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO.Compression;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Models.Database;
@@ -48,7 +41,7 @@ namespace WideWorldImporters.API
         public void ConfigureServices(IServiceCollection services)
         {
     
-            #region -- Swagger --
+            #region -- Swagger Configuration --
 
             Configuration.GetSection("Swagger").Bind(info);
             Configuration.GetSection("ApiKeyScheme").Bind(apiKeyScheme);
@@ -65,6 +58,8 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- Response Compression Configuration --
+
             //Configure Compression level
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
 
@@ -73,6 +68,8 @@ namespace WideWorldImporters.API
             {
                 options.Providers.Add<GzipCompressionProvider>();
             });
+
+            #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -96,7 +93,6 @@ namespace WideWorldImporters.API
             }
 
             app.UseSwaggerDocumentation(info);
-
             app.UseResponseCompression();
 
             app.UseHttpsRedirection();

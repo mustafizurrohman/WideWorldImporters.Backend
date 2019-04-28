@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Models.Database;
+using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -33,8 +34,6 @@ namespace WideWorldImporters.API.Controllers
         public async Task<IActionResult> GetDataAsync()
         {
             DbSet<VehicleTemperatures> vehicleTemps = ApplicationDbContext.VehicleTemperatures;
-
-            vehicleTemps.AsQueryable().AsNoTracking();
 
             var data = await ApplicationDbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WideWorldImporters.Core.ExtensionMethods
 {
+
     /// <summary>
     /// Extension methods for Datetime
     /// </summary>
@@ -14,7 +15,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <summary>
         /// Returns the instance of Datetime representing the start of minute
         /// </summary>
-        /// <param name="dateTime"></param>
+        /// <param name="dateTime">Instance of Datetime</param>
         /// <returns></returns>
         public static DateTime StartOfMinute(this DateTime dateTime)
         {
@@ -74,8 +75,8 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <summary>
         /// Start of week
         /// </summary>
-        /// <param name="dateTime"></param>
-        /// <param name="startingDayOfWeek"></param>
+        /// <param name="dateTime">Instance of Datetime</param>
+        /// <param name="startingDayOfWeek">Starting day of week. Default is Monday</param>
         /// <returns></returns>
         public static DateTime StartOfWeek(this DateTime dateTime, DayOfWeek? startingDayOfWeek = DayOfWeek.Monday)
         {
@@ -89,7 +90,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <summary>
         /// End of week
         /// </summary>
-        /// <param name="dateTime"></param>
+        /// <param name="dateTime">Instance of Datetime</param>
         /// <returns></returns>
         public static DateTime EndOfWeek(this DateTime dateTime, DayOfWeek? startingDayOfWeek = DayOfWeek.Monday)
         {
