@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Models.Database;
+using WideWorldImporters.Services.Interfaces;
+using WideWorldImporters.Services.Services;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.API.Controllers
@@ -17,17 +19,44 @@ namespace WideWorldImporters.API.Controllers
 
     public class ValuesController : BaseAPIController
     {
-        
+
+        private readonly ISampleService _sampleService;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dbContext"></param>
-        public ValuesController(WideWorldImportersContext dbContext) : base(dbContext)
+        /// <param name="sampleService"></param>
+        public ValuesController(WideWorldImportersContext dbContext, ISampleService sampleService ) : base(dbContext)
         {
+            this._sampleService = sampleService;
         }
+
 
         /// <summary>
         /// Test
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Test")]
+        public IActionResult Test()
+        {
+            string data = default;
+
+            try {
+                
+                data = _sampleService.HelloWorld();
+
+            } catch(Exception e)
+            {
+                Exception ex = e;
+            }
+
+
+            return Ok(data);
+        }
+
+        /// <summary>
+        /// Db Test
         /// </summary>
         /// <returns></returns>
         [HttpGet("VehicleTemperatures")]

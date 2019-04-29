@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers.Base
@@ -8,6 +9,7 @@ namespace WideWorldImporters.API.Controllers.Base
     /// Base Controller for API Controllers
     /// </summary>
     [Route("api/[controller]")]
+    [Benchmark]
     [ApiController]
     public class BaseAPIController : ControllerBase
     {

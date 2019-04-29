@@ -88,5 +88,16 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return source.GetRandomElement();
         }
 
+        /// <summary>
+        /// Returns 'true' if an IEnumerable is empty. False otherwise.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool IsEmpty<T>(this IEnumerable<T> list)
+        {
+            return (list == null || !list.Any());
+        }
+
     }
 }

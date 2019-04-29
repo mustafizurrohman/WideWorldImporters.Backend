@@ -13,11 +13,25 @@ namespace WideWorldImporters.Core.ClassAttributes
     [AttributeUsage(AttributeTargets.Class)]
     public class ServiceLifeTimeAttribute : Attribute
     {
+
         private readonly Lifetime _lifetime;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="lifetime"></param>
         public ServiceLifeTimeAttribute(Lifetime lifetime)
         {
             _lifetime = lifetime;
+        }
+
+        /// <summary>
+        /// Gets the lifetime of current attribute
+        /// </summary>
+        /// <returns></returns>
+        public Lifetime GetLifetime()
+        {
+            return _lifetime;
         }
 
     }

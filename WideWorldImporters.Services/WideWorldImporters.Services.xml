@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WideWorldImporters.Services</name>
+    </assembly>
+    <members>
+        <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
+            <summary>
+            Ineterface for Sample Service for Testing
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.ISampleService.HelloWorld">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Services.Services.SampleService">
+            <summary>
+            Sample Service for Testing
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.SampleService.HelloWorld">
+            <summary>
+            Hello world
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

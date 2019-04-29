@@ -8,9 +8,17 @@ using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 namespace WideWorldImporters.Services.Services
 {
 
-    [ServiceLifeTime(Lifetime.Scoped)]
+    /// <summary>
+    /// Sample Service for Testing
+    /// </summary>
+    [ServiceLifeTime(Lifetime.Singleton)]
     public class SampleService : ISampleService
     {
+
+        /// <summary>
+        /// Hello world
+        /// </summary>
+        /// <returns></returns>
         public string HelloWorld()
         {
             return "Hello World";

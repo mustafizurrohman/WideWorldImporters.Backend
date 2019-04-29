@@ -14,7 +14,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
     {
 
         /// <summary>
-        /// Converts a DbSet<T> to IQueryable<T> which is not tracked
+        /// Converts a DbSet to IQueryable which is not tracked
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <param name="dbSet">DbSet</param>

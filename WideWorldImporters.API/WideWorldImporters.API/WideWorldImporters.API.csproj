@@ -21,10 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
     <ProjectReference Include="..\..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ActionFilters\" />
+    <ProjectReference Include="..\..\WideWorldImporters.Services\WideWorldImporters.Services.csproj" />
   </ItemGroup>
 
 </Project>

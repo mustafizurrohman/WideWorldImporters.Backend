@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\dev\WideWorldImporters\WideWorldImporters.Services\WideWorldImporters.Services.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />

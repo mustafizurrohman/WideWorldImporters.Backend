@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WideWorldImporters.Core</name>
+    </assembly>
+    <members>
+        <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute">
+            <summary>
+            ServiceLifeTimeAttribute- Used to determine how a service should be injected
+            Can be used only for classes
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="lifetime"></param>
+        </member>
+        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.GetLifetime">
+            <summary>
+            Gets the lifetime of current attribute
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Enumerations.ServiceLifetime">
+            <summary>
+            Service LifeTime attribute 
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime">
+            <summary>
+            Enum of service lifetime
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime.Singleton">
+            <summary>
+            Singleton service
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime.Scoped">
+            <summary>
+            Scoped service
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime.Transient">
+            <summary>
+            Transient service
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions">
+            <summary>
+            Extension methods for Datetime
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfMinute(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the start of minute
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfMinute(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the end of minute
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfHour(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the start of hour
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfHour(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the end of hour
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfDay(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the start of day
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfDay(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the end of day
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfWeek(System.DateTime,System.Nullable{System.DayOfWeek})">
+            <summary>
+            Start of week
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <param name="startingDayOfWeek">Starting day of week. Default is Monday</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfWeek(System.DateTime,System.Nullable{System.DayOfWeek})">
+            <summary>
+            End of week
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <param name="startingDayOfWeek">Starting day of week. Default Monday</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfMonth(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the start of month
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfMonth(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the end of day
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.StartOfYear(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the start of year
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.EndOfYear(System.DateTime)">
+            <summary>
+            Returns the instance of Datetime representing the end of year
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.IsInFuture(System.DateTime)">
+            <summary>
+            Returns True if the provided DateTime is in the future, otherwise False
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.IsWeekend(System.DateTime)">
+            <summary>
+            Returns True if the provided DateTime is Saturday or Sunday, otherwise False
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.InBetween(System.DateTime,System.DateTime,System.DateTime,System.Boolean)">
+            <summary>
+            Returns true of the provided DateTime is between startTime and endTime, 
+            inclusive specifies if the startTime and the endTime needs to be taken into consideration or not
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <param name="startTime">Start time</param>
+            <param name="endTime">End time</param>
+            <param name="inclusive">Specifies if the Start time and End time needs to be taken into consideration or not</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.IsToday(System.DateTime)">
+            <summary>
+            Returns true if the provided instance of Datetime is within today, otherwise False
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.IsCurrentMonth(System.DateTime)">
+            <summary>
+            Returns true if the provided instance of Datetime is within the current month, otherwise false
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.IsCurrentYear(System.DateTime)">
+            <summary>
+            Returns true if the provided instance of Datetime is within the current year, otherwise false
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.GetCalenderWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Returns the Calenderweek of the provided instance of datetime
+            </summary>
+            <param name="dateTime">Instance of Datetime</param>
+            <param name="startingDay">Starting day of week (default is Monday, German standard)</param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.DbSetExtensions">
+            <summary>
+            Extension methods for DbSet
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DbSetExtensions.AsNonTrackingQueryable``1(Microsoft.EntityFrameworkCore.DbSet{``0})">
+            <summary>
+            Converts a DbSet to IQueryable which is not tracked
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="dbSet">DbSet</param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions">
+            <summary>
+            Extension methods for IEnumerable
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.ToCsv``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts an IEnumerable to its CSV representation
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="ienumerableList">IEnumerableö of Type T to convert to CSV</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Groups a IEnumerable w.r.t. an attribute
+            </summary>
+            <typeparam name="TSource">Type of source IEnumerable</typeparam>
+            <typeparam name="TKey">Type of attribute of IEnumerable w.r.t. the IEnumerable must be grouped</typeparam>
+            <param name="source">Source IEnumerable</param>
+            <param name="keySelector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.GetRandomElement``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Gets a random element for the IEnumerable
+            </summary>
+            <typeparam name="T">Type of source IEnumerable</typeparam>
+            <param name="source">Source IEnumerable collection</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})" -->
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.GetRandomShuffled``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Gets a random element for the IEnumerable after one shuffle
+            </summary>
+            <typeparam name="T">Type of source IEnumerable</typeparam>
+            <param name="source">Source IEnumerable collection</param>
+            <param name="shuffleTimes">Number of times to shuffle</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns 'true' if an IEnumerable is empty. False otherwise.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})" -->
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.ToCsv``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Converts a Generic List to its CSV representation
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="list">List of Type T to convert to CSV</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.DeepClone``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            TODO: Fix this
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Swap``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+            <summary>
+            Swaps contents of firstIndex with secondIndex
+            </summary>
+            <typeparam name="T">Type of IList</typeparam>
+            <param name="source">Source IList</param>
+            <param name="firstIndex">First index</param>
+            <param name="secondIndex">Second index</param>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.IServiceCollectionExtensions">
+            <summary>
+            Extension methods for ServiceCollection
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Register services for DI
+            </summary>
+            <param name="serviceCollection"></param>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepCloneObject(System.Object)">
+            <summary>
+            Deepclone an Object
+            TODO: Debug and verify
+            </summary>
+            <param name="sourceObject">Object to clone</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepClone(System.Object)">
+            <summary>
+            Deep clones an object using Force DeepCloner
+            </summary>
+            <param name="sourceObject">Source object to clone</param>
+            <returns>Cloned copy of sourceObject</returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
+            <summary>
+            Extensions for Swagger
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions.AddSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection,Swashbuckle.AspNetCore.Swagger.Info,Swashbuckle.AspNetCore.Swagger.ApiKeyScheme)">
+            <summary>
+            Extension method to configure swagger and add documentation
+            </summary>
+            <param name="services"></param>
+            <param name="info"></param>
+            <param name="apiKeyScheme"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions.UseSwaggerDocumentation(Microsoft.AspNetCore.Builder.IApplicationBuilder,Swashbuckle.AspNetCore.Swagger.Info)">
+            <summary>
+            Extension method to use swagger documentation
+            </summary>
+            <param name="app"></param>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Helpers.IntHelpers">
+            <summary>
+            Utility functions for integers
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.IntHelpers.GetRandomNumber(System.Int32,System.Int32)">
+            <summary>
+            Generates a cryptographically secure random number between min and max
+            </summary>
+            <param name="min">Lower bound</param>
+            <param name="max">Upper bound</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.IntHelpers.GetRandomNumber(System.Int32)">
+            <summary>
+            Generates a cryptographically secure random number between 0 and max
+            </summary>
+            <param name="max">Upper bound</param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Helpers.RandomHelpers">
+            <summary>
+            Generates Cryptographically secure random numbers using RNGCryptoServiceProvider
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.RandomHelpers.#cctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.RandomHelpers.Next(System.Int32)">
+            <summary>
+            Get the next random integer
+            </summary>
+            <param name="max">Max value to generate</param>
+            <returns>Random [Int32]</returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.RandomHelpers.Next(System.Int32,System.Int32)">
+            <summary>
+            Returns a random number between 'min' and 'max'
+            </summary>
+            <param name="min">Min value to generate</param>
+            <param name="max">Max value to generate</param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Helpers.StringHelpers">
+            <summary>
+            Helper functions for strings
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.StringHelpers.GetRandomString(System.Int32,System.Boolean)">
+            <summary>
+            Returns a randomString of specified length
+            </summary>
+            <param name="length"></param>
+            <param name="printable"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

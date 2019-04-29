@@ -91,6 +91,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// End of week
         /// </summary>
         /// <param name="dateTime">Instance of Datetime</param>
+        /// <param name="startingDayOfWeek">Starting day of week. Default Monday</param>
         /// <returns></returns>
         public static DateTime EndOfWeek(this DateTime dateTime, DayOfWeek? startingDayOfWeek = DayOfWeek.Monday)
         {

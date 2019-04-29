@@ -4,8 +4,15 @@ using System.Text;
 
 namespace WideWorldImporters.Services.Interfaces
 {
-    interface ISampleService
+    /// <summary>
+    /// Ineterface for Sample Service for Testing
+    /// </summary>
+    public interface ISampleService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         string HelloWorld();
     }
 }
