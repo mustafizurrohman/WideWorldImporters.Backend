@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Models.Database;
+using WideWorldImporters.Services.ServiceCollections;
 
 namespace WideWorldImporters.API.Controllers.Base
 {
@@ -15,17 +16,17 @@ namespace WideWorldImporters.API.Controllers.Base
     {
 
         /// <summary>
-        /// Databse context
+        /// Application Services
         /// </summary>
-        public WideWorldImportersContext ApplicationDbContext { get; }
+        public ApplicationServices AppServices { get; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="context"></param>
-        public BaseAPIController(WideWorldImportersContext context)
+        /// <param name="applicationServices"></param>
+        public BaseAPIController(ApplicationServices applicationServices)
         {
-            ApplicationDbContext = context;
+            AppServices = applicationServices;
         }
 
     }

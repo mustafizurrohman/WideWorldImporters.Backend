@@ -280,19 +280,6 @@
             <param name="firstIndex">First index</param>
             <param name="secondIndex">Second index</param>
         </member>
-        <member name="T:WideWorldImporters.Core.ExtensionMethods.IServiceCollectionExtensions">
-            <summary>
-            Extension methods for ServiceCollection
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
-            <summary>
-            Register services for DI
-            </summary>
-            <param name="serviceCollection"></param>
-            <param name="namespaceName"></param>
-            <returns></returns>
-        </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepCloneObject(System.Object)">
             <summary>
             Deepclone an Object

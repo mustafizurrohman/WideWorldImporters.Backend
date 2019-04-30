@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Models.Database;
+using WideWorldImporters.Services.ExtensionMethods;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.Services;
 
@@ -72,8 +73,6 @@ namespace WideWorldImporters.API
             });
 
             #endregion
-
-            // services.AddTransient(typeof(ISampleService), typeof(SampleService));
 
             services.RegisterServices();
 

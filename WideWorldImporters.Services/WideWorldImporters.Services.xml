@@ -4,6 +4,19 @@
         <name>WideWorldImporters.Services</name>
     </assembly>
     <members>
+        <member name="T:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions">
+            <summary>
+            Extension methods for ServiceCollection
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Register services for DI
+            </summary>
+            <param name="serviceCollection"></param>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Ineterface for Sample Service for Testing
@@ -15,14 +28,65 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.ISampleService.GetVehicleTempsAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Services.ServiceCollections.ApplicationServices">
+            <summary>
+            Services for the application
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.DbContext">
+            <summary>
+            Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AutoMapper">
+            <summary>
+            Automapper
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.MemoryCache">
+            <summary>
+            Memory Caching
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dbContext">Database context</param>
+            <param name="autoMapper">Automapper</param>
+            <param name="memoryCache">Memory Caching</param>
+        </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>
             Sample Service for Testing
             </summary>
         </member>
+        <member name="P:WideWorldImporters.Services.Services.SampleService.AppServices">
+            <summary>
+            Application Services
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.SampleService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
+            <summary>
+            
+            </summary>
+            <param name="applicationServices"></param>
+        </member>
         <member name="M:WideWorldImporters.Services.Services.SampleService.HelloWorld">
             <summary>
             Hello world
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.SampleService.GetVehicleTempsAsync">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>

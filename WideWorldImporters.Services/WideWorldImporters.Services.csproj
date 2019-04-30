@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />
   </ItemGroup>

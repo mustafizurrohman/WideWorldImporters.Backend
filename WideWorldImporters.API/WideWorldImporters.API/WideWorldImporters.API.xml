@@ -26,27 +26,27 @@
             Base Controller for API Controllers
             </summary>
         </member>
-        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.ApplicationDbContext">
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AppServices">
             <summary>
-            Databse context
+            Application Services
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext)">
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor
             </summary>
-            <param name="context"></param>
+            <param name="applicationServices"></param>
         </member>
         <member name="T:WideWorldImporters.API.Controllers.ValuesController">
             <summary>
             Sample controller
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,WideWorldImporters.Services.Interfaces.ISampleService)">
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
             <summary>
             Constructor
             </summary>
-            <param name="dbContext"></param>
+            <param name="applicationServices"></param>
             <param name="sampleService"></param>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Test">
@@ -56,6 +56,12 @@
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataAsync">
+            <summary>
+            Db Test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataFromServiceAsync">
             <summary>
             Db Test
             </summary>

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
+using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Services.Services;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
@@ -25,9 +26,9 @@ namespace WideWorldImporters.API.Controllers
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="dbContext"></param>
+        /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public ValuesController(WideWorldImportersContext dbContext, ISampleService sampleService ) : base(dbContext)
+        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService ) : base(applicationServices)
         {
             this._sampleService = sampleService;
         }
@@ -40,17 +41,7 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("Test")]
         public IActionResult Test()
         {
-            string data = default;
-
-            try {
-                
-                data = _sampleService.HelloWorld();
-
-            } catch(Exception e)
-            {
-                Exception ex = e;
-            }
-
+            string data = _sampleService.HelloWorld();
 
             return Ok(data);
         }
@@ -62,14 +53,27 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("VehicleTemperatures")]
         public async Task<IActionResult> GetDataAsync()
         {
-            DbSet<VehicleTemperatures> vehicleTemps = ApplicationDbContext.VehicleTemperatures;
+            DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
 
-            var data = await ApplicationDbContext.VehicleTemperatures
+            var data = await AppServices.DbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)
                 .Skip(1000)
                 .Take(2)
                 .ToListAsync();
             
+            return Ok(data);
+        }
+
+        /// <summary>
+        /// Db Test
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("VehicleTemperatures/service")]
+        public async Task<IActionResult> GetDataFromServiceAsync()
+        {
+
+            var data = await _sampleService.GetVehicleTempsAsync();
+
             return Ok(data);
         }
 
