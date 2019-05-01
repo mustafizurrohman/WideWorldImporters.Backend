@@ -24,13 +24,13 @@
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.ISampleService.HelloWorld">
             <summary>
-            
+            Hello World
             </summary>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.ISampleService.GetVehicleTempsAsync">
             <summary>
-            
+            Gets vehicle temperatures
             </summary>
             <returns></returns>
         </member>
@@ -41,7 +41,7 @@
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.DbContext">
             <summary>
-            Database context
+            Application Database context
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AutoMapper">

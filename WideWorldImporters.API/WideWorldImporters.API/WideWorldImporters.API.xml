@@ -31,6 +31,21 @@
             Application Services
             </summary>
         </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.DbContext">
+            <summary>
+            Application Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AutoMapper">
+            <summary>
+            Automapper
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.MemoryCache">
+            <summary>
+            Memory Caching
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor

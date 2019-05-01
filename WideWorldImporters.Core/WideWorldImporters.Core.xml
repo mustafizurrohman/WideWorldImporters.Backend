@@ -6,7 +6,7 @@
     <members>
         <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute">
             <summary>
-            ServiceLifeTimeAttribute- Used to determine how a service should be injected
+            ServiceLifeTimeAttribute- Used to determine how a service should be injected.
             Can be used only for classes
             </summary>
         </member>

@@ -17,7 +17,6 @@ namespace WideWorldImporters.API.Controllers
     /// <summary>
     /// Sample controller
     /// </summary>
-
     public class ValuesController : BaseAPIController
     {
 
@@ -55,7 +54,7 @@ namespace WideWorldImporters.API.Controllers
         {
             DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
 
-            var data = await AppServices.DbContext.VehicleTemperatures
+            var data = await DbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)
                 .Skip(1000)
                 .Take(2)

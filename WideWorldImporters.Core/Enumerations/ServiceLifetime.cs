@@ -19,10 +19,12 @@ namespace WideWorldImporters.Core.Enumerations
             /// Singleton service
             /// </summary>
             Singleton,
+
             /// <summary>
             /// Scoped service
             /// </summary>
             Scoped,
+            
             /// <summary>
             /// Transient service
             /// </summary>

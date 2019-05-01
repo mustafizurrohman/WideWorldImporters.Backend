@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.Services.ServiceCollections
@@ -14,7 +11,7 @@ namespace WideWorldImporters.Services.ServiceCollections
     public class ApplicationServices
     {
         /// <summary>
-        /// Database context
+        /// Application Database context
         /// </summary>
         public WideWorldImportersContext DbContext { get; }
 

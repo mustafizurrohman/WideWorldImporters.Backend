@@ -7,7 +7,7 @@ namespace WideWorldImporters.Core.ClassAttributes
 {
 
     /// <summary>
-    /// ServiceLifeTimeAttribute- Used to determine how a service should be injected
+    /// ServiceLifeTimeAttribute- Used to determine how a service should be injected.
     /// Can be used only for classes
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]

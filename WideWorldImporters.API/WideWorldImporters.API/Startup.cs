@@ -63,10 +63,10 @@ namespace WideWorldImporters.API
 
             #region -- Response Compression Configuration --
 
-            //Configure Compression level
+            // Configure Compression level
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
 
-            //Add Response compression services
+            // Add Response compression services
             services.AddResponseCompression(options =>
             {
                 options.Providers.Add<GzipCompressionProvider>();
