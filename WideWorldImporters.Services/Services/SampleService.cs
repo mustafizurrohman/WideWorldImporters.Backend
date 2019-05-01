@@ -8,6 +8,7 @@ using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
+using WideWorldImporters.Services.Services.Base;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.Services.Services
@@ -17,21 +18,15 @@ namespace WideWorldImporters.Services.Services
     /// Sample Service for Testing
     /// </summary>
     [ServiceLifeTime(Lifetime.Transient)]
-    public class SampleService : ISampleService
+    public class SampleService : BaseService, ISampleService
     {
-
-        /// <summary>
-        /// Application Services
-        /// </summary>
-        private ApplicationServices AppServices { get; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="applicationServices"></param>
-        public SampleService(ApplicationServices applicationServices)
+        public SampleService(ApplicationServices applicationServices) : base(applicationServices)
         {
-            AppServices = applicationServices;
         }
 
         /// <summary>
@@ -49,9 +44,9 @@ namespace WideWorldImporters.Services.Services
         /// <returns></returns>
         public async Task<IEnumerable<VehicleTemperatures>> GetVehicleTempsAsync()
         {
-            var vehicleTemps = AppServices.DbContext.VehicleTemperatures;
+            var vehicleTemps = DbContext.VehicleTemperatures;
 
-            var data = await AppServices.DbContext.VehicleTemperatures
+            var data = await DbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)
                 .Skip(1000)
                 .Take(2)
