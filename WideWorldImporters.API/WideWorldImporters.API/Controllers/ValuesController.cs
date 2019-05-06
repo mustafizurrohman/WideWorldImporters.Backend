@@ -8,8 +8,6 @@ using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
-using WideWorldImporters.Services.Services;
-using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -64,7 +62,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// Db Test
+        /// Db Test using service
         /// </summary>
         /// <returns></returns>
         [HttpGet("VehicleTemperatures/service")]

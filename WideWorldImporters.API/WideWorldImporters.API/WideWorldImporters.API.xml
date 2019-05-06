@@ -78,7 +78,7 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataFromServiceAsync">
             <summary>
-            Db Test
+            Db Test using service
             </summary>
             <returns></returns>
         </member>

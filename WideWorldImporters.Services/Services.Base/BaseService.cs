@@ -14,25 +14,26 @@ namespace WideWorldImporters.Services.Services.Base
     /// </summary>
     public abstract class BaseService
     {
+
         /// <summary>
         /// Application Services
         /// </summary>
-        public ApplicationServices AppServices { get; }
+        protected ApplicationServices AppServices { get; }
 
         /// <summary>
         /// Application Database context
         /// </summary>
-        public WideWorldImportersContext DbContext { get; }
+        protected WideWorldImportersContext DbContext { get; }
 
         /// <summary>
         /// Automapper
         /// </summary>
-        public IMapper AutoMapper { get; }
+        protected IMapper AutoMapper { get; }
 
         /// <summary>
         /// Memory Caching
         /// </summary>
-        public IMemoryCache MemoryCache { get; }
+        protected IMemoryCache MemoryCache { get; }
 
         /// <summary>
         /// Constructor
