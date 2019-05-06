@@ -19,6 +19,11 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
     {
         private readonly IHostingEnvironment _hostingEnvironment;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="requestDelegate"></param>
+        /// <param name="hostingEnvironment"></param>
         public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment) : base(requestDelegate)
         {
             _hostingEnvironment = hostingEnvironment;

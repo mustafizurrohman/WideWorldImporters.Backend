@@ -116,7 +116,7 @@ namespace WideWorldImporters.API
 
             if(performanceOptions.UseExceptionHandlingMiddleware)
             {
-                app.UseMiddleware<ExceptionHandler>();
+                app.UseCustomExceptionHandler();
             }
 
 

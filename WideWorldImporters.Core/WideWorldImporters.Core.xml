@@ -210,6 +210,18 @@
             <param name="dbSet">DbSet</param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.IApplicationBuilderExtensions">
+            <summary>
+            ExtensionMethods for IApplcationBuilder
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IApplicationBuilderExtensions.UseCustomExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Extension Method to use custom exception handler
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions">
             <summary>
             Extension methods for IEnumerable
