@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.ExtensionMethods;
+using WideWorldImporters.Core.Options;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
 using WideWorldImporters.Services.Interfaces;
@@ -22,6 +23,7 @@ namespace WideWorldImporters.API
     {
         readonly Info info = new Info();
         readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
+        readonly PerformanceOptions performanceOptions = new PerformanceOptions();
 
         /// <summary>
         /// Startup
@@ -43,6 +45,8 @@ namespace WideWorldImporters.API
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+
+            Configuration.GetSection("PerformanceOptions").Bind(performanceOptions);
     
             #region -- Swagger Configuration --
 
@@ -63,14 +67,19 @@ namespace WideWorldImporters.API
 
             #region -- Response Compression Configuration --
 
-            // Configure Compression level
-            services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
-
-            // Add Response compression services
-            services.AddResponseCompression(options =>
+            if (performanceOptions.UseResponseCompression)
             {
-                options.Providers.Add<GzipCompressionProvider>();
-            });
+
+                // Configure Compression level
+                services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
+
+                // Add Response compression services
+                services.AddResponseCompression(options =>
+                {
+                    options.Providers.Add<GzipCompressionProvider>();
+                });
+
+            }
 
             #endregion
 
@@ -98,7 +107,12 @@ namespace WideWorldImporters.API
             }
 
             app.UseSwaggerDocumentation(info);
-            app.UseResponseCompression();
+
+            if (performanceOptions.UseResponseCompression)
+            {
+                app.UseResponseCompression();
+            }
+
 
             app.UseHttpsRedirection();
             app.UseMvc();
