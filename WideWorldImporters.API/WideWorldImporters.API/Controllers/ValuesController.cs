@@ -74,6 +74,16 @@ namespace WideWorldImporters.API.Controllers
             return Ok(data);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("exception")]
+        public IActionResult NotImplementedFunction()
+        {
+            throw new NotImplementedException();
+        }
+
         #region -- Sample Methods -- 
 
         /// <summary>

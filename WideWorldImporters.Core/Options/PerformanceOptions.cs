@@ -14,11 +14,12 @@ namespace WideWorldImporters.Core.Options
         /// <summary>
         /// Bool to indicate if response compression should be used
         /// </summary>
-        public bool UseResponseCompression { get; set; }
+        public bool UseResponseCompression { get; set; } = true;
 
         /// <summary>
         /// Bool to indicate if exception handling middleware should be used
         /// </summary>
-        public bool UseExceptionHandlingMiddleware { get; set; }
+        public bool UseExceptionHandlingMiddleware { get; set; } = true;
+
     }
 }

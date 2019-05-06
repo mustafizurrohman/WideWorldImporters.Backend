@@ -82,6 +82,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.NotImplementedFunction">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Get">
             <summary>
             GET api/values

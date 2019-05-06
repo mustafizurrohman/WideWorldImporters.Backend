@@ -4,6 +4,11 @@
         <name>WideWorldImporters.Core</name>
     </assembly>
     <members>
+        <member name="T:WideWorldImporters.Core.AutoMapper.MappingProfile">
+            <summary>
+            AutoMapper profiles
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute">
             <summary>
             ServiceLifeTimeAttribute- Used to determine how a service should be injected.
@@ -374,6 +379,21 @@
             <param name="length"></param>
             <param name="printable"></param>
             <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Options.PerformanceOptions">
+            <summary>
+            PerformanceOptions
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseResponseCompression">
+            <summary>
+            Bool to indicate if response compression should be used
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseExceptionHandlingMiddleware">
+            <summary>
+            Bool to indicate if exception handling middleware should be used
+            </summary>
         </member>
     </members>
 </doc>

@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Models",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Core", "..\WideWorldImporters.Core\WideWorldImporters.Core.csproj", "{465FB41B-9803-483B-9701-83668B60B31D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Services", "..\WideWorldImporters.Services\WideWorldImporters.Services.csproj", "{391D900C-6377-4CD4-87DC-6F11572AFFE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Services", "..\WideWorldImporters.Services\WideWorldImporters.Services.csproj", "{391D900C-6377-4CD4-87DC-6F11572AFFE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Middleware.Base", "..\WideWorldImporters.Middleware.Base\WideWorldImporters.Middleware.Base.csproj", "{84BB273B-1A79-4DA6-8F96-F6461FD4C929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Middleware.ExceptionHandler", "..\WideWorldImporters.Middleware.ExceptionHandler\WideWorldImporters.Middleware.ExceptionHandler.csproj", "{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{391D900C-6377-4CD4-87DC-6F11572AFFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{391D900C-6377-4CD4-87DC-6F11572AFFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{391D900C-6377-4CD4-87DC-6F11572AFFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84BB273B-1A79-4DA6-8F96-F6461FD4C929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BB273B-1A79-4DA6-8F96-F6461FD4C929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BB273B-1A79-4DA6-8F96-F6461FD4C929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BB273B-1A79-4DA6-8F96-F6461FD4C929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
