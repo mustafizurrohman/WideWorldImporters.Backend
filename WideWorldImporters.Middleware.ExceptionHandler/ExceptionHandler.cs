@@ -33,6 +33,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         {
             try
             {
+                // await _next.Invoke(context);
                 await Next(context);
 
             } catch (Exception ex)
