@@ -81,9 +81,26 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- CORS Configuration --
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowAnyOrigin();
+                });
+            });
+
+            #endregion
+
             services.RegisterServices();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => {
+                options.MaxModelValidationErrors = int.MaxValue;
+                options.MaxValidationDepth = 100;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }
 
@@ -115,6 +132,8 @@ namespace WideWorldImporters.API
             {
                 app.UseCustomExceptionHandler();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
             app.UseMvc();
