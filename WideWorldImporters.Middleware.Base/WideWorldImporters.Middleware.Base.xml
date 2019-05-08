@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WideWorldImporters.Middleware.Base</name>
+    </assembly>
+    <members>
+        <member name="T:WideWorldImporters.Middleware.Base.BaseMiddleware">
+            <summary>
+            Base Middleware- All Middlewares inherit this
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Middleware.Base.BaseMiddleware.Next">
+            <summary>
+            Request delagate
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Middleware implementation goes here
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

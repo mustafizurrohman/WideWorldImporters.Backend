@@ -5,6 +5,9 @@ using System.Text;
 
 namespace WideWorldImporters.Core.ExtensionMethods
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ObjectExtensions
     {
 
@@ -79,6 +82,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return sourceObject.DeepClone();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj1"></param>
+        /// <param name="obj2"></param>
+        /// <returns></returns>
         public static bool DeepCompare(this object obj1, object obj2)
         {
 

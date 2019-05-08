@@ -114,9 +114,14 @@ namespace WideWorldImporters.API
                 app.UseResponseCompression();
             }
 
-            if(performanceOptions.UseExceptionHandlingMiddleware)
+            if (performanceOptions.UseExceptionHandlingMiddleware)
             {
                 app.UseCustomExceptionHandler();
+            }
+
+            if (performanceOptions.UseBenchmarkingMiddleware)
+            {
+                // app.UseBenchmarkingMiddleware();
             }
 
 

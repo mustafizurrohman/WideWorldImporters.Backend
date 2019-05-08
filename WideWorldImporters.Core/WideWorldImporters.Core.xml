@@ -253,7 +253,14 @@
             <param name="source">Source IEnumerable collection</param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})" -->
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.GetRandomShuffled``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
             Gets a random element for the IEnumerable after one shuffle
@@ -271,7 +278,19 @@
             <param name="list"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})" -->
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.IListExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.ToCsv``1(System.Collections.Generic.IList{``0})">
             <summary>
             Converts a Generic List to its CSV representation
@@ -297,6 +316,11 @@
             <param name="firstIndex">First index</param>
             <param name="secondIndex">Second index</param>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepCloneObject(System.Object)">
             <summary>
             Deepclone an Object
@@ -311,6 +335,14 @@
             </summary>
             <param name="sourceObject">Source object to clone</param>
             <returns>Cloned copy of sourceObject</returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepCompare(System.Object,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj1"></param>
+            <param name="obj2"></param>
+            <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
             <summary>
@@ -399,12 +431,17 @@
         </member>
         <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseResponseCompression">
             <summary>
-            Bool to indicate if response compression should be used
+            Boolean to indicate if response compression should be used
             </summary>
         </member>
         <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseExceptionHandlingMiddleware">
             <summary>
-            Bool to indicate if exception handling middleware should be used
+            Boolean to indicate if exception handling middleware should be used
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseBenchmarkingMiddleware">
+            <summary>
+            Boolean to indicate if benchmarking middlware should be used
             </summary>
         </member>
     </members>

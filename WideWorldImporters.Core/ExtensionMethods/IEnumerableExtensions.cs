@@ -59,15 +59,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
 
         /// <summary>
-        /// Shuffles an IEnumerable using cryptographically secure randomization
+        /// 
         /// </summary>
-        /// <typeparam name="T">Type of IList</typeparam>
-        /// <param name="source">Source IList</param>
-        /// <returns>IList<T></returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
-        {
-            return source.Shuffle();
-        }
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle();
 
         /// <summary>
         /// Gets a random element for the IEnumerable after one shuffle

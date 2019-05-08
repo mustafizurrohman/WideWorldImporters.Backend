@@ -29,12 +29,16 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             _hostingEnvironment = hostingEnvironment;
         }
 
+        /// <summary>
+        /// Middleware Implementation
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public override async Task InvokeAsync(HttpContext context) 
         {
             try
             {
-                // await _next.Invoke(context);
-                await Next(context);
+                await Next.Invoke(context);
 
             } catch (Exception ex)
             {
@@ -42,6 +46,12 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             }
         }
 
+        /// <summary>
+        /// Async handling of exception
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="ex"></param>
+        /// <returns></returns>
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             if (_hostingEnvironment.IsDevelopment())
@@ -52,15 +62,10 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
                 // TODO: Handle Exception when not in development mode (Staging or Production)
             }
 
+            // var result = JsonConvert.SerializeObject(new { error = ex.Message });
 
-            
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
-  
-            var result = JsonConvert.SerializeObject(new { error = ex.Message });
-
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
-            return context.Response.WriteAsync(result);
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            return context.Response.WriteAsync(ex.ToString());
         }
 
 

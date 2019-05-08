@@ -9,15 +9,18 @@ using WideWorldImporters.Core.Helpers;
 
 namespace WideWorldImporters.Core.ExtensionMethods
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class IListExtensions
     {
 
         /// <summary>
-        /// Shuffles an IList using cryptographically secure randomization 
+        /// 
         /// </summary>
-        /// <typeparam name="T">Type of IList</typeparam>
-        /// <param name="source">Source IList</param>
-        /// <returns>IList<T></returns>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static IList<T> Shuffle<T>(this IList<T> source)
         {
             var destination = source.DeepCloneObject() as IList<T>;

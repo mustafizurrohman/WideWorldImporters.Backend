@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Services", "..\WideWorldImporters.Services\WideWorldImporters.Services.csproj", "{391D900C-6377-4CD4-87DC-6F11572AFFE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Middleware.Base", "..\WideWorldImporters.Middleware.Base\WideWorldImporters.Middleware.Base.csproj", "{84BB273B-1A79-4DA6-8F96-F6461FD4C929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Middleware.Base", "..\WideWorldImporters.Middleware.Base\WideWorldImporters.Middleware.Base.csproj", "{84BB273B-1A79-4DA6-8F96-F6461FD4C929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Middleware.ExceptionHandler", "..\WideWorldImporters.Middleware.ExceptionHandler\WideWorldImporters.Middleware.ExceptionHandler.csproj", "{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Middleware.ExceptionHandler", "..\WideWorldImporters.Middleware.ExceptionHandler\WideWorldImporters.Middleware.ExceptionHandler.csproj", "{823D688E-2BA6-48DC-AC7F-F9C9D14E601B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
