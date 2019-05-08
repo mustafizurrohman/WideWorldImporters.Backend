@@ -9,11 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
-using WideWorldImporters.Middleware.ExceptionHandler;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
-using WideWorldImporters.Services.Interfaces;
-using WideWorldImporters.Services.Services;
 
 namespace WideWorldImporters.API
 {
@@ -118,12 +115,6 @@ namespace WideWorldImporters.API
             {
                 app.UseCustomExceptionHandler();
             }
-
-            if (performanceOptions.UseBenchmarkingMiddleware)
-            {
-                // app.UseBenchmarkingMiddleware();
-            }
-
 
             app.UseHttpsRedirection();
             app.UseMvc();

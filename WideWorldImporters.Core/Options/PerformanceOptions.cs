@@ -21,10 +21,5 @@ namespace WideWorldImporters.Core.Options
         /// </summary>
         public bool UseExceptionHandlingMiddleware { get; set; } = true;
 
-        /// <summary>
-        /// Boolean to indicate if benchmarking middlware should be used
-        /// </summary>
-        public bool UseBenchmarkingMiddleware { get; set; } = true;
-
     }
 }

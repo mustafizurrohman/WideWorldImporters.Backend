@@ -10,13 +10,13 @@ using WideWorldImporters.Core.Helpers;
 namespace WideWorldImporters.Core.ExtensionMethods
 {
     /// <summary>
-    /// 
+    /// Extension methods for IList
     /// </summary>
     public static class IListExtensions
     {
 
         /// <summary>
-        /// 
+        /// Shuffles an IList using Cryptographically secure randomization
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>

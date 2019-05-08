@@ -21,6 +21,23 @@
             </summary>
             <param name="context"></param>
         </member>
+        <member name="T:WideWorldImporters.API.ActionFilters.ValidateModelAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.Base.BaseAPIController">
             <summary>
             Base Controller for API Controllers

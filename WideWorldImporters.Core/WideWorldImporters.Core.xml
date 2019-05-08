@@ -280,12 +280,12 @@
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.IListExtensions">
             <summary>
-            
+            Extension methods for IList
             </summary>
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
             <summary>
-            
+            Shuffles an IList using Cryptographically secure randomization
             </summary>
             <typeparam name="T"></typeparam>
             <param name="source"></param>
@@ -437,11 +437,6 @@
         <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseExceptionHandlingMiddleware">
             <summary>
             Boolean to indicate if exception handling middleware should be used
-            </summary>
-        </member>
-        <member name="P:WideWorldImporters.Core.Options.PerformanceOptions.UseBenchmarkingMiddleware">
-            <summary>
-            Boolean to indicate if benchmarking middlware should be used
             </summary>
         </member>
     </members>
