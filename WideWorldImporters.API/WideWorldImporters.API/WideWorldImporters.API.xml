@@ -11,19 +11,21 @@
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.BenchmarkAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
             <summary>
-            
+            Executed before the start of execution
             </summary>
             <param name="context"></param>
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.BenchmarkAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
             <summary>
-            
+            Executed after the end of execution
             </summary>
             <param name="context"></param>
         </member>
         <member name="T:WideWorldImporters.API.ActionFilters.ValidateModelAttribute">
             <summary>
-            
+            Validate Model Attribute
+            Not used as the momenet as it is done by default by WebApi 2.2.
+            Should be enabled only when required
             </summary>
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
@@ -34,7 +36,7 @@
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
             <summary>
-            
+            Override of OnActionExecuting method. 
             </summary>
             <param name="context"></param>
         </member>

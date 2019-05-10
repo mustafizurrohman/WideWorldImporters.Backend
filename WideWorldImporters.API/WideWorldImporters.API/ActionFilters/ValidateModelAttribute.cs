@@ -9,7 +9,9 @@ namespace WideWorldImporters.API.ActionFilters
 {
 
     /// <summary>
-    /// 
+    /// Validate Model Attribute
+    /// Not used as the momenet as it is done by default by WebApi 2.2.
+    /// Should be enabled only when required
     /// </summary>
     public class ValidateModelAttribute : ActionFilterAttribute
     {
@@ -23,11 +25,12 @@ namespace WideWorldImporters.API.ActionFilters
         }
 
         /// <summary>
-        /// 
+        /// Override of OnActionExecuting method. 
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
         {
+            // Check if model state is invalid
             if (!context.ModelState.IsValid)
             {
                 var modelErrors = context.ModelState

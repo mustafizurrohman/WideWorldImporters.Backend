@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using System.Collections.Generic;
+using System.IO.Compression;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,9 @@ namespace WideWorldImporters.API
         readonly Info info = new Info();
         readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
         readonly PerformanceOptions performanceOptions = new PerformanceOptions();
+        readonly List<string> allowedCorsOrigins = new List<string>();
+
+        readonly string corsWithSpecificOrigins = "CorsWithSpecificOrigins";
 
         /// <summary>
         /// Startup
@@ -83,6 +87,7 @@ namespace WideWorldImporters.API
 
             #region -- CORS Configuration --
 
+            // Default cors policy
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
@@ -90,6 +95,19 @@ namespace WideWorldImporters.API
                     builder.AllowAnyHeader()
                            .AllowAnyMethod()
                            .AllowAnyOrigin();
+                });
+            });
+
+            Configuration.GetSection("AllowedCorsOrigins").Bind(allowedCorsOrigins);
+
+            // Cors policy allowing only specific origins
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsWithSpecificOrigins, builder =>
+                {
+                    builder.AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .WithOrigins(allowedCorsOrigins.ToArray());
                 });
             });
 
@@ -133,8 +151,15 @@ namespace WideWorldImporters.API
                 app.UseCustomExceptionHandler();
             }
 
-            app.UseCors();
+            if (!allowedCorsOrigins.IsEmpty())
+            {
+                app.UseCors(corsWithSpecificOrigins);
 
+            } else
+            {
+                app.UseCors();
+            }
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }

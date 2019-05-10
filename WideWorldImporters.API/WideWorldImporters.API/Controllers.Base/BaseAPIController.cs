@@ -14,8 +14,6 @@ namespace WideWorldImporters.API.Controllers.Base
     [Route("api/[controller]")]
     [Benchmark]
     [ApiController]
-    // Automatiacally done when [ApiController] is specified
-    // [ValidateModel]
     public class BaseAPIController : ControllerBase
     {
 

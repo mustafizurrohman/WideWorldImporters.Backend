@@ -13,7 +13,7 @@ namespace WideWorldImporters.API.ActionFilters
 
         
         /// <summary>
-        /// 
+        /// Executed before the start of execution
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -22,7 +22,7 @@ namespace WideWorldImporters.API.ActionFilters
         }
 
         /// <summary>
-        /// 
+        /// Executed after the end of execution
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)

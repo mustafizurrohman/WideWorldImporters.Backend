@@ -44,7 +44,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 {
                     Implementation = asm,
                     Interface = asm.GetInterfaces().First(),
-                    Lifetime = ((ServiceLifeTimeAttribute)asm.GetCustomAttributes(typeof(ServiceLifeTimeAttribute), true).First()).GetLifetime()
+                    Lifetime = ((ServiceLifeTimeAttribute)asm.GetCustomAttributes(typeof(ServiceLifeTimeAttribute), true).Single()).GetLifetime()
                 })
                 .ToList();
 
@@ -62,10 +62,13 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 serviceCollection.AddTransient(transient.Interface, transient.Implementation);
             }
 
+            /*
+            // Scoped services must be injected differently
             foreach (var scoped in scopedServices)
             {
                 serviceCollection.AddScoped(scoped.Interface, scoped.Implementation);
-            }
+            } 
+            */
             
 
             serviceCollection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
