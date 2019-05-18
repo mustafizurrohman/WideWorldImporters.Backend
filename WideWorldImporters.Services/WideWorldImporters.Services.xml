@@ -11,7 +11,7 @@
         </member>
         <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
             <summary>
-            Register services for DI
+            Register services for Dependency Injection
             </summary>
             <param name="serviceCollection"></param>
             <param name="namespaceName"></param>
@@ -64,7 +64,7 @@
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>
-            
+            Base classes for all services
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AppServices">

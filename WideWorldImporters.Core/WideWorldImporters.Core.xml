@@ -15,11 +15,17 @@
             Can be used only for classes
             </summary>
         </member>
+        <member name="F:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute._lifetime">
+            <summary>
+            Lifetime (value). 
+            Readonly means that it can set only in the constructor
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
             <summary>
             Constructor
             </summary>
-            <param name="lifetime"></param>
+            <param name="lifetime">LIfetime attribute</param>
         </member>
         <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.GetLifetime">
             <summary>

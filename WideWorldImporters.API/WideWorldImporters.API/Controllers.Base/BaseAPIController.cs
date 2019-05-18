@@ -17,6 +17,8 @@ namespace WideWorldImporters.API.Controllers.Base
     public class BaseAPIController : ControllerBase
     {
 
+        #region -- Services --
+
         /// <summary>
         /// Application Services
         /// </summary>
@@ -37,6 +39,9 @@ namespace WideWorldImporters.API.Controllers.Base
         /// </summary>
         protected IMemoryCache MemoryCache { get; }
 
+        #endregion
+
+        #region -- Constructor --
 
         /// <summary>
         /// Constructor
@@ -50,6 +55,8 @@ namespace WideWorldImporters.API.Controllers.Base
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
         }
+
+        #endregion
 
     }
 }

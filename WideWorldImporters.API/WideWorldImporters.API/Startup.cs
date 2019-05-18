@@ -155,10 +155,9 @@ namespace WideWorldImporters.API
             {
                 app.UseCors(corsWithSpecificOrigins);
 
-            } else
-            {
-                app.UseCors();
-            }
+            } 
+
+            app.UseCors();
             
             app.UseHttpsRedirection();
             app.UseMvc();

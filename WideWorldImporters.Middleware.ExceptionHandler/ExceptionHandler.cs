@@ -17,13 +17,17 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
     /// </summary>
     public class ExceptionHandler : BaseMiddleware
     {
+
+        /// <summary>
+        /// Current hosting environment
+        /// </summary>
         private readonly IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="requestDelegate"></param>
-        /// <param name="hostingEnvironment"></param>
+        /// <param name="requestDelegate">Request Delegate</param>
+        /// <param name="hostingEnvironment">Hosting Environment</param>
         public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment) : base(requestDelegate)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -32,7 +36,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// <summary>
         /// Middleware Implementation
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Http Context</param>
         /// <returns></returns>
         public override async Task InvokeAsync(HttpContext context) 
         {
@@ -49,8 +53,8 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// <summary>
         /// Async handling of exception
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="ex"></param>
+        /// <param name="context">Http Context</param>
+        /// <param name="ex">Exception</param>
         /// <returns></returns>
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
@@ -65,7 +69,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             // var result = JsonConvert.SerializeObject(new { error = ex.Message });
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            return context.Response.WriteAsync(ex.ToString());
+            return context.Response.WriteAsync(ex.Message);
         }
 
 

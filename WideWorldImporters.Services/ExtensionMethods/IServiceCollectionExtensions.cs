@@ -22,7 +22,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
     {
 
         /// <summary>
-        /// Register services for DI
+        /// Register services for Dependency Injection
         /// </summary>
         /// <param name="serviceCollection"></param>
         /// <param name="namespaceName"></param>
@@ -34,6 +34,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 .GetAssemblies()
                 .Where(asm => asm.FullName.Contains(namespaceName));
 
+            // Get all services which must be injected
             var apiServices = applicationAssemply
                 .SelectMany(asm => asm.GetExportedTypes())
                 .Where(asm => asm.Namespace.Contains(namespaceName))
@@ -52,11 +53,13 @@ namespace WideWorldImporters.Services.ExtensionMethods
             var transientServices = apiServices.Where(reg => reg.Lifetime == Lifetime.Transient);
             var scopedServices = apiServices.Where(reg => reg.Lifetime == Lifetime.Scoped);
 
+            // Register singleton services
             foreach (var singleton in singletonServices)
             {
                 serviceCollection.AddSingleton(singleton.Interface, singleton.Implementation);
             }
 
+            // Register transient services
             foreach (var transient in transientServices)
             {
                 serviceCollection.AddTransient(transient.Interface, transient.Implementation);
@@ -70,6 +73,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
             } 
             */
             
+
 
             serviceCollection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

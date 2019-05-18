@@ -14,12 +14,16 @@ namespace WideWorldImporters.Core.ClassAttributes
     public class ServiceLifeTimeAttribute : Attribute
     {
 
+        /// <summary>
+        /// Lifetime (value). 
+        /// Readonly means that it can set only in the constructor
+        /// </summary>
         private readonly Lifetime _lifetime;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="lifetime"></param>
+        /// <param name="lifetime">LIfetime attribute</param>
         public ServiceLifeTimeAttribute(Lifetime lifetime)
         {
             _lifetime = lifetime;

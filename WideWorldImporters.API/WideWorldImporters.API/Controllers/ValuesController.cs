@@ -48,6 +48,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("VehicleTemperatures")]
+        [Produces("application/json")]
         public async Task<IActionResult> GetDataAsync()
         {
             DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;

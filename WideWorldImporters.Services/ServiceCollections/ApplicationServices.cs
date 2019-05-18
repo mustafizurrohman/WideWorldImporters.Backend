@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Memory;
+using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Models.Database;
+using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.Services.ServiceCollections
 {

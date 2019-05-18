@@ -10,7 +10,7 @@ namespace WideWorldImporters.Services.Services.Base
 {
 
     /// <summary>
-    /// 
+    /// Base classes for all services
     /// </summary>
     public abstract class BaseService
     {
