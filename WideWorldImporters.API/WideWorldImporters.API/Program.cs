@@ -18,7 +18,7 @@ namespace WideWorldImporters.API
         /// <summary>
         /// Main method
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">Array of string as argument</param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
@@ -27,7 +27,7 @@ namespace WideWorldImporters.API
         /// <summary>
         /// CreateWebHostBuilder
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">Array of string as argument</param>
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

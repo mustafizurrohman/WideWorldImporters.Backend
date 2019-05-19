@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WideWorldImporters.Middleware.ExceptionHandler\WideWorldImporters.Middleware.ExceptionHandler.csproj" />
+    <ProjectReference Include="..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

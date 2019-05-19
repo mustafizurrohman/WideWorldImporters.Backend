@@ -148,13 +148,13 @@
             <summary>
             Main method
             </summary>
-            <param name="args"></param>
+            <param name="args">Array of string as argument</param>
         </member>
         <member name="M:WideWorldImporters.API.Program.CreateWebHostBuilder(System.String[])">
             <summary>
             CreateWebHostBuilder
             </summary>
-            <param name="args"></param>
+            <param name="args">Array of string as argument</param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.API.Startup">
@@ -177,14 +177,14 @@
             <summary>
             This method gets called by the runtime. Use this method to add services to the container.
             </summary>
-            <param name="services"></param>
+            <param name="services">Collection of service descriptors</param>
         </member>
         <member name="M:WideWorldImporters.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
             </summary>
-            <param name="app"></param>
-            <param name="env"></param>
+            <param name="app">Application builder to configure the application request pipeline</param>
+            <param name="env">Current hosting environment</param>
         </member>
     </members>
 </doc>

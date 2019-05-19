@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
 using WideWorldImporters.Models.Database;
@@ -24,8 +25,6 @@ namespace WideWorldImporters.API
         readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
         readonly PerformanceOptions performanceOptions = new PerformanceOptions();
         readonly List<string> allowedCorsOrigins = new List<string>();
-
-        readonly string corsWithSpecificOrigins = "CorsWithSpecificOrigins";
 
         /// <summary>
         /// Startup
@@ -44,7 +43,7 @@ namespace WideWorldImporters.API
         /// <summary>
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="services">Collection of service descriptors</param>
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -100,10 +99,11 @@ namespace WideWorldImporters.API
 
             Configuration.GetSection("AllowedCorsOrigins").Bind(allowedCorsOrigins);
 
+            
             // Cors policy allowing only specific origins
             services.AddCors(options =>
             {
-                options.AddPolicy(corsWithSpecificOrigins, builder =>
+                options.AddPolicy(CorsPolicies.CorsWithSpecificOrigins, builder =>
                 {
                     builder.AllowAnyHeader()
                            .AllowAnyMethod()
@@ -125,15 +125,14 @@ namespace WideWorldImporters.API
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
+        /// <param name="app">Application builder to configure the application request pipeline</param>
+        /// <param name="env">Current hosting environment</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
+            } else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -153,7 +152,7 @@ namespace WideWorldImporters.API
 
             if (!allowedCorsOrigins.IsEmpty())
             {
-                app.UseCors(corsWithSpecificOrigins);
+                app.UseCors(CorsPolicies.CorsWithSpecificOrigins);
 
             } 
 

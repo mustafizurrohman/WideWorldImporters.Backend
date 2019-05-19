@@ -7,6 +7,7 @@
         <member name="T:WideWorldImporters.Core.AutoMapper.MappingProfile">
             <summary>
             AutoMapper profiles
+            Add the automapper profiles here
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute">
@@ -32,6 +33,16 @@
             Gets the lifetime of current attribute
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Enumerations.CorsPolicies">
+            <summary>
+            Enumerations for CORS policies
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.CorsPolicies.CorsWithSpecificOrigins">
+            <summary>
+            CORS with specific origins
+            </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Enumerations.ServiceLifetime">
             <summary>
