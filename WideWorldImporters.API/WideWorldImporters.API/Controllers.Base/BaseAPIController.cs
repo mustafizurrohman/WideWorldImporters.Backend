@@ -46,7 +46,7 @@ namespace WideWorldImporters.API.Controllers.Base
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="applicationServices"></param>
+        /// <param name="applicationServices">Collection of services frequently used in the application</param>
         public BaseAPIController(ApplicationServices applicationServices)
         {
             AppServices = applicationServices;
