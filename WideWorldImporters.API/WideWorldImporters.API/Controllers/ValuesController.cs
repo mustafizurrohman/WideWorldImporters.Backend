@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using WideWorldImporters.API.Controllers.Base;
+using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
@@ -19,17 +23,30 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
+        private readonly IDistributedCache _redisCache;
+
+        private readonly string _vehicleCacheKey = "VehicleTemperatures";
+
+        private readonly DistributedCacheEntryOptions _cacheOptions;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService ) : base(applicationServices)
+        /// <param name="distributedCache"></param>
+        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService, IDistributedCache distributedCache) : base(applicationServices)
         {
             this._sampleService = sampleService;
-        }
+            this._redisCache = distributedCache;
 
+            this._cacheOptions = new DistributedCacheEntryOptions()
+            {
+                SlidingExpiration = TimeSpan.FromMinutes(30)
+            };
+
+        }
+        
 
         /// <summary>
         /// Test
@@ -76,6 +93,52 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Redis Test
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("VehicleTemperatures/cache")]
+        [Produces("application/json")]
+        public async Task<IActionResult> GetDataRedisAsync()
+        {
+            var data = await _redisCache.GetAsync(_vehicleCacheKey);
+
+            var temperatures = JsonConvert.DeserializeObject<List<VehicleTemperatures>>(Encoding.UTF8.GetString(data));
+
+            return Ok(temperatures);
+        }
+
+        /// <summary>
+        /// Redis Test
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("VehicleTemperatures/cache/clear")]
+        [Produces("application/json")]
+        public async Task<IActionResult> DeleteDataRedisAsync()
+        {
+            await _redisCache.RemoveAsync(_vehicleCacheKey);
+
+            return Ok(true);
+        }
+
+
+        /// <summary>
+        /// Build the redis cache
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("buildcache")]
+        public async Task<IActionResult> BuildCache()
+        {
+            List<VehicleTemperatures> data = await DbContext.VehicleTemperatures.ToListAsync();
+
+            var dataByteArray = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
+
+            await _redisCache.SetAsync(_vehicleCacheKey, dataByteArray, _cacheOptions);
+
+            return Ok(true);
+
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -84,6 +147,8 @@ namespace WideWorldImporters.API.Controllers
         {
             throw new NotImplementedException();
         }
+
+
 
         #region -- Sample Methods -- 
 

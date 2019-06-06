@@ -113,6 +113,17 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- Redis Configuration --
+
+            var url = Configuration["RedisURL"];
+
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration["RedisURL"];
+            });
+
+            #endregion
+
             services.RegisterServices();
 
             services.AddMvc(options => {
