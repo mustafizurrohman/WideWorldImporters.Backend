@@ -5,10 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using WideWorldImporters.API.Controllers.Base;
-using WideWorldImporters.Core.Redis;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 
