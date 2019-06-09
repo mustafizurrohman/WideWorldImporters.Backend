@@ -119,7 +119,7 @@ namespace WideWorldImporters.API
 
             services.AddDistributedRedisCache(options =>
             {
-                options.Configuration = Configuration["RedisURL"];
+                options.Configuration = url;
             });
 
             #endregion
