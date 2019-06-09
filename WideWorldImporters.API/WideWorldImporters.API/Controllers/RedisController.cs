@@ -40,7 +40,7 @@ namespace WideWorldImporters.API.Controllers
         {
             List<VehicleTemperatures> data = await DbContext.VehicleTemperatures.ToListAsync();
 
-            await RedisCache.SetAsync(RedisDistributedCache, _vehicleCacheKey, data);
+            await RedisService.SetAsync(_vehicleCacheKey, data);
 
             return Ok(true);
 
@@ -58,7 +58,7 @@ namespace WideWorldImporters.API.Controllers
 
             stopwatch.Start();
 
-            var temperatures = await RedisCache.GetAsync<IEnumerable<VehicleTemperatures>>(RedisDistributedCache, _vehicleCacheKey);
+            var temperatures = await RedisService.GetAsync<IEnumerable<VehicleTemperatures>>(_vehicleCacheKey);
 
             var size = JsonConvert.SerializeObject(temperatures).Length / 1024 / 1024;
 
@@ -88,7 +88,7 @@ namespace WideWorldImporters.API.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> DeleteDataRedisAsync()
         {
-            await RedisCache.DeleteAsync(RedisDistributedCache, _vehicleCacheKey);
+            await RedisService.DeleteAsync(_vehicleCacheKey);
 
             return Ok(true);
         }

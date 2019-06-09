@@ -50,11 +50,11 @@ namespace WideWorldImporters.Core.Redis
         public static async Task<bool> ExistAsync<T>(this IDistributedCache cache, string key)
         {
             var value = await cache.GetStringAsync(key);
-            return value == null ? false : true;
+            return value != null;
         }
 
         /// <summary>
-        /// 
+        /// Delete
         /// </summary>
         /// <param name="cache"></param>
         /// <param name="key"></param>

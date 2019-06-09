@@ -4,6 +4,7 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Models.Database;
+using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 
 namespace WideWorldImporters.API.Controllers.Base
@@ -43,7 +44,7 @@ namespace WideWorldImporters.API.Controllers.Base
         /// <summary>
         /// Redis Cache
         /// </summary>
-        public IDistributedCache RedisDistributedCache { get; }
+        public IRedisService RedisService { get; }
 
         #endregion
 
@@ -60,7 +61,7 @@ namespace WideWorldImporters.API.Controllers.Base
             DbContext = applicationServices.DbContext;
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
-            RedisDistributedCache = applicationServices.RedisDistributedCache;
+            RedisService = applicationServices.RedisService;
         }
 
         #endregion

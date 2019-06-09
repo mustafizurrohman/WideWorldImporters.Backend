@@ -7,7 +7,7 @@ using WideWorldImporters.Models.Database;
 namespace WideWorldImporters.Services.Interfaces
 {
     /// <summary>
-    /// Ineterface for Sample Service for Testing
+    /// Interface for Sample Service for Testing
     /// </summary>
     public interface ISampleService
     {
