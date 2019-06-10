@@ -12,19 +12,26 @@ namespace WideWorldImporters.Services.Services
 {
 
     /// <summary>
-    /// 
+    /// Implementation of redis caching service as Singleton
     /// </summary>
     [ServiceLifeTime(Lifetime.Singleton)]
     public class RedisService : IRedisService
     {
+
+        /// <summary>
+        /// Instance of redis
+        /// </summary>
         private IDistributedCache _redisCache { get; }
 
+        /// <summary>
+        /// JSON Serializer settings
+        /// </summary>
         private JsonSerializerSettings _jsonSerializerSettings { get; }
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
-        /// <param name="distributedCache"></param>
+        /// <param name="distributedCache">Distributed caching (Redis)</param>
         public RedisService(IDistributedCache distributedCache)
         {
             _redisCache = distributedCache;
@@ -36,36 +43,10 @@ namespace WideWorldImporters.Services.Services
         }
 
         /// <summary>
-        /// 
+        /// Sets an object of type T to a redis key
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public async Task<bool> ExistAsync<T>(string key)
-        {
-            var value = await _redisCache.GetStringAsync(key);
-            return value != null;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public async Task<T> GetAsync<T>(string key)
-        {
-            var value = await _redisCache.GetStringAsync(key);
-            return value == null 
-                    ? default 
-                    : JsonConvert.DeserializeObject<T>(value, _jsonSerializerSettings);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
+        /// <typeparam name="T">Type of object to set</typeparam>
+        /// <param name="key">Key to access the object</param>
         /// <param name="value"></param>
         /// <returns></returns>
         public async Task SetAsync<T>(string key, T value)
@@ -74,9 +55,35 @@ namespace WideWorldImporters.Services.Services
         }
 
         /// <summary>
-        /// 
+        /// Gets the data corresponding to a redis key
         /// </summary>
-        /// <param name="key"></param>
+        /// <typeparam name="T">Type of the object</typeparam>
+        /// <param name="key">Key to access the object</param>
+        /// <returns></returns>
+        public async Task<T> GetAsync<T>(string key)
+        {
+            var value = await _redisCache.GetStringAsync(key);
+            return value == null
+                    ? default
+                    : JsonConvert.DeserializeObject<T>(value, _jsonSerializerSettings);
+        }
+
+        /// <summary>
+        /// Returns true if an entry with specified redis key exists
+        /// </summary>
+        /// <typeparam name="T">Type of the object</typeparam>
+        /// <param name="key">Key to verify</param>
+        /// <returns></returns>
+        public async Task<bool> ExistAsync<T>(string key)
+        {
+            var value = await _redisCache.GetStringAsync(key);
+            return value != null;
+        }
+
+        /// <summary>
+        /// Deletes a specified redis key asynchronisly
+        /// </summary>
+        /// <param name="key">Key to delete</param>
         /// <returns></returns>
         public async Task DeleteAsync(string key)
         {

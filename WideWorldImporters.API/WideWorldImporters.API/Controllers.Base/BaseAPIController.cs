@@ -42,7 +42,7 @@ namespace WideWorldImporters.API.Controllers.Base
         protected IMemoryCache MemoryCache { get; }
 
         /// <summary>
-        /// Redis Cache
+        /// Redis Cache Service
         /// </summary>
         public IRedisService RedisService { get; }
 

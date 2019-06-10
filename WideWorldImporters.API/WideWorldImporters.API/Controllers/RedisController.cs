@@ -14,16 +14,16 @@ namespace WideWorldImporters.API.Controllers
 {
 
     /// <summary>
-    /// 
+    /// Controller for Redis
     /// </summary>
     public class RedisController : BaseAPIController
     {
         private readonly string _vehicleCacheKey = "VehicleTemperatures";
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
-        /// <param name="applicationServices"></param>
+        /// <param name="applicationServices">Application Services</param>
         public RedisController(ApplicationServices applicationServices)
             : base(applicationServices)
         {
