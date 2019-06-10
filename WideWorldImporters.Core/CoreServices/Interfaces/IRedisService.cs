@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WideWorldImporters.Services.Interfaces
+namespace WideWorldImporters.Core.CoreServices.Interfaces
 {
 
     /// <summary>

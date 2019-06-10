@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.API.ActionFilters;
+using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Models.Database;
-using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 
 namespace WideWorldImporters.API.Controllers.Base

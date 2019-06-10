@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
+using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 
@@ -23,12 +24,12 @@ namespace WideWorldImporters.Services.ServiceCollections
         public IMapper AutoMapper { get; }
 
         /// <summary>
-        /// Memory Caching
+        /// InMemory Local Caching
         /// </summary>
         public IMemoryCache MemoryCache { get; }
 
         /// <summary>
-        /// Redis Cache
+        /// Redis Caching
         /// </summary>
         public IRedisService RedisService { get; }
 

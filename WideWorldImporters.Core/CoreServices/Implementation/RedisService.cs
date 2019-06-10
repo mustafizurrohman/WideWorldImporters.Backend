@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WideWorldImporters.Core.ClassAttributes;
-using WideWorldImporters.Services.Interfaces;
+using WideWorldImporters.Core.CoreServices.Interfaces;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
-namespace WideWorldImporters.Services.Services
+namespace WideWorldImporters.Core.CoreServices.Implementation
 {
-
     /// <summary>
     /// Implementation of redis caching service as Singleton
     /// </summary>
@@ -90,4 +89,5 @@ namespace WideWorldImporters.Services.Services
             await _redisCache.RemoveAsync(key);
         }
     }
+
 }
