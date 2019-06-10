@@ -34,11 +34,13 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("VehicleTemperatures/cache/build")]
-        public async Task<IActionResult> BuildCache()
+        public async Task<IActionResult> BuildCache(int skip = 100, int take = 100)
         {
-            List<VehicleTemperatures> data = await DbContext.VehicleTemperatures.ToListAsync();
+            IQueryable<VehicleTemperatures> data = DbContext.VehicleTemperatures.AsQueryable();
 
-            await RedisService.SetAsync(_vehicleCacheKey, data);
+            var filteredData = await data.Skip(skip).Take(take).ToListAsync();
+
+            await RedisService.SetAsync(_vehicleCacheKey, filteredData);
 
             return Ok(true);
 
@@ -58,7 +60,9 @@ namespace WideWorldImporters.API.Controllers
 
             var temperatures = await RedisService.GetAsync<IEnumerable<VehicleTemperatures>>(_vehicleCacheKey);
 
-            var size = JsonConvert.SerializeObject(temperatures).Length / 1024 / 1024;
+            float size = JsonConvert.SerializeObject(temperatures).Length / (1024 * 1024);
+
+            string sizeInMB = size.ToString() + " MB";
 
             stopwatch.Stop();
 
@@ -73,7 +77,7 @@ namespace WideWorldImporters.API.Controllers
 
             long time2 = stopwatch.ElapsedMilliseconds;
 
-            var results = new Tuple<IEnumerable<VehicleTemperatures>, long, long, int>(filtered, time1, time2, size);
+            var results = new Tuple<IEnumerable<VehicleTemperatures>, long, long, string>(filtered, time1, time2, sizeInMB);
 
             return Ok(results);
         }
@@ -87,6 +91,7 @@ namespace WideWorldImporters.API.Controllers
         public async Task<IActionResult> DeleteDataRedisAsync()
         {
             await RedisService.DeleteAsync(_vehicleCacheKey);
+            await RedisService.DeleteAllAsync();
 
             return Ok(true);
         }

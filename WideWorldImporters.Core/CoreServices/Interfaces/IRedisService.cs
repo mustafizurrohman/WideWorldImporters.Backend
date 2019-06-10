@@ -35,7 +35,7 @@ namespace WideWorldImporters.Core.CoreServices.Interfaces
         /// <typeparam name="T">Type of the object</typeparam>
         /// <param name="key">Key to verify</param>
         /// <returns></returns>
-        Task<bool> ExistAsync<T>(string key);
+        bool Exist(string key);
 
         /// <summary>
         /// Deletes a specified redis key asynchronisly
@@ -43,6 +43,12 @@ namespace WideWorldImporters.Core.CoreServices.Interfaces
         /// <param name="key">Key to delete</param>
         /// <returns></returns>
         Task DeleteAsync(string key);
+
+        /// <summary>
+        /// Deletes everything from the redis database
+        /// </summary>
+        /// <returns></returns>
+        Task DeleteAllAsync();
 
     }
 
