@@ -104,7 +104,7 @@ namespace WideWorldImporters.API.Controllers
 
             stopwatch.Stop();
 
-            return Ok(stopwatch.ElapsedMilliseconds);
+            return Ok(numbers);
 
 
 
