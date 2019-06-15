@@ -26,6 +26,7 @@ namespace WideWorldImporters.Middleware.Base
 
         /// <summary>
         /// Middleware implementation goes here
+        /// Must be implemented by the middleware
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
