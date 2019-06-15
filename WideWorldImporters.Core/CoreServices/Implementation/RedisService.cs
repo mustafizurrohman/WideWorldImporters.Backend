@@ -13,7 +13,7 @@ using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 namespace WideWorldImporters.Core.CoreServices.Implementation
 {
     /// <summary>
-    /// Implementation of redis caching service as Singleton
+    /// Implementation of redis caching service (Singleton)
     /// </summary>
     [ServiceLifeTime(Lifetime.Singleton)]
     public class RedisService : IRedisService
@@ -114,6 +114,7 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
                 return;
             }
 
+            // Delete each key one by one
             foreach (var key in allKeys)
             {
                 await DeleteAsync(key);
