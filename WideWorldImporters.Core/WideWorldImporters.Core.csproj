@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\dev\WideWorldImporters\WideWorldImporters.Core\WideWorldImporters.Core.xml</DocumentationFile>
+    <DocumentationFile>C:\dev\WideWorldImporters.Backend\WideWorldImporters.Core\WideWorldImporters.Core.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>WideWorldImporters.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>WideWorldImporters.Core.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>

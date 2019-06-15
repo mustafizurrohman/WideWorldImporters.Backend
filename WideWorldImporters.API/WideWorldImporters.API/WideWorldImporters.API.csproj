@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\dev\WideWorldImporters\WideWorldImporters.API\WideWorldImporters.API\WideWorldImporters.API.xml</DocumentationFile>
+    <DocumentationFile>C:\dev\WideWorldImporters.Backend\WideWorldImporters.API\WideWorldImporters.API\WideWorldImporters.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
