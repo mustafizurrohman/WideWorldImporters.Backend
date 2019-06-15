@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using WideWorldImporters.API.Controllers.Base;
+using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
@@ -19,17 +22,22 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
+        
+
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService ) : base(applicationServices)
+        public ValuesController(
+            ApplicationServices applicationServices, 
+            ISampleService sampleService) 
+            : base(applicationServices)
         {
             this._sampleService = sampleService;
         }
-
+        
 
         /// <summary>
         /// Test
@@ -75,6 +83,34 @@ namespace WideWorldImporters.API.Controllers
             return Ok(data);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("performance")]
+        public IActionResult SortPerformance()
+        {
+            List<int> numbers = Enumerable.Range(0, 10000000)
+                    .Select(x => IntHelpers.GetRandomNumber(int.MaxValue))
+                    .ToList();
+
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+
+            numbers.Sort();
+
+            stopwatch.Stop();
+
+            return Ok(numbers);
+
+
+
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -84,6 +120,8 @@ namespace WideWorldImporters.API.Controllers
         {
             throw new NotImplementedException();
         }
+
+
 
         #region -- Sample Methods -- 
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.API.ActionFilters;
+using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -39,6 +40,11 @@ namespace WideWorldImporters.API.Controllers.Base
         /// </summary>
         protected IMemoryCache MemoryCache { get; }
 
+        /// <summary>
+        /// Redis Cache Service
+        /// </summary>
+        public IRedisService RedisService { get; }
+
         #endregion
 
         #region -- Constructor --
@@ -54,6 +60,7 @@ namespace WideWorldImporters.API.Controllers.Base
             DbContext = applicationServices.DbContext;
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
+            RedisService = applicationServices.RedisService;
         }
 
         #endregion
