@@ -34,6 +34,113 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.CoreServices.Implementation.RedisService">
+            <summary>
+            Implementation of redis caching service (Singleton)
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._redisCache">
+            <summary>
+            Instance of redis
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._jsonSerializerSettings">
+            <summary>
+            JSON Serializer settings
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._storedKeys">
+            <summary>
+            List of keys
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.#ctor(Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="distributedCache">Distributed caching (Redis)</param>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.SetAsync``1(System.String,``0)">
+            <summary>
+            Sets an object of type T to a redis key
+            </summary>
+            <typeparam name="T">Type of object to set</typeparam>
+            <param name="key">Key to access the object</param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.GetAsync``1(System.String)">
+            <summary>
+            Gets the data corresponding to a redis key
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="key">Key to access the object</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.Exist(System.String)">
+            <summary>
+            Returns true if an entry with specified redis key exists
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="key">Key to verify</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.DeleteAsync(System.String)">
+            <summary>
+            Deletes a specified redis key asynchronisly
+            </summary>
+            <param name="key">Key to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.DeleteAllAsync">
+            <summary>
+            Deletes everything from the redis database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService">
+            <summary>
+            Interface for Redis Service
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.SetAsync``1(System.String,``0)">
+            <summary>
+            Sets an object of type T to a redis key
+            </summary>
+            <typeparam name="T">Type of object to set</typeparam>
+            <param name="key">Key to access the object</param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.GetAsync``1(System.String)">
+            <summary>
+            Gets the data corresponding to a redis key
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="key">Key to access the object</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.Exist(System.String)">
+            <summary>
+            Returns true if an entry with specified redis key exists
+            </summary>
+            <typeparam name="T">Type of the object</typeparam>
+            <param name="key">Key to verify</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.DeleteAsync(System.String)">
+            <summary>
+            Deletes a specified redis key asynchronisly
+            </summary>
+            <param name="key">Key to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.DeleteAllAsync">
+            <summary>
+            Deletes everything from the redis database
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.Enumerations.CorsPolicies">
             <summary>
             Enumerations for CORS policies
@@ -42,6 +149,16 @@
         <member name="F:WideWorldImporters.Core.Enumerations.CorsPolicies.CorsWithSpecificOrigins">
             <summary>
             CORS with specific origins
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Enumerations.RedisKeys">
+            <summary>
+            Enumerations for REDIS keys
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.RedisKeys.Default">
+            <summary>
+            Default key
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Enumerations.ServiceLifetime">

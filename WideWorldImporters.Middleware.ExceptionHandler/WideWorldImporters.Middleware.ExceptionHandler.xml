@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WideWorldImporters.Middleware.ExceptionHandler</name>
+    </assembly>
+    <members>
+        <member name="T:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler">
+            <summary>
+            Exception Handler
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler._hostingEnvironment">
+            <summary>
+            Current hosting environment
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="requestDelegate">Request Delegate</param>
+            <param name="hostingEnvironment">Hosting Environment</param>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Middleware Implementation
+            </summary>
+            <param name="context">Http Context</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.HandleExceptionAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            Async handling of exception
+            </summary>
+            <param name="context">Http Context</param>
+            <param name="ex">Exception</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

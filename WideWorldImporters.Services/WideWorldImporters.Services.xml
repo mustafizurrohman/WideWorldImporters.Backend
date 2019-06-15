@@ -19,7 +19,7 @@
         </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
-            Ineterface for Sample Service for Testing
+            Interface for Sample Service for Testing
             </summary>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.ISampleService.HelloWorld">
@@ -51,16 +51,22 @@
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.MemoryCache">
             <summary>
-            Memory Caching
+            InMemory Local Caching
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.RedisService">
+            <summary>
+            Redis Caching
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService)">
             <summary>
             Constructor
             </summary>
             <param name="dbContext">Database context</param>
             <param name="autoMapper">Automapper</param>
             <param name="memoryCache">Memory Caching</param>
+            <param name="redisService">Redis Caching</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>

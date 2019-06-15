@@ -65,11 +65,45 @@
             Memory Caching
             </summary>
         </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.RedisService">
+            <summary>
+            Redis Cache Service
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor
             </summary>
-            <param name="applicationServices"></param>
+            <param name="applicationServices">Collection of services frequently used in the application</param>
+        </member>
+        <member name="T:WideWorldImporters.API.Controllers.RedisController">
+            <summary>
+            Controller for Redis
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.RedisController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationServices">Application Services</param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.RedisController.BuildCache(System.Int32,System.Int32)">
+            <summary>
+            Build the redis cache
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.RedisController.GetDataRedisAsync(System.Int32,System.Int32)">
+            <summary>
+            Redis Test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.RedisController.DeleteDataRedisAsync">
+            <summary>
+            Redis Test
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:WideWorldImporters.API.Controllers.ValuesController">
             <summary>
@@ -98,6 +132,12 @@
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataFromServiceAsync">
             <summary>
             Db Test using service
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.SortPerformance">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>

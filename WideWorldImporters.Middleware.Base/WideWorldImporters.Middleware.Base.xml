@@ -23,6 +23,7 @@
         <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
             Middleware implementation goes here
+            Must be implemented by the middleware
             </summary>
             <param name="context"></param>
             <returns></returns>
