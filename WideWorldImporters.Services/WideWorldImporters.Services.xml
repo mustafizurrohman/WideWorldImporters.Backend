@@ -17,6 +17,42 @@
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetSingletonServices(System.String)">
+            <summary>
+            Gets all Singleton services
+            </summary>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetTransientServices(System.String)">
+            <summary>
+            Gets all Transient services
+            </summary>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetScopedServices(System.String)">
+            <summary>
+            Gets all Scoped services
+            </summary>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetServicesByType(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime,System.String)">
+            <summary>
+            Returns all services of a particular type
+            </summary>
+            <param name="namespaceName">Namespace name</param>
+            <param name="lifetime">Type of service</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetAllServices(System.String)">
+            <summary>
+            Retrives all services in a namespace
+            </summary>
+            <param name="namespaceName"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Interface for Sample Service for Testing
