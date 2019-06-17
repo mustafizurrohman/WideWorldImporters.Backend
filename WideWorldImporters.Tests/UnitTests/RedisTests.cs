@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Moq;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WideWorldImporters.Core.CoreServices.Implementation;
 using WideWorldImporters.Core.CoreServices.Interfaces;
@@ -70,6 +67,23 @@ namespace WideWorldImporters.Tests.UnitTests
                 Assert.True(_redisService.Exist(key));
             }
 
+        }
+
+        /// <summary>
+        /// Test with inputs
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [Theory]
+        [InlineData("a1", "b1")]
+        [InlineData("a2", "b2")]
+        [InlineData("a3", "b3")]
+        public async Task TestKeysWithInput(string key, string value)
+        {
+            await _redisService.SetAsync<string>(key, value);
+
+            Assert.True(_redisService.Exist(key));
         }
 
     }

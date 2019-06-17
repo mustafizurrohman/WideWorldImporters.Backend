@@ -26,5 +26,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestKeysWithInput(System.String,System.String)">
+            <summary>
+            Test with inputs
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
