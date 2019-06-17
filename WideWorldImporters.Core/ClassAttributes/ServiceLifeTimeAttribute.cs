@@ -11,7 +11,7 @@ namespace WideWorldImporters.Core.ClassAttributes
     /// Can be used only for classes
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class ServiceLifeTimeAttribute : Attribute
+    public class ServiceLifeTime : Attribute
     {
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace WideWorldImporters.Core.ClassAttributes
         /// Constructor
         /// </summary>
         /// <param name="lifetime">LIfetime attribute</param>
-        public ServiceLifeTimeAttribute(Lifetime lifetime)
+        public ServiceLifeTime(Lifetime lifetime)
         {
             _lifetime = lifetime;
         }

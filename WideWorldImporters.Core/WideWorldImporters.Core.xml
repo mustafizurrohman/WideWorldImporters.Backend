@@ -10,25 +10,25 @@
             Add the automapper profiles here
             </summary>
         </member>
-        <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute">
+        <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime">
             <summary>
             ServiceLifeTimeAttribute- Used to determine how a service should be injected.
             Can be used only for classes
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute._lifetime">
+        <member name="F:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime._lifetime">
             <summary>
             Lifetime (value). 
             Readonly means that it can set only in the constructor
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
+        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
             <summary>
             Constructor
             </summary>
             <param name="lifetime">LIfetime attribute</param>
         </member>
-        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTimeAttribute.GetLifetime">
+        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.GetLifetime">
             <summary>
             Gets the lifetime of current attribute
             </summary>
@@ -557,6 +557,26 @@
             <param name="length"></param>
             <param name="printable"></param>
             <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.InternalModels.ApiServiceDescription">
+            <summary>
+            Describes a service
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.InternalModels.ApiServiceDescription.Implementation">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.InternalModels.ApiServiceDescription.Interface">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.InternalModels.ApiServiceDescription.Lifetime">
+            <summary>
+            Describes the lifetime of the service
+            </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Options.PerformanceOptions">
             <summary>
