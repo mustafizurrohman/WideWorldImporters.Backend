@@ -8,7 +8,7 @@ namespace WideWorldImporters.Core.Enumerations
     /// <summary>
     /// Enumerations for REDIS keys
     /// </summary>
-    class RedisKeys
+    public class RedisKeys
     {
         /// <summary>
         /// Default key

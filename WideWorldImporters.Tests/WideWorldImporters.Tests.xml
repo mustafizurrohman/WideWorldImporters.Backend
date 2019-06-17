@@ -4,5 +4,27 @@
         <name>WideWorldImporters.Tests</name>
     </assembly>
     <members>
+        <member name="T:WideWorldImporters.Tests.UnitTests.RedisTests">
+            <summary>
+            Tests for RedisSerivce
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestIfKeyIsProperlyStored">
+            <summary>
+            Tests if a key is stored properly
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestMultipleKeys">
+            <summary>
+            Tests a random number of keys 
+            </summary>
+            <returns></returns>
+        </member>
     </members>
 </doc>
