@@ -55,17 +55,13 @@ namespace WideWorldImporters.API.Controllers
         /// Db Test
         /// </summary>
         /// <returns></returns>
-        [HttpGet("VehicleTemperatures")]
+        [HttpGet("VehicleTemperatures/odata")]
         [Produces("application/json")]
-        public async Task<IActionResult> GetDataAsync()
+        public IActionResult GetDataAsync()
         {
             DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
 
-            var data = await DbContext.VehicleTemperatures
-                .OrderBy(x => x.RecordedWhen)
-                .Skip(1000)
-                .Take(2)
-                .ToListAsync();
+            var data = DbContext.VehicleTemperatures.Take(1000);
             
             return Ok(data);
         }

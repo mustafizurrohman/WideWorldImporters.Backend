@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO.Compression;
+using System.Linq;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Formatter;
+using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +11,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
@@ -54,6 +59,7 @@ namespace WideWorldImporters.API
             Configuration.GetSection("Swagger").Bind(info);
             Configuration.GetSection("ApiKeyScheme").Bind(apiKeyScheme);
             services.AddSwaggerDocumentation(info, apiKeyScheme);
+
 
             #endregion
 
@@ -125,8 +131,18 @@ namespace WideWorldImporters.API
             #endregion
 
             services.RegisterServices();
+            services.AddOData();
 
             services.AddMvc(options => {
+                foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+                foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+
                 options.MaxModelValidationErrors = int.MaxValue;
                 options.MaxValidationDepth = 100;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -170,7 +186,19 @@ namespace WideWorldImporters.API
             app.UseCors();
             
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseMvc(routeBuilder => {
+
+                routeBuilder.EnableDependencyInjection();
+
+                routeBuilder.Expand(QueryOptionSetting.Allowed)
+                    .Count(QueryOptionSetting.Allowed)
+                    .Select(QueryOptionSetting.Allowed)
+                    .OrderBy(QueryOptionSetting.Allowed)
+                    .Filter(QueryOptionSetting.Allowed)
+                    .MaxTop(int.MaxValue);
+            });
+
         }
     }
 }
