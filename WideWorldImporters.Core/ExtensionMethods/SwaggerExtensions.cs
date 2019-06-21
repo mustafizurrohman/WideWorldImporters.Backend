@@ -47,6 +47,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
                     Type = apiKeyScheme.Type
                 });
 
+
             });
 
             return services;

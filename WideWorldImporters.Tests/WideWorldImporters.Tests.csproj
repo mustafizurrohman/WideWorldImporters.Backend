@@ -21,4 +21,8 @@
     <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExtensionMethodsUnitTest\" />
+  </ItemGroup>
+
 </Project>

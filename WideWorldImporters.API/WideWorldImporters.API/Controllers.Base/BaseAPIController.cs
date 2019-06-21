@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.API.ActionFilters;
@@ -15,6 +17,7 @@ namespace WideWorldImporters.API.Controllers.Base
     [Route("api/[controller]")]
     [Benchmark]
     [ApiController]
+    [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
     public class BaseAPIController : ControllerBase
     {
 

@@ -9,7 +9,7 @@ using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Helpers;
 using Xunit;
 
-namespace WideWorldImporters.Tests.UnitTests
+namespace WideWorldImporters.Tests.ServiceUnitTests
 {
 
     /// <summary>
@@ -25,9 +25,9 @@ namespace WideWorldImporters.Tests.UnitTests
         public RedisTests()
         {
             // Mock the IDistributed Cache
-            IDistributedCache distributedCacheMock = new Mock<IDistributedCache>().Object;
+            Mock<IDistributedCache> distributedCacheMock = new Mock<IDistributedCache>();
 
-            _redisService = new RedisService(distributedCacheMock);
+            _redisService = new RedisService(distributedCacheMock.Object);
         }
 
         /// <summary>
@@ -48,10 +48,12 @@ namespace WideWorldImporters.Tests.UnitTests
         /// Tests a random number of keys 
         /// </summary>
         /// <returns></returns>
-        [Fact]
-        public async Task TestMultipleKeys()
+        [Theory]
+        [InlineData(100)]
+        [InlineData(1000)]
+        public async Task TestMultipleKeys(int numberofKeysToTest)
         {
-            var randomKeys = Enumerable.Range(0, 100)
+            var randomKeys = Enumerable.Range(0, numberofKeysToTest)
                 .Select(number => StringHelpers.GetRandomString())
                 .ToList();
 
@@ -69,22 +71,7 @@ namespace WideWorldImporters.Tests.UnitTests
 
         }
 
-        /// <summary>
-        /// Test with inputs
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        [Theory]
-        [InlineData("a1", "b1")]
-        [InlineData("a2", "b2")]
-        [InlineData("a3", "b3")]
-        public async Task TestKeysWithInput(string key, string value)
-        {
-            await _redisService.SetAsync<string>(key, value);
-
-            Assert.True(_redisService.Exist(key));
-        }
+        
 
     }
 

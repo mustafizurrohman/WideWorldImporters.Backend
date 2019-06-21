@@ -4,34 +4,50 @@
         <name>WideWorldImporters.Tests</name>
     </assembly>
     <members>
-        <member name="T:WideWorldImporters.Tests.UnitTests.RedisTests">
+        <member name="T:WideWorldImporters.Tests.HelpersUnitTest.IntHelperUnitTests">
+            <summary>
+            Unit-tests for IntHelper
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.IntHelperUnitTests.TestRandomNumberInRange(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Tests if a random number is generated in the applied 
+            </summary>
+            <param name="numberOfTests">Number of tests to perform</param>
+            <param name="minValue">Min Value</param>
+            <param name="maxValue">Max Value</param>
+        </member>
+        <member name="T:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests">
+            <summary>
+            Unit test for String helpers
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestIfGeneratedStingsAreRandom(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="numberOfTests"></param>
+        </member>
+        <member name="T:WideWorldImporters.Tests.ServiceUnitTests.RedisTests">
             <summary>
             Tests for RedisSerivce
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.#ctor">
+        <member name="M:WideWorldImporters.Tests.ServiceUnitTests.RedisTests.#ctor">
             <summary>
             Constructor
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestIfKeyIsProperlyStored">
+        <member name="M:WideWorldImporters.Tests.ServiceUnitTests.RedisTests.TestIfKeyIsProperlyStored">
             <summary>
             Tests if a key is stored properly
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestMultipleKeys">
+        <member name="M:WideWorldImporters.Tests.ServiceUnitTests.RedisTests.TestMultipleKeys(System.Int32)">
             <summary>
             Tests a random number of keys 
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Tests.UnitTests.RedisTests.TestKeysWithInput(System.String,System.String)">
-            <summary>
-            Test with inputs
-            </summary>
-            <param name="key"></param>
-            <param name="value"></param>
             <returns></returns>
         </member>
     </members>
