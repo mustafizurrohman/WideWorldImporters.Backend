@@ -134,10 +134,12 @@ namespace WideWorldImporters.API
             services.AddOData();
 
             services.AddMvc(options => {
+
                 foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
                 {
                     outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
                 }
+
                 foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
                 {
                     inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
@@ -145,6 +147,7 @@ namespace WideWorldImporters.API
 
                 options.MaxModelValidationErrors = int.MaxValue;
                 options.MaxValidationDepth = 100;
+
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }

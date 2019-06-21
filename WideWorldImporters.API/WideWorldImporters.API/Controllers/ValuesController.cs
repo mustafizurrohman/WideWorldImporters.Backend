@@ -102,9 +102,6 @@ namespace WideWorldImporters.API.Controllers
 
             return Ok(numbers);
 
-
-
-
         }
 
         /// <summary>
