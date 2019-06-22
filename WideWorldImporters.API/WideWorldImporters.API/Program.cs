@@ -31,6 +31,11 @@ namespace WideWorldImporters.API
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel(options =>
+                {
+                    // Do not let the client know that we are using Kestrel
+                    options.AddServerHeader = false;
+                })
                 .UseStartup<Startup>();
     }
 }
