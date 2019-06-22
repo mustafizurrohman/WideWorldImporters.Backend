@@ -164,9 +164,22 @@ namespace WideWorldImporters.API
                 app.UseDeveloperExceptionPage();
             } else
             {
+                // Force all comms to go through HTTPS!
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseHsts(options => options.MaxAge(365).IncludeSubdomains().Preload());
             }
+
+            // This response header prevents pages from loading in modern browsers 
+            // When reflected cross-site scription is detected.
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+
+            // Ensure that site content is not being embedded in an iframe on other sites 
+            //  - used for avoid clickjacking attacks.
+            app.UseXfo(options => options.SameOrigin());
+
+            // Blocks any content sniffing that could happen that might change an innocent MIME type (e.g. text/css) 
+            // into something executable that could do some real damage.
+            app.UseXContentTypeOptions();
 
             app.UseSwaggerDocumentation(info);
 
