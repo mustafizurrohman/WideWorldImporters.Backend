@@ -80,7 +80,6 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         /// <summary>
         /// Returns true if an entry with specified redis key exists
         /// </summary>
-        /// <typeparam name="T">Type of the object</typeparam>
         /// <param name="key">Key to verify</param>
         /// <returns></returns>
         public bool Exist(string key)

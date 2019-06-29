@@ -27,7 +27,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebug(string message)
         {
-            logger.Debug(message);
+            logger.Debug(message + Environment.NewLine);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogError(string message)
         {
-            logger.Error(message);
+            logger.Error(message + Environment.NewLine);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Exception to log</param>
         public void LogException(Exception exception)
         {
-            logger.Error(exception);
+            logger.Error(exception.ToString() +Environment.NewLine);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Informational message to log</param>
         public void LogInfo(string message)
         {
-            logger.Info(message);
+            logger.Info(message + Environment.NewLine);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarn(string message)
         {
-            logger.Warn(message);
+            logger.Warn(message + Environment.NewLine);
         }
     }
 }

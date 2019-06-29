@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -78,9 +79,15 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
 
         private IWWILogger GetLogger()
         {
-            var x = _serviceProvider.GetService(typeof(IWWILogger));
+            var requiredServiceSupportingProvider = _serviceProvider as ISupportRequiredService;
+            if (requiredServiceSupportingProvider != null)
+            {
+                return requiredServiceSupportingProvider.GetRequiredService(typeof(IWWILogger)) as IWWILogger;
+            }
 
-            return x as IWWILogger;
+            var service = _serviceProvider.GetService(typeof(IWWILogger));
+            
+            return service as IWWILogger;
         }
 
 
