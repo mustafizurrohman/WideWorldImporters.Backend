@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using Microsoft.AspNet.OData.Extensions;
@@ -11,11 +13,16 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
+using NLog;
+using NLog.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
+using WideWorldImporters.Logger.Implementation;
+using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
 
@@ -37,6 +44,7 @@ namespace WideWorldImporters.API
         /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -132,6 +140,8 @@ namespace WideWorldImporters.API
 
             services.RegisterServices();
             services.AddOData();
+
+            services.AddSingleton<IWWILogger, WWILogger>();
 
             services.AddMvc(options => {
 

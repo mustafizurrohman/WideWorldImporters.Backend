@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Core.Helpers;
+using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
@@ -22,7 +23,7 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
-        
+        private readonly IWWILogger _logger;
 
 
         /// <summary>
@@ -30,12 +31,15 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
+        /// <param name="logger"></param>
         public ValuesController(
+            IWWILogger logger,
             ApplicationServices applicationServices, 
             ISampleService sampleService) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
+            this._logger = logger;
         }
         
 
@@ -49,6 +53,18 @@ namespace WideWorldImporters.API.Controllers
             string data = _sampleService.HelloWorld();
 
             return Ok(data);
+        }
+
+        /// <summary>
+        /// Lo
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Log")]
+        public IActionResult Log(string message)
+        {
+            _logger.LogDebug(message);
+            
+            return Ok();
         }
 
         /// <summary>
