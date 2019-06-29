@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Middleware.Base;
 
 namespace WideWorldImporters.Middleware.ExceptionHandler
@@ -19,14 +20,18 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// </summary>
         private readonly IHostingEnvironment _hostingEnvironment;
 
+        private readonly IServiceProvider _serviceProvider;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="requestDelegate">Request Delegate</param>
         /// <param name="hostingEnvironment">Hosting Environment</param>
-        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment) : base(requestDelegate)
+        /// <param name="serviceProvider">ServiceProvider. For DI</param>
+        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider) : base(requestDelegate)
         {
             _hostingEnvironment = hostingEnvironment;
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -63,9 +68,19 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             }
 
             // var result = JsonConvert.SerializeObject(new { error = ex.Message });
+            var logger = GetLogger();
+            logger.LogException(ex);
+
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return context.Response.WriteAsync(ex.Message);
+        }
+
+        private IWWILogger GetLogger()
+        {
+            var x = _serviceProvider.GetService(typeof(IWWILogger));
+
+            return x as IWWILogger;
         }
 
 

@@ -12,8 +12,4 @@
     <Folder Include="Logs\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
-  </ItemGroup>
-
 </Project>

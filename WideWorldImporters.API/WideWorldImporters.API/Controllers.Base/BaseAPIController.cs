@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Core.CoreServices.Interfaces;
+using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -48,6 +49,11 @@ namespace WideWorldImporters.API.Controllers.Base
         /// </summary>
         public IRedisService RedisService { get; }
 
+        /// <summary>
+        /// Logging service
+        /// </summary>
+        public IWWILogger Logger { get; }
+
         #endregion
 
         #region -- Constructor --
@@ -64,6 +70,7 @@ namespace WideWorldImporters.API.Controllers.Base
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
             RedisService = applicationServices.RedisService;
+            Logger = applicationServices.Logger;
         }
 
         #endregion

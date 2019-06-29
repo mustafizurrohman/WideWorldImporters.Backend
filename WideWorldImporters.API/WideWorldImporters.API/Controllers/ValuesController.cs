@@ -31,15 +31,12 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        /// <param name="logger"></param>
         public ValuesController(
-            IWWILogger logger,
             ApplicationServices applicationServices, 
             ISampleService sampleService) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
-            this._logger = logger;
         }
         
 
@@ -62,7 +59,7 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("Log")]
         public IActionResult Log(string message)
         {
-            _logger.LogDebug(message);
+            Logger.LogDebug(message);
             
             return Ok();
         }

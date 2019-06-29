@@ -141,9 +141,11 @@ namespace WideWorldImporters.API
             #region -- Service Configuration --
 
             services.RegisterServices();
-            services.AddOData();
 
-            services.AddSingleton<IWWILogger, WWILogger>();
+            // Logger injection - Must be done manually here
+            services.AddSingleton<IWWILogger, NLogFileLogger>();
+
+            services.AddOData();
 
             #endregion
 

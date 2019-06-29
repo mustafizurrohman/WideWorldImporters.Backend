@@ -14,12 +14,13 @@
             Current hosting environment
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+        <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.IServiceProvider)">
             <summary>
             Constructor
             </summary>
             <param name="requestDelegate">Request Delegate</param>
             <param name="hostingEnvironment">Hosting Environment</param>
+            <param name="serviceProvider">ServiceProvider. For DI</param>
         </member>
         <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Middleware.Base\WideWorldImporters.Middleware.Base.csproj" />
   </ItemGroup>
 

@@ -70,6 +70,11 @@
             Redis Cache Service
             </summary>
         </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.Logger">
+            <summary>
+            Logging service
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor
@@ -110,13 +115,12 @@
             Sample controller
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.#ctor(WideWorldImporters.Logger.Interfaces.IWWILogger,WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
             <summary>
             Constructor
             </summary>
             <param name="applicationServices"></param>
             <param name="sampleService"></param>
-            <param name="logger"></param>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Test">
             <summary>

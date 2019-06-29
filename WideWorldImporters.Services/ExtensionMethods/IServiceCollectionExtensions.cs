@@ -36,16 +36,16 @@ namespace WideWorldImporters.Services.ExtensionMethods
             var transientServices = apiServices.Where(reg => reg.Lifetime == Lifetime.Transient);
             var scopedServices = apiServices.Where(reg => reg.Lifetime == Lifetime.Scoped);
 
-            // Register singleton services
-            foreach (var singleton in singletonServices)
-            {
-                serviceCollection.AddSingleton(singleton.Interface, singleton.Implementation);
-            }
-
             // Register transient services
             foreach (var transient in transientServices)
             {
                 serviceCollection.AddTransient(transient.Interface, transient.Implementation);
+            }
+
+            // Register singleton services
+            foreach (var singleton in singletonServices)
+            {
+                serviceCollection.AddSingleton(singleton.Interface, singleton.Implementation);
             }
 
             /*

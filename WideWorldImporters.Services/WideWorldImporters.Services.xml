@@ -95,7 +95,12 @@
             Redis Caching
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService)">
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.Logger">
+            <summary>
+            Logging service
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Interfaces.IWWILogger)">
             <summary>
             Constructor
             </summary>
@@ -103,6 +108,7 @@
             <param name="autoMapper">Automapper</param>
             <param name="memoryCache">Memory Caching</param>
             <param name="redisService">Redis Caching</param>
+            <param name="logger">Logging Service</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>

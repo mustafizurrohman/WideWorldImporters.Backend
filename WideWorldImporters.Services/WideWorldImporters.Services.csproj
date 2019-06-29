@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
+    <ProjectReference Include="..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />
   </ItemGroup>
 

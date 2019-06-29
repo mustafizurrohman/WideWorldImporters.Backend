@@ -1,1 +1,23 @@
 2019-06-29 11:02:38.2031 DEBUG This is a test
+2019-06-29 19:42:02.7348 DEBUG This is a test log message
+2019-06-29 19:50:50.9495 DEBUG 666
+2019-06-29 19:59:45.5190 DEBUG india
+2019-06-29 20:09:05.0279 DEBUG Todays sale was Rs. 20610
+2019-06-29 20:36:41.5862 ERROR System.NotImplementedException: The method or operation is not implemented.
+   at WideWorldImporters.API.Controllers.ValuesController.NotImplementedFunction() in C:\dev\WideWorldImporters.Backend\WideWorldImporters.API\WideWorldImporters.API\Controllers\ValuesController.cs:line 127
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.InvokeAsync(HttpContext context) in C:\dev\WideWorldImporters.Backend\WideWorldImporters.Middleware.ExceptionHandler\ExceptionHandler.cs:line 46
