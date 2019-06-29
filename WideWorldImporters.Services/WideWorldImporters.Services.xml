@@ -135,6 +135,16 @@
             Memory Caching
             </summary>
         </member>
+        <member name="P:WideWorldImporters.Services.Services.Base.BaseService.RedisService">
+            <summary>
+            Redis Cache Service
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.Services.Base.BaseService.Logger">
+            <summary>
+            Logging service
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Services.Services.Base.BaseService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor

@@ -3,6 +3,8 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WideWorldImporters.Core.CoreServices.Interfaces;
+using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -36,6 +38,16 @@ namespace WideWorldImporters.Services.Services.Base
         protected IMemoryCache MemoryCache { get; }
 
         /// <summary>
+        /// Redis Cache Service
+        /// </summary>
+        public IRedisService RedisService { get; }
+
+        /// <summary>
+        /// Logging service
+        /// </summary>
+        protected IWWILogger Logger { get; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
@@ -46,6 +58,8 @@ namespace WideWorldImporters.Services.Services.Base
             DbContext = applicationServices.DbContext;
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
+            Logger = applicationServices.Logger;
+            RedisService = applicationServices.RedisService;
         }
 
     }

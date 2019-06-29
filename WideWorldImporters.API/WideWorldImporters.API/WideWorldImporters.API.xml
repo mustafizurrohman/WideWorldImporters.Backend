@@ -130,7 +130,7 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Log(System.String)">
             <summary>
-            Lo
+            Log
             </summary>
             <returns></returns>
         </member>
@@ -152,10 +152,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.NotImplementedFunction">
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.NotImplementedFunction(System.Int32)">
             <summary>
             
             </summary>
+            
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Get">

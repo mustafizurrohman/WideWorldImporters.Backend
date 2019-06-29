@@ -53,7 +53,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// Lo
+        /// Log
         /// </summary>
         /// <returns></returns>
         [HttpGet("Log")]
@@ -120,11 +120,15 @@ namespace WideWorldImporters.API.Controllers
         /// <summary>
         /// 
         /// </summary>
+        /// 
         /// <returns></returns>
         [HttpGet("exception")]
-        public IActionResult NotImplementedFunction()
+        public IActionResult NotImplementedFunction(int number)
         {
-            throw new NotImplementedException();
+            if (number % 2 == 0)
+                throw new NotImplementedException();
+            else
+                throw new ArgumentException();
         }
 
 
