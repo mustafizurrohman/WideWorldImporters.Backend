@@ -6,6 +6,7 @@ namespace WideWorldImporters.Logger.Interfaces
 {
     public interface IWWILogger
     {
+        void Log(string message);
         void LogInfo(string message);
         void LogWarn(string message);
         void LogDebug(string message);

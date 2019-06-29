@@ -138,10 +138,16 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- Service Configuration --
+
             services.RegisterServices();
             services.AddOData();
 
             services.AddSingleton<IWWILogger, WWILogger>();
+
+            #endregion
+
+            #region -- MVC Configuration --
 
             services.AddMvc(options => {
 
@@ -159,6 +165,8 @@ namespace WideWorldImporters.API
                 options.MaxValidationDepth = 100;
 
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            #endregion
 
         }
 
