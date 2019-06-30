@@ -24,25 +24,16 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
-        private readonly IWWILogger _logger;
-
-        private readonly AppLoggers _appLoggers;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        /// <param name="appLoggers"></param>
-        public TestsController(ApplicationServices applicationServices, ISampleService sampleService,
-            AppLoggers appLoggers) 
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
-
-            this._appLoggers = appLoggers;
-
-
         }
         
 
@@ -68,7 +59,7 @@ namespace WideWorldImporters.API.Controllers
             // Task.Factory.StartNew(() => Log(message));
             // Task.Run(() => { Log(message); });
 
-            this._appLoggers.Log(message);
+            Logger.Log(message);
 
             return Ok();
         }

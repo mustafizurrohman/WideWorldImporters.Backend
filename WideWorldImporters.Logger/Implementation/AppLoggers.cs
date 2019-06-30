@@ -5,12 +5,21 @@ using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Logger.Implementation
 {
+
+    /// <summary>
+    /// Application loggers
+    /// </summary>
     public class AppLoggers : IWWILogger
     {
 
         private readonly ConsoleLogger _consoleLogger;
         private readonly NLogFileLogger _fileLogger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="consoleLogger">Console Logger</param>
+        /// <param name="fileLogger">File Logger</param>
         public AppLoggers(ConsoleLogger consoleLogger, NLogFileLogger fileLogger)
         {
             this._consoleLogger = consoleLogger;
