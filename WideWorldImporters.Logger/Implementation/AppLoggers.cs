@@ -25,32 +25,37 @@ namespace WideWorldImporters.Logger.Implementation
 
         public void Log(Exception exception)
         {
-            throw new NotImplementedException();
+            LogException(exception);
         }
 
         public void LogDebug(string message)
         {
-            throw new NotImplementedException();
+            _consoleLogger.LogDebug(message);
+            _fileLogger.LogDebug(message);
         }
 
         public void LogError(string message)
         {
-            throw new NotImplementedException();
+            _consoleLogger.LogError(message);
+            _fileLogger.LogError(message);
         }
 
         public void LogException(Exception exception)
         {
-            throw new NotImplementedException();
+            _consoleLogger.Log(exception.ToString());
+            _fileLogger.Log(exception.ToString());
         }
 
         public void LogInfo(string message)
         {
-            throw new NotImplementedException();
+            _consoleLogger.LogInfo(message);
+            _fileLogger.LogInfo(message);
         }
 
         public void LogWarn(string message)
         {
-            throw new NotImplementedException();
+            _consoleLogger.Log(message);
+            _fileLogger.Log(message);
         }
     }
 }

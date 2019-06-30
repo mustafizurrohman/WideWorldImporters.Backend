@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Middleware.Base
@@ -40,16 +41,16 @@ namespace WideWorldImporters.Middleware.Base
         /// </summary>
         /// <param name="_serviceProvider"></param>
         /// <returns></returns>
-        public IWWILogger GetAppLogger(IServiceProvider _serviceProvider)
+        public AppLoggers GetAppLogger(IServiceProvider _serviceProvider)
         {
             if (_serviceProvider is ISupportRequiredService requiredServiceSupportingProvider)
             {
-                return requiredServiceSupportingProvider.GetRequiredService(typeof(IWWILogger)) as IWWILogger;
+                return requiredServiceSupportingProvider.GetRequiredService(typeof(AppLoggers)) as AppLoggers;
             }
 
-            var service = _serviceProvider.GetService(typeof(IWWILogger));
+            var service = _serviceProvider.GetService(typeof(AppLoggers));
 
-            return service as IWWILogger;
+            return service as AppLoggers;
         }
 
     }
