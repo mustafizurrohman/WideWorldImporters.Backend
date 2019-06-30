@@ -3,6 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
@@ -61,6 +62,23 @@ namespace WideWorldImporters.Services.Services.Base
             Logger = applicationServices.Logger;
             RedisService = applicationServices.RedisService;
         }
+
+        #region -- Utility Functions --
+
+        /// <summary>
+        /// Logs a message
+        /// </summary>
+        /// <param name="message"></param>
+        public void Log(string message) => Task.Factory.StartNew(() => Logger.Log(message));
+
+        /// <summary>
+        /// Logs a message
+        /// </summary>
+        /// <param name="ex"></param>
+        public void Log(Exception ex) => Task.Factory.StartNew(() => Logger.Log(ex));
+
+        #endregion
+
 
     }
 

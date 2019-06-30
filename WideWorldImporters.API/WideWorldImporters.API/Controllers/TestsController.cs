@@ -19,7 +19,7 @@ namespace WideWorldImporters.API.Controllers
     /// <summary>
     /// Sample controller
     /// </summary>
-    public class ValuesController : BaseAPIController
+    public class TestsController : BaseAPIController
     {
 
         private readonly ISampleService _sampleService;
@@ -31,7 +31,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService) 
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
@@ -54,10 +54,10 @@ namespace WideWorldImporters.API.Controllers
         /// Log
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Log")]
-        public IActionResult Log(string message)
+        [HttpGet("Logtest")]
+        public IActionResult LogMessage(string message)
         {
-            Logger.LogDebug(message);
+            Log(message);
             
             return Ok();
         }
@@ -129,8 +129,6 @@ namespace WideWorldImporters.API.Controllers
             else
                 throw new ArgumentException(number + " must be even!");
         }
-
-
 
         #region -- Sample Methods -- 
 

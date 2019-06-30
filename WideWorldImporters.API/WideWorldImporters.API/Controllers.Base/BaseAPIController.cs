@@ -3,6 +3,8 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using System;
+using System.Threading.Tasks;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Interfaces;
@@ -72,6 +74,24 @@ namespace WideWorldImporters.API.Controllers.Base
             RedisService = applicationServices.RedisService;
             Logger = applicationServices.Logger;
         }
+
+        #endregion
+
+        #region -- Utility Functions --
+
+        /// <summary>
+        /// Logs a message
+        /// </summary>
+        /// <param name="message"></param>
+        [NonAction]
+        public void Log(string message) => Task.Factory.StartNew(() => Logger.Log(message));
+
+        /// <summary>
+        /// Logs a message
+        /// </summary>
+        /// <param name="ex"></param>
+        [NonAction]
+        public void Log(Exception ex) => Task.Factory.StartNew(() => Logger.Log(ex));
 
         #endregion
 

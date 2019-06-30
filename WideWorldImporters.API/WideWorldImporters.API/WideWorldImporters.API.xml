@@ -81,6 +81,18 @@
             </summary>
             <param name="applicationServices">Collection of services frequently used in the application</param>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.Log(System.String)">
+            <summary>
+            Logs a message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.Log(System.Exception)">
+            <summary>
+            Logs a message
+            </summary>
+            <param name="ex"></param>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis
@@ -110,81 +122,81 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:WideWorldImporters.API.Controllers.ValuesController">
+        <member name="T:WideWorldImporters.API.Controllers.TestsController">
             <summary>
             Sample controller
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
             <summary>
             Constructor
             </summary>
             <param name="applicationServices"></param>
             <param name="sampleService"></param>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Test">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Test">
             <summary>
             Test
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Log(System.String)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.LogMessage(System.String)">
             <summary>
             Log
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataAsync">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.GetDataAsync">
             <summary>
             Db Test
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.GetDataFromServiceAsync">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.GetDataFromServiceAsync">
             <summary>
             Db Test using service
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.SortPerformance">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.SortPerformance">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.ExceptionLoggingTest(System.Int32)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.ExceptionLoggingTest(System.Int32)">
             <summary>
             Tests if exceptions are logged properly
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Get">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Get">
             <summary>
             GET api/values
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Get(System.Int32)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Get(System.Int32)">
             <summary>
             GET api/values/5
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Post(System.String)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Post(System.String)">
             <summary>
             POST api/values
             </summary>
             <param name="value"></param>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Put(System.Int32,System.String)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Put(System.Int32,System.String)">
             <summary>
             PUT api/values/5
             </summary>
             <param name="id"></param>
             <param name="value"></param>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.Delete(System.Int32)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.Delete(System.Int32)">
             <summary>
             DELETE api/values/5
             </summary>
