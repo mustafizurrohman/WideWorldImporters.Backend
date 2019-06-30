@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WideWorldImporters.Core.CoreServices.Interfaces;
+using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
@@ -46,7 +47,7 @@ namespace WideWorldImporters.Services.Services.Base
         /// <summary>
         /// Logging service
         /// </summary>
-        protected IWWILogger Logger { get; }
+        protected AppLoggers Logger { get; }
 
         /// <summary>
         /// Constructor

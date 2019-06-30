@@ -70,9 +70,6 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             // NOTE: _logger.Log and _logger.LogException calls the same function!
             // This is just to demostrate that we can handle exception differently based on the hosting environment
 
-            // TODO: Log the exception without letting the user wait for it.
-            // Return and log the exception in background without making the user wait
-
             if (_hostingEnvironment.IsDevelopment())
             {
                 // TODO: Handle Exception in development mode

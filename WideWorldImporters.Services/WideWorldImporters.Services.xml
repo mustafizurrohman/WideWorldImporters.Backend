@@ -100,7 +100,7 @@
             Logging service
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Interfaces.IWWILogger)">
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers)">
             <summary>
             Constructor
             </summary>

@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Core.CoreServices.Interfaces;
+using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
@@ -54,7 +55,7 @@ namespace WideWorldImporters.API.Controllers.Base
         /// <summary>
         /// Logging service
         /// </summary>
-        public IWWILogger Logger { get; }
+        public AppLoggers Logger { get; }
 
         #endregion
 
