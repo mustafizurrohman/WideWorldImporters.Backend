@@ -89,7 +89,7 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.Log(System.Exception)">
             <summary>
-            Logs a message
+            Logs an exception
             </summary>
             <param name="ex"></param>
         </member>

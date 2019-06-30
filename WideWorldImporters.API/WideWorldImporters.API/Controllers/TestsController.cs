@@ -54,11 +54,12 @@ namespace WideWorldImporters.API.Controllers
         /// Log
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Logtest")]
+        [HttpGet("Log")]
         public IActionResult LogMessage(string message)
         {
-            Log(message);
-            
+            // Task.Factory.StartNew(() => Log(message));
+            // Task.Run(() => { Log(message); });
+           
             return Ok();
         }
 

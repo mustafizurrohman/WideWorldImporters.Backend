@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -36,7 +35,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// </summary>
         /// <param name="requestDelegate">Request Delegate</param>
         /// <param name="hostingEnvironment">Hosting Environment</param>
-        /// <param name="serviceProvider">ServiceProvider. For DI</param>
+        /// <param name="serviceProvider">ServiceProvider required Dependency Injection (DI)</param>
         public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider) : base(requestDelegate)
         {
             _hostingEnvironment = hostingEnvironment;

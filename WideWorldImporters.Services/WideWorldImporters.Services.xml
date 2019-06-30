@@ -151,6 +151,18 @@
             </summary>
             <param name="applicationServices"></param>
         </member>
+        <member name="M:WideWorldImporters.Services.Services.Base.BaseService.Log(System.String)">
+            <summary>
+            Logs a message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.Base.BaseService.Log(System.Exception)">
+            <summary>
+            Logs a message
+            </summary>
+            <param name="ex"></param>
+        </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>
             Sample Service for Testing

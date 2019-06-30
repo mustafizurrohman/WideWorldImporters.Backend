@@ -87,7 +87,7 @@ namespace WideWorldImporters.API.Controllers.Base
         public void Log(string message) => Task.Factory.StartNew(() => Logger.Log(message));
 
         /// <summary>
-        /// Logs a message
+        /// Logs an exception
         /// </summary>
         /// <param name="ex"></param>
         [NonAction]

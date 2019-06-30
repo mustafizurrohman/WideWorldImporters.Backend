@@ -18,7 +18,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void Log(string message)
         {
-            logger.Info(message);
+            logger.Info(message + Environment.NewLine);
         }
 
         /// <summary>

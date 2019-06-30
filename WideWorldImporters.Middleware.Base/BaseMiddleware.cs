@@ -42,8 +42,7 @@ namespace WideWorldImporters.Middleware.Base
         /// <returns></returns>
         public IWWILogger GetAppLogger(IServiceProvider _serviceProvider)
         {
-            var requiredServiceSupportingProvider = _serviceProvider as ISupportRequiredService;
-            if (requiredServiceSupportingProvider != null)
+            if (_serviceProvider is ISupportRequiredService requiredServiceSupportingProvider)
             {
                 return requiredServiceSupportingProvider.GetRequiredService(typeof(IWWILogger)) as IWWILogger;
             }

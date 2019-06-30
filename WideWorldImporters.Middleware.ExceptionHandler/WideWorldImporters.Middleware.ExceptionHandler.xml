@@ -30,7 +30,7 @@
             </summary>
             <param name="requestDelegate">Request Delegate</param>
             <param name="hostingEnvironment">Hosting Environment</param>
-            <param name="serviceProvider">ServiceProvider. For DI</param>
+            <param name="serviceProvider">ServiceProvider required Dependency Injection (DI)</param>
         </member>
         <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
