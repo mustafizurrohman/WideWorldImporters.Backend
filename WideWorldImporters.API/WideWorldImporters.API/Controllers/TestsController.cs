@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Core.Helpers;
+using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
@@ -25,16 +26,23 @@ namespace WideWorldImporters.API.Controllers
         private readonly ISampleService _sampleService;
         private readonly IWWILogger _logger;
 
+        private readonly AppLoggers _appLoggers;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
+        /// <param name="appLoggers"></param>
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService,
+            AppLoggers appLoggers) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
+
+            this._appLoggers = appLoggers;
+
+
         }
         
 
@@ -59,7 +67,9 @@ namespace WideWorldImporters.API.Controllers
         {
             // Task.Factory.StartNew(() => Log(message));
             // Task.Run(() => { Log(message); });
-           
+
+            this._appLoggers.Log(message);
+
             return Ok();
         }
 

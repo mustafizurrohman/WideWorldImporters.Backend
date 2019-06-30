@@ -142,10 +142,24 @@ namespace WideWorldImporters.API
 
             services.RegisterServices();
 
-            // Logger injection - Must be done manually here
-            services.AddSingleton<IWWILogger, NLogFileLogger>();
-
             services.AddOData();
+
+            #endregion
+
+            #region -- Logger Configuration --
+
+            // services.AddSingleton<IWWILogger, NLogFileLogger>();
+            // services.AddSingleton<IWWILogger, ConsoleLogger>();
+
+            services.AddSingleton<NLogFileLogger>()
+                    .AddSingleton<IWWILogger, NLogFileLogger>(s => s.GetService<NLogFileLogger>());
+
+            services.AddSingleton<ConsoleLogger>()
+                    .AddSingleton<IWWILogger, ConsoleLogger>(s => s.GetService<ConsoleLogger>());
+
+            services.AddSingleton<AppLoggers>()
+                    .AddSingleton<IWWILogger, AppLoggers>(s => s.GetService<AppLoggers>());
+
 
             #endregion
 
