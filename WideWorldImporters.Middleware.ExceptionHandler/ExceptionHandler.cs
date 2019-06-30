@@ -77,27 +77,18 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             if (_hostingEnvironment.IsDevelopment())
             {
                 // TODO: Handle Exception in development mode
-                // _logger.Log(ex);
+                // Do no make the user wait for the logging to finish. Do it in background.
+                Task.Factory.StartNew(() => _logger.Log(ex));
             } else
             {
                 // TODO: Handle Exception when not in development mode (Staging or Production)
-                // _logger.LogException(ex);
+                // Do no make the user wait for the logging to finish. Do it in background.
+                Task.Factory.StartNew(() => _logger.LogException(ex));
             }
-
-            // LogException(ex);
-            Task.Factory.StartNew(() => _logger.LogException(ex));
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return context.Response.WriteAsync(ex.Message);
         }
-
-        private void LogException(Exception ex)
-        {
-            Task.Factory.StartNew(() => _logger.LogException(ex));
-            return;
-        }
-
-
 
     }
 }
