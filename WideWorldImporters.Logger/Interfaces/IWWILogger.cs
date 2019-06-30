@@ -17,6 +17,18 @@ namespace WideWorldImporters.Logger.Interfaces
         void Log(string message);
 
         /// <summary>
+        /// Logs an exception
+        /// </summary>
+        /// <param name="message">Exception to log</param>
+        void Log(Exception exception);
+
+        /// <summary>
+        /// Logs a debug message
+        /// </summary>
+        /// <param name="message">Debug Information to log</param>
+        void LogDebug(string message);
+
+        /// <summary>
         /// Logs a debug message
         /// </summary>
         /// <param name="message">Debug information to log</param>
@@ -27,12 +39,6 @@ namespace WideWorldImporters.Logger.Interfaces
         /// </summary>
         /// <param name="message">Warning message to log</param>
         void LogWarn(string message);
-
-        /// <summary>
-        /// Logs a debug message
-        /// </summary>
-        /// <param name="message">Debug Information to log</param>
-        void LogDebug(string message);
 
         /// <summary>
         /// Logs a error message

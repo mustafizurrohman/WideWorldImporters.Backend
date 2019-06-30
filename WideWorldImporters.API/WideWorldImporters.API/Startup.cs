@@ -184,7 +184,7 @@ namespace WideWorldImporters.API
                 app.UseDeveloperExceptionPage();
             } else
             {
-                // Force all comms to go through HTTPS!
+                // Force all communication to go through HTTPS!
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts(options => options.MaxAge(365).IncludeSubdomains().Preload());
             }

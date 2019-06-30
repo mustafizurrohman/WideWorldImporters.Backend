@@ -19,7 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.AuthenticationProvider", "..\WideWorldImporters.AuthenticationProvider\WideWorldImporters.AuthenticationProvider.csproj", "{50F91CED-7239-448D-9C77-0588398BD8A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WideWorldImporters.Logger", "..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj", "{ED8BAF39-96D9-4771-8437-95F2F4CDE1F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WideWorldImporters.Logger", "..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj", "{ED8BAF39-96D9-4771-8437-95F2F4CDE1F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{9C7E9873-1985-49CE-8042-8822CF1760EA}"
+	ProjectSection(SolutionItems) = preProject
+		..\Logs\internallog.txt = ..\Logs\internallog.txt
+		..\Logs\Logs2019-06-30_logfile.txt = ..\Logs\Logs2019-06-30_logfile.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

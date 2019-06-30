@@ -31,9 +31,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public ValuesController(
-            ApplicationServices applicationServices, 
-            ISampleService sampleService) 
+        public ValuesController(ApplicationServices applicationServices, ISampleService sampleService) 
             : base(applicationServices)
         {
             this._sampleService = sampleService;
@@ -118,17 +116,18 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Tests if exceptions are logged properly
         /// </summary>
-        /// 
         /// <returns></returns>
-        [HttpGet("exception")]
-        public IActionResult NotImplementedFunction(int number)
+        [HttpGet("exceptionLogging")]
+        public IActionResult ExceptionLoggingTest(int number)
         {
-            if (number % 2 == 0)
-                throw new NotImplementedException();
+            if (number <= 0)
+                throw new ArgumentException(number + " must be positive!");
+            else if (number % 2 == 0)
+                throw new ArgumentException(number + " must be odd!");
             else
-                throw new ArgumentException();
+                throw new ArgumentException(number + " must be even!");
         }
 
 

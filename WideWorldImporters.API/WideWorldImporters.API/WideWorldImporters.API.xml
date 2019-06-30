@@ -152,11 +152,10 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.ValuesController.NotImplementedFunction(System.Int32)">
+        <member name="M:WideWorldImporters.API.Controllers.ValuesController.ExceptionLoggingTest(System.Int32)">
             <summary>
-            
+            Tests if exceptions are logged properly
             </summary>
-            
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.ValuesController.Get">
