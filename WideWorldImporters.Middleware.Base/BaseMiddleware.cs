@@ -41,7 +41,7 @@ namespace WideWorldImporters.Middleware.Base
         /// </summary>
         /// <param name="_serviceProvider"></param>
         /// <returns></returns>
-        public AppLoggers GetAppLogger(IServiceProvider _serviceProvider)
+        public IWWILogger GetAppLogger(IServiceProvider _serviceProvider)
         {
             if (_serviceProvider is ISupportRequiredService requiredServiceSupportingProvider)
             {
