@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading.Tasks;
+using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Middleware.Base
 {
@@ -31,6 +34,24 @@ namespace WideWorldImporters.Middleware.Base
         /// <param name="context"></param>
         /// <returns></returns>
         public abstract Task InvokeAsync(HttpContext context);
+
+        /// <summary>
+        /// Returns an instance of the Logger
+        /// </summary>
+        /// <param name="_serviceProvider"></param>
+        /// <returns></returns>
+        public IWWILogger GetAppLogger(IServiceProvider _serviceProvider)
+        {
+            var requiredServiceSupportingProvider = _serviceProvider as ISupportRequiredService;
+            if (requiredServiceSupportingProvider != null)
+            {
+                return requiredServiceSupportingProvider.GetRequiredService(typeof(IWWILogger)) as IWWILogger;
+            }
+
+            var service = _serviceProvider.GetService(typeof(IWWILogger));
+
+            return service as IWWILogger;
+        }
 
     }
 

@@ -68,28 +68,14 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
                 // TODO: Handle Exception when not in development mode (Staging or Production)
             }
 
-            // var result = JsonConvert.SerializeObject(new { error = ex.Message });
-            var logger = GetLogger();
-            logger.LogException(ex);
+            _logger.LogException(ex);
 
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return context.Response.WriteAsync(ex.Message);
         }
 
-        private IWWILogger GetLogger()
-        {
-            var requiredServiceSupportingProvider = _serviceProvider as ISupportRequiredService;
-            if (requiredServiceSupportingProvider != null)
-            {
-                return requiredServiceSupportingProvider.GetRequiredService(typeof(IWWILogger)) as IWWILogger;
-            }
-
-            var service = _serviceProvider.GetService(typeof(IWWILogger));
-            
-            return service as IWWILogger;
-        }
-
+        private IWWILogger _logger => GetAppLogger(_serviceProvider);
 
     }
 }

@@ -28,5 +28,12 @@
             <param name="context"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.GetAppLogger(System.IServiceProvider)">
+            <summary>
+            Returns an instance of the Logger
+            </summary>
+            <param name="_serviceProvider"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
