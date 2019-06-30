@@ -14,6 +14,16 @@
             Current hosting environment
             </summary>
         </member>
+        <member name="F:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler._serviceProvider">
+            <summary>
+            Instance of service provider
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler._logger">
+            <summary>
+            Logger
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.IServiceProvider)">
             <summary>
             Constructor
