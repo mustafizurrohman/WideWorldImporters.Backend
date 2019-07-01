@@ -21,14 +21,9 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         private readonly IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
-        /// Instance of service provider
-        /// </summary>
-        private readonly IServiceProvider _serviceProvider;
-
-        /// <summary>
         /// Logger
         /// </summary>
-        private IWWILogger _logger => GetAppLogger(_serviceProvider);
+        private IWWILogger Logger => GetAppLogger();
 
         /// <summary>
         /// Constructor
@@ -36,10 +31,10 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// <param name="requestDelegate">Request Delegate</param>
         /// <param name="hostingEnvironment">Hosting Environment</param>
         /// <param name="serviceProvider">ServiceProvider required Dependency Injection (DI)</param>
-        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider) : base(requestDelegate)
+        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider) 
+            : base(requestDelegate, serviceProvider)
         {
             _hostingEnvironment = hostingEnvironment;
-            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -74,12 +69,12 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             {
                 // TODO: Handle Exception in development mode
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => _logger.Log(ex));
+                Task.Factory.StartNew(() => Logger.Log(ex));
             } else
             {
                 // TODO: Handle Exception when not in development mode (Staging or Production)
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => _logger.LogException(ex));
+                Task.Factory.StartNew(() => Logger.LogException(ex));
             }
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

@@ -14,11 +14,17 @@
             Request delagate
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+        <member name="F:WideWorldImporters.Middleware.Base.BaseMiddleware._serviceProvider">
+            <summary>
+            Instance of service provider
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,System.IServiceProvider)">
             <summary>
             Constructor
             </summary>
             <param name="next"></param>
+            <param name="serviceProvider"></param>
         </member>
         <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
@@ -28,11 +34,10 @@
             <param name="context"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.GetAppLogger(System.IServiceProvider)">
+        <member name="M:WideWorldImporters.Middleware.Base.BaseMiddleware.GetAppLogger">
             <summary>
             Returns an instance of the Logger
             </summary>
-            <param name="_serviceProvider"></param>
             <returns></returns>
         </member>
     </members>

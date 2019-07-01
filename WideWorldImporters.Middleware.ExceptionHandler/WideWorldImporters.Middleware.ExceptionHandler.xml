@@ -14,12 +14,7 @@
             Current hosting environment
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler._serviceProvider">
-            <summary>
-            Instance of service provider
-            </summary>
-        </member>
-        <member name="P:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler._logger">
+        <member name="P:WideWorldImporters.Middleware.ExceptionHandler.ExceptionHandler.Logger">
             <summary>
             Logger
             </summary>

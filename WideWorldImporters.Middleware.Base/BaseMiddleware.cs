@@ -20,12 +20,19 @@ namespace WideWorldImporters.Middleware.Base
         public RequestDelegate Next { get; }
 
         /// <summary>
+        /// Instance of service provider
+        /// </summary>
+        private readonly IServiceProvider _serviceProvider;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="next"></param>
-        public BaseMiddleware(RequestDelegate next)
+        /// <param name="serviceProvider"></param>
+        public BaseMiddleware(RequestDelegate next, IServiceProvider serviceProvider)
         {
             Next = next;
+            _serviceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -39,9 +46,8 @@ namespace WideWorldImporters.Middleware.Base
         /// <summary>
         /// Returns an instance of the Logger
         /// </summary>
-        /// <param name="_serviceProvider"></param>
         /// <returns></returns>
-        public IWWILogger GetAppLogger(IServiceProvider _serviceProvider)
+        public IWWILogger GetAppLogger()
         {
             if (_serviceProvider is ISupportRequiredService requiredServiceSupportingProvider)
             {
