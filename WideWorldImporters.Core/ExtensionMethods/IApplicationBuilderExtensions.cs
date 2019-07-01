@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WideWorldImporters.Middleware.ExceptionHandler;
 
 namespace WideWorldImporters.Core.ExtensionMethods

@@ -3,14 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.InternalModels;
-using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
-using WideWorldImporters.Services.Services;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.Services.ExtensionMethods

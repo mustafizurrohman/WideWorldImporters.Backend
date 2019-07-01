@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
-using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 

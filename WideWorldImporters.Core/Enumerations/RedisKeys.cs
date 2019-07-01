@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WideWorldImporters.Core.Enumerations
+﻿namespace WideWorldImporters.Core.Enumerations
 {
 
     /// <summary>

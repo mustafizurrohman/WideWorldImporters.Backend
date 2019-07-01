@@ -67,12 +67,12 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
 
             if (_hostingEnvironment.IsDevelopment())
             {
-                // TODO: Handle Exception in development mode
+                // Handle Exception in development mode
                 // Do no make the user wait for the logging to finish. Do it in background.
                 Task.Factory.StartNew(() => Logger.Log(ex));
             } else
             {
-                // TODO: Handle Exception when not in development mode (Staging or Production)
+                // Handle Exception when not in development mode (Staging or Production)
                 // Do no make the user wait for the logging to finish. Do it in background.
                 Task.Factory.StartNew(() => Logger.LogException(ex));
             }

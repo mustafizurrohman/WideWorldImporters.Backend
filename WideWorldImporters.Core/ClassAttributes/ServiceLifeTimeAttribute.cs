@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.Core.ClassAttributes

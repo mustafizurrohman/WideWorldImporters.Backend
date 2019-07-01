@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
-using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
-using WideWorldImporters.Services.Interfaces;
 
 namespace WideWorldImporters.Services.ServiceCollections
 {
