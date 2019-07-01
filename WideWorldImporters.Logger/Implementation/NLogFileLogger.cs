@@ -24,7 +24,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <summary>
         /// Logs an exception
         /// </summary>
-        /// <param name="message">Exception to log</param>
+        /// <param name="exception">Exception to log</param>
         public void Log(Exception exception)
         {
             LogException(exception);
@@ -69,7 +69,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <summary>
         /// Logs an exception
         /// </summary>
-        /// <param name="message">Exception to log</param>
+        /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
             logger.Error(exception.ToString() + Environment.NewLine);

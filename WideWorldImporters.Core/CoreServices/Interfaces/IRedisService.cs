@@ -32,7 +32,6 @@ namespace WideWorldImporters.Core.CoreServices.Interfaces
         /// <summary>
         /// Returns true if an entry with specified redis key exists
         /// </summary>
-        /// <typeparam name="T">Type of the object</typeparam>
         /// <param name="key">Key to verify</param>
         /// <returns></returns>
         bool Exist(string key);

@@ -17,7 +17,7 @@ namespace WideWorldImporters.Logger.Interfaces
         /// <summary>
         /// Logs an exception
         /// </summary>
-        /// <param name="message">Exception to log</param>
+        /// <param name="exception">Exception to log</param>
         void Log(Exception exception);
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace WideWorldImporters.Logger.Interfaces
         /// <summary>
         /// Logs an exception
         /// </summary>
-        /// <param name="message">Exception to log</param>
+        /// <param name="exception">Exception to log</param>
         void LogException(Exception exception);
     }
 }
