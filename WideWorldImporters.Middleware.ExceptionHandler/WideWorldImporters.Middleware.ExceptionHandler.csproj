@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Middleware.Base\WideWorldImporters.Middleware.Base.csproj" />
   </ItemGroup>

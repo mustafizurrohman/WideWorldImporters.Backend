@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Formatter;
 using Microsoft.AspNet.OData.Query;
@@ -144,6 +146,28 @@ namespace WideWorldImporters.API
 
             #endregion
 
+            #region -- Hangfire Configuration
+
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true
+                }));
+
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
+
+            #endregion
+
             #region -- Logger Configuration --
 
             // services.AddSingleton<IWWILogger, NLogFileLogger>();
@@ -234,6 +258,8 @@ namespace WideWorldImporters.API
             app.UseCors();
             
             app.UseHttpsRedirection();
+
+            app.UseHangfireDashboard();
 
             app.UseMvc(routeBuilder => {
 
