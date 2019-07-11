@@ -10,6 +10,7 @@ using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
+using WideWorldImporters.Core.ExtensionMethods;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -128,6 +129,21 @@ namespace WideWorldImporters.API.Controllers
             else
                 throw new ArgumentException(number + " must be even!");
         }
+
+        /// <summary>
+        /// Tests if exceptions are logged properly
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("partition")]
+        public IActionResult ListPartition(int number = 500)
+        {
+            List<int> list = Enumerable.Range(0, number).Select(num => IntHelpers.GetRandomNumber(number * 2)).ToList();
+
+            List<List<int>> x = list.Partition(10);
+
+            return Ok(x);
+        }
+
 
         #region -- Sample Methods -- 
 

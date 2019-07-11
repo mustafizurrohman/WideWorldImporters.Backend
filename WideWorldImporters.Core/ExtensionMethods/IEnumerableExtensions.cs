@@ -45,7 +45,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static T GetRandomElement<T>(this IEnumerable<T> source)
         {
             // If the list is empty then return an empty instance of T
-            if (source.Count() == 0)
+            if (!source.Any())
             {
                 return Activator.CreateInstance<T>();
             }
@@ -93,6 +93,23 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static bool IsEmpty<T>(this IEnumerable<T> list)
         {
             return (list == null || !list.Any());
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceList"></param>
+        /// <param name="chunkSize"></param>
+        /// <returns></returns>
+        public static List<List<T>> Partition<T>(this List<T> sourceList, int chunkSize)
+        {
+            return sourceList
+                .Select((x, i) => new { Index = i, Value = x })
+                .GroupBy(x => x.Index / chunkSize)
+                .Select(x => x.Select(v => v.Value).ToList())
+                .ToList();
         }
 
     }
