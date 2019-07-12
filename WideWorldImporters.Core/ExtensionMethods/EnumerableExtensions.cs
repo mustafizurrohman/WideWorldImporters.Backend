@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using WideWorldImporters.Core.Helpers;
 
@@ -8,7 +9,8 @@ namespace WideWorldImporters.Core.ExtensionMethods
     /// <summary>
     /// Extension methods for IEnumerable
     /// </summary>
-    public static class IEnumerableExtensions
+    [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
+    public static class EnumerableExtensions
     {
 
 
@@ -16,7 +18,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// Converts an IEnumerable to its CSV representation
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="ienumerableList">IEnumerableö of Type T to convert to CSV</param>
+        /// <param name="ienumerableList">IEnumerable of Type T to convert to CSV</param>
         /// <returns></returns>
         public static string ToCsv<T>(this IEnumerable<T> ienumerableList)
         {
@@ -103,13 +105,27 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="sourceList"></param>
         /// <param name="chunkSize"></param>
         /// <returns></returns>
-        public static List<List<T>> Partition<T>(this List<T> sourceList, int chunkSize)
-        {
+        public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList, int chunkSize)
+        { 
             return sourceList
                 .Select((x, i) => new { Index = i, Value = x })
                 .GroupBy(x => x.Index / chunkSize)
-                .Select(x => x.Select(v => v.Value).ToList())
+                .Select(x => x.Select(v => v.Value))
                 .ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceList"></param>
+        /// <returns></returns>
+        public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList)
+        {
+            // ReSharper disable once PossibleMultipleEnumeration
+            int chunkSize = (int)Math.Floor(Math.Sqrt(sourceList.Count()));
+
+            return Partition(sourceList, chunkSize);
         }
 
     }

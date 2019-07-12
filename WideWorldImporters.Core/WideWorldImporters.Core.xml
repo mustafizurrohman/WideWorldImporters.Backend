@@ -184,6 +184,18 @@
             Transient service
             </summary>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions">
+            <summary>
+            ExtensionMethods for IApplicationBuilder
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions.UseCustomExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Extension Method to use custom exception handler
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions">
             <summary>
             Extension methods for Datetime
@@ -342,32 +354,20 @@
             <param name="dbSet">DbSet</param>
             <returns></returns>
         </member>
-        <member name="T:WideWorldImporters.Core.ExtensionMethods.IApplicationBuilderExtensions">
-            <summary>
-            ExtensionMethods for IApplcationBuilder
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IApplicationBuilderExtensions.UseCustomExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
-            <summary>
-            Extension Method to use custom exception handler
-            </summary>
-            <param name="app"></param>
-            <returns></returns>
-        </member>
-        <member name="T:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions">
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions">
             <summary>
             Extension methods for IEnumerable
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.ToCsv``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.ToCsv``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Converts an IEnumerable to its CSV representation
             </summary>
             <typeparam name="T">Type</typeparam>
-            <param name="ienumerableList">IEnumerableö of Type T to convert to CSV</param>
+            <param name="ienumerableList">IEnumerable of Type T to convert to CSV</param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
             <summary>
             Groups a IEnumerable w.r.t. an attribute
             </summary>
@@ -377,7 +377,7 @@
             <param name="keySelector"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.GetRandomElement``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.GetRandomElement``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Gets a random element for the IEnumerable
             </summary>
@@ -385,7 +385,7 @@
             <param name="source">Source IEnumerable collection</param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             
             </summary>
@@ -393,7 +393,7 @@
             <param name="source"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.GetRandomShuffled``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.GetRandomShuffled``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
             Gets a random element for the IEnumerable after one shuffle
             </summary>
@@ -402,7 +402,7 @@
             <param name="shuffleTimes">Number of times to shuffle</param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Returns 'true' if an IEnumerable is empty. False otherwise.
             </summary>
@@ -410,7 +410,7 @@
             <param name="list"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IEnumerableExtensions.Partition``1(System.Collections.Generic.List{``0},System.Int32)">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
             
             </summary>
@@ -419,12 +419,20 @@
             <param name="chunkSize"></param>
             <returns></returns>
         </member>
-        <member name="T:WideWorldImporters.Core.ExtensionMethods.IListExtensions">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sourceList"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.ListExtensions">
             <summary>
             Extension methods for IList
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ListExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
             <summary>
             Shuffles an IList using Cryptographically secure randomization
             </summary>
@@ -432,7 +440,7 @@
             <param name="source"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.ToCsv``1(System.Collections.Generic.IList{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ListExtensions.ToCsv``1(System.Collections.Generic.IList{``0})">
             <summary>
             Converts a Generic List to its CSV representation
             </summary>
@@ -440,7 +448,7 @@
             <param name="list">List of Type T to convert to CSV</param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.DeepClone``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ListExtensions.DeepClone``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             TODO: Fix this
             </summary>
@@ -448,7 +456,7 @@
             <param name="source"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.IListExtensions.Swap``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ListExtensions.Swap``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32)">
             <summary>
             Swaps contents of firstIndex with secondIndex
             </summary>

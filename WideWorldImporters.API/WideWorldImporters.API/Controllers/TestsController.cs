@@ -137,11 +137,17 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("partition")]
         public IActionResult ListPartition(int number = 500)
         {
-            List<int> list = Enumerable.Range(0, number).Select(num => IntHelpers.GetRandomNumber(number * 2)).ToList();
+            IEnumerable<int> list = Enumerable.Range(0, number)
+                .Select(num => IntHelpers.GetRandomNumber(number * 2));
 
-            List<List<int>> x = list.Partition(10);
+            IEnumerable<IEnumerable<int>> partition = list.ToList().Partition();
 
-            return Ok(x);
+            List<List<int>> partitionList = partition
+                .Select(x => x.ToList())
+                .ToList();
+
+
+            return Ok(partition);
         }
 
 

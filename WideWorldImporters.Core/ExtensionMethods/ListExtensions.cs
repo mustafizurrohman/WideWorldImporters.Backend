@@ -11,7 +11,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
     /// <summary>
     /// Extension methods for IList
     /// </summary>
-    public static class IListExtensions
+    public static class ListExtensions
     {
 
         /// <summary>

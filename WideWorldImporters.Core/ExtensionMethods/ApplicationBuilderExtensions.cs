@@ -4,9 +4,9 @@ using WideWorldImporters.Middleware.ExceptionHandler;
 namespace WideWorldImporters.Core.ExtensionMethods
 {
     /// <summary>
-    /// ExtensionMethods for IApplcationBuilder
+    /// ExtensionMethods for IApplicationBuilder
     /// </summary>
-    public static class IApplicationBuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
 
         /// <summary>

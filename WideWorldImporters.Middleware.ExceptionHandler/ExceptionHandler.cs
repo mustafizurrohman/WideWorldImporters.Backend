@@ -64,7 +64,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             // NOTE: _logger.Log and _logger.LogException calls the same function!
-            // This is just to demostrate that we can handle exception differently based on the hosting environment
+            // This is just to demonstrate that we can handle exception differently based on the hosting environment
 
             // BackgroundJob.Enqueue(() => Console.WriteLine("Hello, world!"));
 
