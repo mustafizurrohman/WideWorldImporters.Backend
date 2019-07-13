@@ -33,10 +33,10 @@ namespace WideWorldImporters.API
     /// </summary>
     public class Startup
     {
-        readonly Info _info = new Info();
-        readonly ApiKeyScheme _apiKeyScheme = new ApiKeyScheme();
-        readonly PerformanceOptions _performanceOptions = new PerformanceOptions();
-        readonly List<string> _allowedCorsOrigins = new List<string>();
+        private readonly Info _info = new Info();
+        private readonly ApiKeyScheme _apiKeyScheme = new ApiKeyScheme();
+        private readonly PerformanceOptions _performanceOptions = new PerformanceOptions();
+        private readonly List<string> _allowedCorsOrigins = new List<string>();
 
         /// <summary>
         /// Startup
@@ -274,5 +274,6 @@ namespace WideWorldImporters.API
             });
 
         }
+
     }
 }

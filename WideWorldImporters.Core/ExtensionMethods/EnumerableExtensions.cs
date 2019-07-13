@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security.Cryptography;
 using WideWorldImporters.Core.Helpers;
 
 namespace WideWorldImporters.Core.ExtensionMethods
@@ -65,7 +66,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle();
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            var shuffled = source.OrderBy(x => RandomHelpers.Next(source.Count()));
+
+            return shuffled;
+        }
 
         /// <summary>
         /// Gets a random element for the IEnumerable after one shuffle
@@ -108,9 +114,9 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList, int chunkSize)
         { 
             return sourceList
-                .Select((x, i) => new { Index = i, Value = x })
-                .GroupBy(x => x.Index / chunkSize)
-                .Select(x => x.Select(v => v.Value))
+                .Select((value, index) => new { Index = index, Value = value })
+                .GroupBy(group => group.Index / chunkSize)
+                .Select(group => group.Select(grp => grp.Value))
                 .ToList();
         }
 

@@ -4,6 +4,17 @@
         <name>WideWorldImporters.Tests</name>
     </assembly>
     <members>
+        <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.EnumerableUnitTests">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.EnumerableUnitTests.TestShuffle(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="number"></param>
+        </member>
         <member name="T:WideWorldImporters.Tests.HelpersUnitTest.IntHelperUnitTests">
             <summary>
             Unit-tests for IntHelper
@@ -30,7 +41,7 @@
         </member>
         <member name="T:WideWorldImporters.Tests.ServiceUnitTests.RedisTests">
             <summary>
-            Tests for RedisSerivce
+            Tests for RedisService
             </summary>
         </member>
         <member name="M:WideWorldImporters.Tests.ServiceUnitTests.RedisTests.#ctor">

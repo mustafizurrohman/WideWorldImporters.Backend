@@ -22,6 +22,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static IList<T> Shuffle<T>(this IList<T> source)
         {
+            if (source.Count == 0)
+            {
+                return Activator.CreateInstance<IList<T>>();
+            }
+
             var destination = source.DeepCloneObject() as IList<T>;
 
             var length = destination.Count();
