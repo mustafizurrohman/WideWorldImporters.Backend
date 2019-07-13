@@ -170,6 +170,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.ListPartition(System.Int32)">
+            <summary>
+            Tests if exceptions are logged properly
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.ShuffleIEnumerable(System.Int32)">
+            <summary>
+            Tests if exceptions are logged properly
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.Get">
             <summary>
             GET api/values

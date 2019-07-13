@@ -76,7 +76,7 @@
         <member name="T:WideWorldImporters.Logger.Implementation.ConsoleLogger">
             <summary>
             Console Logging ( Can also be done using NLog)
-            This is for demostration
+            This is for demonstration only
             </summary>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.ConsoleLogger.Log(System.String)">

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
@@ -63,18 +64,23 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
             // NOTE: _logger.Log and _logger.LogException calls the same function!
-            // This is just to demostrate that we can handle exception differently based on the hosting environment
+            // This is just to demonstrate that we can handle exception differently based on the hosting environment
+
+            // BackgroundJob.Enqueue(() => Console.WriteLine("Hello, world!"));
 
             if (_hostingEnvironment.IsDevelopment())
             {
                 // Handle Exception in development mode
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => Logger.Log(ex));
+                // Task.Factory.StartNew(() => Logger.Log(ex));
+                BackgroundJob.Enqueue(() => Logger.Log(ex));
+
             } else
             {
                 // Handle Exception when not in development mode (Staging or Production)
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => Logger.LogException(ex));
+                // Task.Factory.StartNew(() => Logger.LogException(ex));
+                BackgroundJob.Enqueue(() => Logger.LogException(ex));
             }
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

@@ -11,7 +11,7 @@ namespace WideWorldImporters.Core.Helpers
 
         #region -- Private Methods --
 
-        private static readonly RandomNumberGenerator _randomNumberGenerator;
+        private static readonly RandomNumberGenerator RandomNumberGenerator;
 
         #endregion
 
@@ -22,7 +22,7 @@ namespace WideWorldImporters.Core.Helpers
         /// </summary>
         static RandomHelpers()
         {
-            _randomNumberGenerator = new RNGCryptoServiceProvider();
+            RandomNumberGenerator = new RNGCryptoServiceProvider();
         }
 
         #endregion
@@ -39,7 +39,7 @@ namespace WideWorldImporters.Core.Helpers
             byte[] data = new byte[4];
             Int32[] result = new Int32[1];
 
-            _randomNumberGenerator.GetBytes(data);
+            RandomNumberGenerator.GetBytes(data);
             Buffer.BlockCopy(data, 0, result, 0, 4);
 
             return Math.Abs(result[0] % max);

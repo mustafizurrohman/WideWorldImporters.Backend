@@ -29,7 +29,7 @@ namespace WideWorldImporters.Middleware.Base
         /// </summary>
         /// <param name="next"></param>
         /// <param name="serviceProvider"></param>
-        public BaseMiddleware(RequestDelegate next, IServiceProvider serviceProvider)
+        protected BaseMiddleware(RequestDelegate next, IServiceProvider serviceProvider)
         {
             Next = next;
             _serviceProvider = serviceProvider;

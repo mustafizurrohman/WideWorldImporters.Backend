@@ -13,7 +13,7 @@ namespace WideWorldImporters.Tests.ServiceUnitTests
 {
 
     /// <summary>
-    /// Tests for RedisSerivce
+    /// Tests for RedisService
     /// </summary>
     public class RedisTests
     {
@@ -51,9 +51,9 @@ namespace WideWorldImporters.Tests.ServiceUnitTests
         [Theory]
         [InlineData(100)]
         [InlineData(1000)]
-        public async Task TestMultipleKeys(int numberofKeysToTest)
+        public async Task TestMultipleKeys(int numberOfKeysToTest)
         {
-            var randomKeys = Enumerable.Range(0, numberofKeysToTest)
+            var randomKeys = Enumerable.Range(0, numberOfKeysToTest)
                 .Select(number => StringHelpers.GetRandomString())
                 .ToList();
 

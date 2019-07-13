@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Formatter;
 using Microsoft.AspNet.OData.Query;
@@ -31,10 +33,10 @@ namespace WideWorldImporters.API
     /// </summary>
     public class Startup
     {
-        readonly Info info = new Info();
-        readonly ApiKeyScheme apiKeyScheme = new ApiKeyScheme();
-        readonly PerformanceOptions performanceOptions = new PerformanceOptions();
-        readonly List<string> allowedCorsOrigins = new List<string>();
+        private readonly Info _info = new Info();
+        private readonly ApiKeyScheme _apiKeyScheme = new ApiKeyScheme();
+        private readonly PerformanceOptions _performanceOptions = new PerformanceOptions();
+        private readonly List<string> _allowedCorsOrigins = new List<string>();
 
         /// <summary>
         /// Startup
@@ -58,13 +60,13 @@ namespace WideWorldImporters.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            Configuration.GetSection("PerformanceOptions").Bind(performanceOptions);
+            Configuration.GetSection("PerformanceOptions").Bind(_performanceOptions);
     
             #region -- Swagger Configuration --
 
-            Configuration.GetSection("Swagger").Bind(info);
-            Configuration.GetSection("ApiKeyScheme").Bind(apiKeyScheme);
-            services.AddSwaggerDocumentation(info, apiKeyScheme);
+            Configuration.GetSection("Swagger").Bind(_info);
+            Configuration.GetSection("ApiKeyScheme").Bind(_apiKeyScheme);
+            services.AddSwaggerDocumentation(_info, _apiKeyScheme);
 
 
             #endregion
@@ -80,7 +82,7 @@ namespace WideWorldImporters.API
 
             #region -- Response Compression Configuration --
 
-            if (performanceOptions.UseResponseCompression)
+            if (_performanceOptions.UseResponseCompression)
             {
 
                 // Configure Compression level
@@ -109,7 +111,7 @@ namespace WideWorldImporters.API
                 });
             });
 
-            Configuration.GetSection("AllowedCorsOrigins").Bind(allowedCorsOrigins);
+            Configuration.GetSection("AllowedCorsOrigins").Bind(_allowedCorsOrigins);
 
             
             // Cors policy allowing only specific origins
@@ -119,7 +121,7 @@ namespace WideWorldImporters.API
                 {
                     builder.AllowAnyHeader()
                            .AllowAnyMethod()
-                           .WithOrigins(allowedCorsOrigins.ToArray());
+                           .WithOrigins(_allowedCorsOrigins.ToArray());
                 });
             });
 
@@ -141,6 +143,28 @@ namespace WideWorldImporters.API
             services.RegisterServices();
 
             services.AddOData();
+
+            #endregion
+
+            #region -- Hangfire Configuration
+
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection"), new SqlServerStorageOptions
+                {
+                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                    QueuePollInterval = TimeSpan.Zero,
+                    UseRecommendedIsolationLevel = true,
+                    UsePageLocksOnDequeue = true,
+                    DisableGlobalLocks = true
+                }));
+
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
 
             #endregion
 
@@ -202,30 +226,30 @@ namespace WideWorldImporters.API
             }
 
             // This response header prevents pages from loading in modern browsers 
-            // When reflected cross-site scription is detected.
+            // When reflected cross-site scripting is detected.
             app.UseXXssProtection(options => options.EnabledWithBlockMode());
 
             // Ensure that site content is not being embedded in an iframe on other sites 
-            //  - used for avoid clickjacking attacks.
+            //  - used for avoid click-jacking attacks.
             app.UseXfo(options => options.SameOrigin());
 
             // Blocks any content sniffing that could happen that might change an innocent MIME type (e.g. text/css) 
             // into something executable that could do some real damage.
             app.UseXContentTypeOptions();
 
-            app.UseSwaggerDocumentation(info);
+            app.UseSwaggerDocumentation(_info);
 
-            if (performanceOptions.UseResponseCompression)
+            if (_performanceOptions.UseResponseCompression)
             {
                 app.UseResponseCompression();
             }
 
-            if (performanceOptions.UseExceptionHandlingMiddleware)
+            if (_performanceOptions.UseExceptionHandlingMiddleware)
             {
                 app.UseCustomExceptionHandler();
             }
 
-            if (!allowedCorsOrigins.IsEmpty())
+            if (!_allowedCorsOrigins.IsEmpty())
             {
                 app.UseCors(CorsPolicies.CorsWithSpecificOrigins);
 
@@ -234,6 +258,8 @@ namespace WideWorldImporters.API
             app.UseCors();
             
             app.UseHttpsRedirection();
+
+            app.UseHangfireDashboard();
 
             app.UseMvc(routeBuilder => {
 
@@ -248,5 +274,6 @@ namespace WideWorldImporters.API
             });
 
         }
+
     }
 }

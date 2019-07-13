@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security.Cryptography;
 using WideWorldImporters.Core.Helpers;
 
 namespace WideWorldImporters.Core.ExtensionMethods
@@ -8,7 +10,8 @@ namespace WideWorldImporters.Core.ExtensionMethods
     /// <summary>
     /// Extension methods for IEnumerable
     /// </summary>
-    public static class IEnumerableExtensions
+    [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
+    public static class EnumerableExtensions
     {
 
 
@@ -16,7 +19,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// Converts an IEnumerable to its CSV representation
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="ienumerableList">IEnumerableö of Type T to convert to CSV</param>
+        /// <param name="ienumerableList">IEnumerable of Type T to convert to CSV</param>
         /// <returns></returns>
         public static string ToCsv<T>(this IEnumerable<T> ienumerableList)
         {
@@ -45,7 +48,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static T GetRandomElement<T>(this IEnumerable<T> source)
         {
             // If the list is empty then return an empty instance of T
-            if (source.Count() == 0)
+            if (!source.Any())
             {
                 return Activator.CreateInstance<T>();
             }
@@ -63,7 +66,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) => source.Shuffle();
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            var shuffled = source.OrderBy(x => RandomHelpers.Next(source.Count()));
+
+            return shuffled;
+        }
 
         /// <summary>
         /// Gets a random element for the IEnumerable after one shuffle
@@ -93,6 +101,37 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static bool IsEmpty<T>(this IEnumerable<T> list)
         {
             return (list == null || !list.Any());
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceList"></param>
+        /// <param name="chunkSize"></param>
+        /// <returns></returns>
+        public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList, int chunkSize)
+        { 
+            return sourceList
+                .Select((value, index) => new { Index = index, Value = value })
+                .GroupBy(group => group.Index / chunkSize)
+                .Select(group => group.Select(grp => grp.Value))
+                .ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceList"></param>
+        /// <returns></returns>
+        public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList)
+        {
+            // ReSharper disable once PossibleMultipleEnumeration
+            int chunkSize = (int)Math.Floor(Math.Sqrt(sourceList.Count()));
+
+            return Partition(sourceList, chunkSize);
         }
 
     }

@@ -10,6 +10,7 @@ using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
+using WideWorldImporters.Core.ExtensionMethods;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -127,6 +128,44 @@ namespace WideWorldImporters.API.Controllers
                 throw new ArgumentException(number + " must be odd!");
             else
                 throw new ArgumentException(number + " must be even!");
+        }
+
+        /// <summary>
+        /// Tests if exceptions are logged properly
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("partition")]
+        public IActionResult ListPartition(int number)
+        {
+            IEnumerable<int> list = Enumerable.Range(0, number)
+                .Select(num => IntHelpers.GetRandomNumber(number * 2));
+
+            IEnumerable<IEnumerable<int>> partition = list.ToList().Partition();
+
+            var partition2 = list.ToList().Partition().Partition().Partition().Partition();
+
+            List<List<int>> partitionList = partition
+                .Select(x => x.ToList())
+                .ToList();
+
+
+            return Ok(partition2);
+        }
+
+        /// <summary>
+        /// Tests if exceptions are logged properly
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("shuffle")]
+        public IActionResult ShuffleIEnumerable(int number)
+        {
+            IEnumerable<int> list = Enumerable.Range(0, number)
+                .Select(num => IntHelpers.GetRandomNumber(number * 2));
+
+            var shuffled = list.Shuffle();
+
+
+            return Ok(new Tuple<IEnumerable<int>, IEnumerable<int>>(list, shuffled));
         }
 
         #region -- Sample Methods -- 
