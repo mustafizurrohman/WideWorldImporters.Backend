@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
@@ -50,6 +51,7 @@ namespace WideWorldImporters.API.Controllers
         /// <summary>
         /// Log
         /// </summary>
+        /// <param name="message"></param>
         /// <returns></returns>
         [HttpGet("Log")]
         public IActionResult LogMessage(string message)
@@ -57,7 +59,9 @@ namespace WideWorldImporters.API.Controllers
             // Task.Factory.StartNew(() => Log(message));
             // Task.Run(() => { Log(message); });
 
-            Logger.Log(message);
+            // Logger.Log(message);
+
+            BackgroundJob.Enqueue(() => Logger.Log(message));
 
             return Ok();
         }

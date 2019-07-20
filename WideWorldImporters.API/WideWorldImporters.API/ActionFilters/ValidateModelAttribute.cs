@@ -10,7 +10,7 @@ namespace WideWorldImporters.API.ActionFilters
 
     /// <summary>
     /// Validate Model Attribute
-    /// Not used as the momenet as it is done by default by WebApi 2.2.
+    /// Not used as the moment as it is done by default by WebApi 2.2.
     /// Should be enabled only when required
     /// </summary>
     public class ValidateModelAttribute : ActionFilterAttribute

@@ -60,9 +60,10 @@ namespace WideWorldImporters.API.Controllers
 
             var temperatures = await RedisService.GetAsync<IEnumerable<VehicleTemperatures>>(_vehicleCacheKey);
 
+            // ReSharper disable once PossibleLossOfFraction
             float size = JsonConvert.SerializeObject(temperatures).Length / (1024 * 1024);
 
-            string sizeInMB = size.ToString() + " MB";
+            string sizeInMb = size + " MB";
 
             stopwatch.Stop();
 
@@ -77,7 +78,7 @@ namespace WideWorldImporters.API.Controllers
 
             long time2 = stopwatch.ElapsedMilliseconds;
 
-            var results = new Tuple<IEnumerable<VehicleTemperatures>, long, long, string>(filtered, time1, time2, sizeInMB);
+            var results = new Tuple<IEnumerable<VehicleTemperatures>, long, long, string>(filtered, time1, time2, sizeInMb);
 
             return Ok(results);
         }

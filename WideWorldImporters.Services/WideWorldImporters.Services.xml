@@ -4,12 +4,12 @@
         <name>WideWorldImporters.Services</name>
     </assembly>
     <members>
-        <member name="T:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions">
+        <member name="T:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions">
             <summary>
             Extension methods for ServiceCollection
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
             <summary>
             Register services for Dependency Injection
             </summary>
@@ -17,28 +17,28 @@
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetSingletonServices(System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.GetSingletonServices(System.String)">
             <summary>
             Gets all Singleton services
             </summary>
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetTransientServices(System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.GetTransientServices(System.String)">
             <summary>
             Gets all Transient services
             </summary>
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetScopedServices(System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.GetScopedServices(System.String)">
             <summary>
             Gets all Scoped services
             </summary>
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetServicesByType(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime,System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.GetServicesByType(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime,System.String)">
             <summary>
             Returns all services of a particular type
             </summary>
@@ -46,7 +46,7 @@
             <param name="lifetime">Type of service</param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.ExtensionMethods.IServiceCollectionExtensions.GetAllServices(System.String)">
+        <member name="M:WideWorldImporters.Services.ExtensionMethods.ServiceCollectionExtensions.GetAllServices(System.String)">
             <summary>
             Retrives all services in a namespace
             </summary>
@@ -82,7 +82,7 @@
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AutoMapper">
             <summary>
-            Automapper
+            AutoMapper 
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.MemoryCache">
@@ -105,7 +105,7 @@
             Constructor
             </summary>
             <param name="dbContext">Database context</param>
-            <param name="autoMapper">Automapper</param>
+            <param name="autoMapper">AutoMapper</param>
             <param name="memoryCache">Memory Caching</param>
             <param name="redisService">Redis Caching</param>
             <param name="logger">Logging Service</param>

@@ -15,7 +15,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
     /// <summary>
     /// Extension methods for ServiceCollection
     /// </summary>
-    public static class IServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
 
         /// <summary>
@@ -118,11 +118,11 @@ namespace WideWorldImporters.Services.ExtensionMethods
         /// <returns></returns>
         private static IEnumerable<ApiServiceDescription> GetAllServices(string namespaceName = "WideWorldImporters")
         {
-            var applicationAssemply = AppDomain.CurrentDomain
+            var applicationAssembly = AppDomain.CurrentDomain
                 .GetAssemblies()
                 .Where(asm => asm.FullName.Contains(namespaceName));
 
-            var apiServices = applicationAssemply
+            var apiServices = applicationAssembly
                 .SelectMany(asm => asm.GetExportedTypes())
                 .Where(asm => asm.Namespace.Contains(namespaceName))
                 .Where(asm => !asm.GetInterfaces().IsEmpty())

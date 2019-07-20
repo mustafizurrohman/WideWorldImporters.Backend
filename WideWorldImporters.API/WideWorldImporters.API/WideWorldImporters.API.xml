@@ -24,7 +24,7 @@
         <member name="T:WideWorldImporters.API.ActionFilters.ValidateModelAttribute">
             <summary>
             Validate Model Attribute
-            Not used as the momenet as it is done by default by WebApi 2.2.
+            Not used as the moment as it is done by default by WebApi 2.2.
             Should be enabled only when required
             </summary>
         </member>
@@ -144,6 +144,7 @@
             <summary>
             Log
             </summary>
+            <param name="message"></param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.GetDataAsync">

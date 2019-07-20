@@ -18,7 +18,7 @@ namespace WideWorldImporters.Services.ServiceCollections
         public WideWorldImportersContext DbContext { get; }
 
         /// <summary>
-        /// Automapper
+        /// AutoMapper 
         /// </summary>
         public IMapper AutoMapper { get; }
 
@@ -41,7 +41,7 @@ namespace WideWorldImporters.Services.ServiceCollections
         /// Constructor
         /// </summary>
         /// <param name="dbContext">Database context</param>
-        /// <param name="autoMapper">Automapper</param>
+        /// <param name="autoMapper">AutoMapper</param>
         /// <param name="memoryCache">Memory Caching</param>
         /// <param name="redisService">Redis Caching</param>
         /// <param name="logger">Logging Service</param>
