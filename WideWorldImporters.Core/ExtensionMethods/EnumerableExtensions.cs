@@ -19,11 +19,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// Converts an IEnumerable to its CSV representation
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        /// <param name="ienumerableList">IEnumerable of Type T to convert to CSV</param>
+        /// <param name="list">IEnumerable of Type T to convert to CSV</param>
         /// <returns></returns>
-        public static string ToCsv<T>(this IEnumerable<T> ienumerableList)
+        public static string ToCsv<T>(this IEnumerable<T> list)
         {
-            return ienumerableList.ToCsv();
+            return list.ToCsv();
         }
 
         /// <summary>

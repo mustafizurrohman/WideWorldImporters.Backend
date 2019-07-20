@@ -128,10 +128,10 @@ namespace WideWorldImporters.API.Controllers
         {
             if (number <= 0)
                 throw new ArgumentException(number + " must be positive!");
-            else if (number % 2 == 0)
+            if (number % 2 == 0)
                 throw new ArgumentException(number + " must be odd!");
-            else
-                throw new ArgumentException(number + " must be even!");
+            
+            throw new ArgumentException(number + " must be even!");
         }
 
         /// <summary>

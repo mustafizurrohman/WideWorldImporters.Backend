@@ -37,7 +37,7 @@ namespace WideWorldImporters.Core.Helpers
         public static int Next(int max)
         {
             byte[] data = new byte[4];
-            Int32[] result = new Int32[1];
+            int[] result = new int[1];
 
             RandomNumberGenerator.GetBytes(data);
             Buffer.BlockCopy(data, 0, result, 0, 4);

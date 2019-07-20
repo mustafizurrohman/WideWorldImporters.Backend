@@ -7,7 +7,7 @@
         <member name="T:WideWorldImporters.Core.AutoMapper.MappingProfile">
             <summary>
             AutoMapper profiles
-            Add the automapper profiles here
+            Add the AutoMapper profiles here
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime">
@@ -26,11 +26,11 @@
             <summary>
             Constructor
             </summary>
-            <param name="lifetime">LIfetime attribute</param>
+            <param name="lifetime">Lifetime attribute</param>
         </member>
         <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.GetLifetime">
             <summary>
-            Gets the lifetime of current attribute
+            Gets the Lifetime of current attribute
             </summary>
             <returns></returns>
         </member>
@@ -39,17 +39,17 @@
             Implementation of redis caching service (Singleton)
             </summary>
         </member>
-        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._redisCache">
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService.RedisCache">
             <summary>
             Instance of redis
             </summary>
         </member>
-        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._jsonSerializerSettings">
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService.JsonSerializerSettings">
             <summary>
             JSON Serializer settings
             </summary>
         </member>
-        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService._storedKeys">
+        <member name="P:WideWorldImporters.Core.CoreServices.Implementation.RedisService.StoredKeys">
             <summary>
             List of keys
             </summary>
@@ -86,7 +86,7 @@
         </member>
         <member name="M:WideWorldImporters.Core.CoreServices.Implementation.RedisService.DeleteAsync(System.String)">
             <summary>
-            Deletes a specified redis key asynchronisly
+            Deletes a specified redis key asynchronously
             </summary>
             <param name="key">Key to delete</param>
             <returns></returns>
@@ -128,7 +128,7 @@
         </member>
         <member name="M:WideWorldImporters.Core.CoreServices.Interfaces.IRedisService.DeleteAsync(System.String)">
             <summary>
-            Deletes a specified redis key asynchronisly
+            Deletes a specified redis key asynchronously
             </summary>
             <param name="key">Key to delete</param>
             <returns></returns>
@@ -335,7 +335,7 @@
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions.GetCalenderWeek(System.DateTime,System.DayOfWeek)">
             <summary>
-            Returns the Calenderweek of the provided instance of datetime
+            Returns the Calender Week of the provided instance of datetime
             </summary>
             <param name="dateTime">Instance of Datetime</param>
             <param name="startingDay">Starting day of week (default is Monday, German standard)</param>
@@ -364,7 +364,7 @@
             Converts an IEnumerable to its CSV representation
             </summary>
             <typeparam name="T">Type</typeparam>
-            <param name="ienumerableList">IEnumerable of Type T to convert to CSV</param>
+            <param name="list">IEnumerable of Type T to convert to CSV</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
@@ -472,7 +472,7 @@
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.DeepCloneObject(System.Object)">
             <summary>
-            Deepclone an Object
+            Deep clone an Object
             TODO: Debug and verify
             </summary>
             <param name="sourceObject">Object to clone</param>

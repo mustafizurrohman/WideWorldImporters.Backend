@@ -57,7 +57,7 @@
         </member>
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AutoMapper">
             <summary>
-            Automapper
+            AutoMapper
             </summary>
         </member>
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.MemoryCache">

@@ -9,13 +9,13 @@ namespace WideWorldImporters.Middleware.Base
 {
 
     /// <summary>
-    /// Base Middleware- All Middlewares inherit this
+    /// Base Middleware- All Middleware inherit this
     /// </summary>
     public abstract class BaseMiddleware
     {
 
         /// <summary>
-        /// Request delagate
+        /// Request delegate
         /// </summary>
         public RequestDelegate Next { get; }
 

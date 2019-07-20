@@ -34,7 +34,7 @@ namespace WideWorldImporters.Core.CoreServices.Interfaces
         bool Exist(string key);
 
         /// <summary>
-        /// Deletes a specified redis key asynchronisly
+        /// Deletes a specified redis key asynchronously
         /// </summary>
         /// <param name="key">Key to delete</param>
         /// <returns></returns>

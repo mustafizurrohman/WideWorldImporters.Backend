@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WideWorldImporters.API.ActionFilters
 {
@@ -30,17 +27,16 @@ namespace WideWorldImporters.API.ActionFilters
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            // Check if model state is invalid
-            if (!context.ModelState.IsValid)
-            {
-                var modelErrors = context.ModelState
-                    .ToDictionary(
-                        key => key.Key,
-                        detail => detail.Value.Errors.Select(err => err.Exception.Message).ToList()
-                    ).ToList();
+            // If the model state is valid then just return
+            if (context.ModelState.IsValid) return;
 
-                context.Result = new BadRequestObjectResult(modelErrors);
-            }
+            var modelErrors = context.ModelState
+                .ToDictionary(
+                    key => key.Key,
+                    detail => detail.Value.Errors.Select(err => err.Exception.Message).ToList()
+                ).ToList();
+
+            context.Result = new BadRequestObjectResult(modelErrors);
         }
 
     }

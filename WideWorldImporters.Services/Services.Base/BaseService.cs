@@ -27,7 +27,7 @@ namespace WideWorldImporters.Services.Services.Base
         protected WideWorldImportersContext DbContext { get; }
 
         /// <summary>
-        /// Automapper
+        /// AutoMapper
         /// </summary>
         protected IMapper AutoMapper { get; }
 
@@ -50,7 +50,7 @@ namespace WideWorldImporters.Services.Services.Base
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
-        public BaseService(ApplicationServices applicationServices)
+        protected BaseService(ApplicationServices applicationServices)
         {
             AppServices = applicationServices;
 

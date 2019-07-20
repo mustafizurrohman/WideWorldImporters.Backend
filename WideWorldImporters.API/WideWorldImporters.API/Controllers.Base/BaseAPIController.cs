@@ -22,6 +22,7 @@ namespace WideWorldImporters.API.Controllers.Base
     [Benchmark]
     [ApiController]
     [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
+    // ReSharper disable once InconsistentNaming
     public class BaseAPIController : ControllerBase
     {
 
@@ -38,7 +39,7 @@ namespace WideWorldImporters.API.Controllers.Base
         protected WideWorldImportersContext DbContext { get; }
 
         /// <summary>
-        /// Automapper
+        /// AutoMapper
         /// </summary>
         protected IMapper AutoMapper { get; }
 

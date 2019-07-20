@@ -20,17 +20,17 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         /// <summary>
         /// Instance of redis
         /// </summary>
-        private IDistributedCache _redisCache { get; }
+        private IDistributedCache RedisCache { get; }
 
         /// <summary>
         /// JSON Serializer settings
         /// </summary>
-        private JsonSerializerSettings _jsonSerializerSettings { get; }
+        private JsonSerializerSettings JsonSerializerSettings { get; }
 
         /// <summary>
         /// List of keys
         /// </summary>
-        private List<string> _storedKeys { get; set; }
+        private List<string> StoredKeys { get; set; }
 
         /// <summary>
         /// Constructor
@@ -38,14 +38,14 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         /// <param name="distributedCache">Distributed caching (Redis)</param>
         public RedisService(IDistributedCache distributedCache)
         {
-            _redisCache = distributedCache;
+            RedisCache = distributedCache;
 
-            _jsonSerializerSettings = new JsonSerializerSettings
+            JsonSerializerSettings = new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
 
-            _storedKeys = new List<string>();
+            StoredKeys = new List<string>();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         /// <returns></returns>
         public async Task SetAsync<T>(string key, T value)
         {
-            await _redisCache.SetStringAsync(key, JsonConvert.SerializeObject(value, _jsonSerializerSettings));
+            await RedisCache.SetStringAsync(key, JsonConvert.SerializeObject(value, JsonSerializerSettings));
             ManageKeys(key);
         }
 
@@ -69,10 +69,10 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         /// <returns></returns>
         public async Task<T> GetAsync<T>(string key)
         {
-            var value = await _redisCache.GetStringAsync(key);
+            var value = await RedisCache.GetStringAsync(key);
             return value == null
                     ? default
-                    : JsonConvert.DeserializeObject<T>(value, _jsonSerializerSettings);
+                    : JsonConvert.DeserializeObject<T>(value, JsonSerializerSettings);
         }
 
         /// <summary>
@@ -84,17 +84,17 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         {
             // var value = await _redisCache.GetStringAsync(key);
             // return value != null;
-            return _storedKeys.Contains(key);
+            return StoredKeys.Contains(key);
         }
 
         /// <summary>
-        /// Deletes a specified redis key asynchronisly
+        /// Deletes a specified redis key asynchronously
         /// </summary>
         /// <param name="key">Key to delete</param>
         /// <returns></returns>
         public async Task DeleteAsync(string key)
         {
-            await _redisCache.RemoveAsync(key);
+            await RedisCache.RemoveAsync(key);
             ManageKeys(key, true);
         }
 
@@ -124,21 +124,21 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
         {
             if (delete)
             {
-                if (_storedKeys.Contains(key))
+                if (StoredKeys.Contains(key))
                 {
-                    _storedKeys.Remove(key);
+                    StoredKeys.Remove(key);
                 }
 
                 return;
             }
 
-            _storedKeys.Add(key);
-            _storedKeys = _storedKeys.Distinct().ToList();
+            StoredKeys.Add(key);
+            StoredKeys = StoredKeys.Distinct().ToList();
         }
 
         private List<string> GetKeys()
         {
-            return _storedKeys;
+            return StoredKeys;
         }
 
         #endregion

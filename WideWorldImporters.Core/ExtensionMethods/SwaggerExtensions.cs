@@ -25,26 +25,26 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(info.Version, new Info
+                c.SwaggerDoc(info?.Version, new Info
                 {
-                    Version = info.Version,
-                    Title = info.Title,
-                    Description = info.Description,
-                    TermsOfService = info.TermsOfService,
+                    Version = info?.Version,
+                    Title = info?.Title,
+                    Description = info?.Description,
+                    TermsOfService = info?.TermsOfService,
                     Contact = new Contact()
                     {
-                        Name = info.Contact.Name,
-                        Email = info.Contact.Email,
-                        Url = info.Contact.Url
+                        Name = info?.Contact.Name,
+                        Email = info?.Contact.Email,
+                        Url = info?.Contact.Url
                     }
                 });
 
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme
                 {
-                    Description = apiKeyScheme.Description,
-                    Name = apiKeyScheme.Name,
-                    In = apiKeyScheme.In,
-                    Type = apiKeyScheme.Type
+                    Description = apiKeyScheme?.Description,
+                    Name = apiKeyScheme?.Name,
+                    In = apiKeyScheme?.In,
+                    Type = apiKeyScheme?.Type
                 });
 
 
@@ -67,7 +67,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/" + info.Version + "/swagger.json", info.Title + " v" + info.Version);
+                c.SwaggerEndpoint("/swagger/" + info?.Version + "/swagger.json", info?.Title + " v" + info?.Version);
             });
 
             return app;

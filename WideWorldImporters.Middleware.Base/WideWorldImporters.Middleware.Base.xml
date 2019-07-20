@@ -6,12 +6,12 @@
     <members>
         <member name="T:WideWorldImporters.Middleware.Base.BaseMiddleware">
             <summary>
-            Base Middleware- All Middlewares inherit this
+            Base Middleware- All Middleware inherit this
             </summary>
         </member>
         <member name="P:WideWorldImporters.Middleware.Base.BaseMiddleware.Next">
             <summary>
-            Request delagate
+            Request delegate
             </summary>
         </member>
         <member name="F:WideWorldImporters.Middleware.Base.BaseMiddleware._serviceProvider">

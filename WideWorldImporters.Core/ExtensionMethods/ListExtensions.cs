@@ -29,7 +29,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
             var destination = source.DeepCloneObject() as IList<T>;
 
-            var length = destination.Count();
+            var length = destination?.Count() ?? 0;
 
             for (var currentIndex = 0; currentIndex < length; currentIndex++)
             {
@@ -57,6 +57,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             Type t = list[0].GetType();
             string newLine = Environment.NewLine;
 
+            // ReSharper disable once ConvertToUsingDeclaration
             using (var sw = new StringWriter())
             {
                 // Make a new instance of the class name we figured out to get its props
@@ -78,12 +79,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
                 sw.Write(headerToWrite);
                 sw.Write(newLine);
 
-                // This acts as datarow
+                // This acts as data row
                 foreach (T item in list)
                 {
                     string stringToWrite = String.Empty;
 
-                    // This acts as datacolumn
+                    // This acts as data column
                     foreach (PropertyInfo pi in objectProperties)
                     {
                         // This is the row+col intersection (the value)

@@ -127,7 +127,7 @@
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AutoMapper">
             <summary>
-            Automapper
+            AutoMapper
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.MemoryCache">

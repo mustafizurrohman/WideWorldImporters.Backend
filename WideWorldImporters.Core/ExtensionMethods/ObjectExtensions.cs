@@ -10,7 +10,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
     {
 
         /// <summary>
-        /// Deepclone an Object
+        /// Deep clone an Object
         /// TODO: Debug and verify
         /// </summary>
         /// <param name="sourceObject">Object to clone</param>

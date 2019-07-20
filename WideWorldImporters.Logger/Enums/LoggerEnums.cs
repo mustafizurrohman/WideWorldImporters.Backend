@@ -8,7 +8,7 @@
         /// <summary>
         /// Console Logger
         /// </summary>
-        public static readonly string ConsoleLogger = "ConsoleLoger";
+        public static readonly string ConsoleLogger = "ConsoleLogger";
 
         /// <summary>
         /// File Logger

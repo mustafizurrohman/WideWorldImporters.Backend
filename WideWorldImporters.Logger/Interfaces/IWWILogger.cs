@@ -6,6 +6,7 @@ namespace WideWorldImporters.Logger.Interfaces
     /// <summary>
     /// Logging interface for application
     /// </summary>
+    // ReSharper disable once InconsistentNaming
     public interface IWWILogger
     {
         /// <summary>

@@ -5,9 +5,9 @@ namespace WideWorldImporters.Core.AutoMapper
 
     /// <summary>
     /// AutoMapper profiles
-    /// Add the automapper profiles here
+    /// Add the AutoMapper profiles here
     /// </summary>
-    class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
 
     }

@@ -210,7 +210,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         }
 
         /// <summary>
-        /// Returns the Calenderweek of the provided instance of datetime
+        /// Returns the Calender Week of the provided instance of datetime
         /// </summary>
         /// <param name="dateTime">Instance of Datetime</param>
         /// <param name="startingDay">Starting day of week (default is Monday, German standard)</param>

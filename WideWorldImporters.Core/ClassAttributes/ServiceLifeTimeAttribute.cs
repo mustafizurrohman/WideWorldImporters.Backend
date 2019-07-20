@@ -21,14 +21,14 @@ namespace WideWorldImporters.Core.ClassAttributes
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="lifetime">LIfetime attribute</param>
+        /// <param name="lifetime">Lifetime attribute</param>
         public ServiceLifeTime(Lifetime lifetime)
         {
             _lifetime = lifetime;
         }
 
         /// <summary>
-        /// Gets the lifetime of current attribute
+        /// Gets the Lifetime of current attribute
         /// </summary>
         /// <returns></returns>
         public Lifetime GetLifetime()
