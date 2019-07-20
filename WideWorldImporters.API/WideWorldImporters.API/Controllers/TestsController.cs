@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Hangfire;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Core.Helpers;
-using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Core.ExtensionMethods;
@@ -32,7 +29,7 @@ namespace WideWorldImporters.API.Controllers
         public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
             : base(applicationServices)
         {
-            this._sampleService = sampleService;
+            _sampleService = sampleService;
         }
         
 
@@ -77,7 +74,7 @@ namespace WideWorldImporters.API.Controllers
         [Produces("application/json")]
         public IActionResult GetDataAsync()
         {
-            DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
+            // DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
 
             var data = DbContext.VehicleTemperatures.Take(1000);
             
@@ -129,16 +126,17 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("exceptionLogging")]
         public IActionResult ExceptionLoggingTest(int number)
         {
-            if (number <= 0)
-                throw new ArgumentException(number + " must be positive!");
             if (number % 2 == 0)
-                throw new ArgumentException(number + " must be odd!");
-            
-            throw new ArgumentException(number + " must be even!");
+                throw new ArgumentException("Expected a odd number. " + number + " is even!");
+            if (number %2 != 0)
+                throw new ArgumentException("Expected a even number. " + number + " is odd!");
+
+            throw new ArgumentException("Expected a positive number. " + number + " is negative!");
+
         }
 
         /// <summary>
-        /// Tests if exceptions are logged properly
+        /// Array partitioning
         /// </summary>
         /// <returns></returns>
         [HttpGet("partition")]
@@ -149,18 +147,18 @@ namespace WideWorldImporters.API.Controllers
 
             IEnumerable<IEnumerable<int>> partition = list.ToList().Partition();
 
-            var partition2 = list.ToList().Partition().Partition().Partition().Partition();
+            // var partition2 = list.ToList().Partition().Partition().Partition().Partition();
 
             List<List<int>> partitionList = partition
                 .Select(x => x.ToList())
                 .ToList();
 
 
-            return Ok(partition2);
+            return Ok(partitionList);
         }
 
         /// <summary>
-        /// Tests if exceptions are logged properly
+        /// IEnumerable shuffling
         /// </summary>
         /// <returns></returns>
         [HttpGet("shuffle")]
@@ -184,7 +182,7 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         /// <summary>

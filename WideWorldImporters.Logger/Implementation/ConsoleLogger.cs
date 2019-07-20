@@ -55,7 +55,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            Console.WriteLine(DateTimeStamp + "ERROR " + exception.ToString() + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "ERROR " + exception + Environment.NewLine);
         }
 
         /// <summary>

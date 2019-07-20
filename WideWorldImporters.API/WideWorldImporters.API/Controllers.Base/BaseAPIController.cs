@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
-using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -79,7 +78,7 @@ namespace WideWorldImporters.API.Controllers.Base
 
         #endregion
 
-        #region -- Utility Functions --
+        #region -- Utility Non-Action Functions --
 
         /// <summary>
         /// Logs a message

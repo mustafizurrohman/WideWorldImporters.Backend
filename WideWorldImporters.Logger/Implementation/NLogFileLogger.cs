@@ -72,7 +72,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            Logger.Error(exception.ToString() + Environment.NewLine);
+            Logger.Error(exception + Environment.NewLine);
         }
     }
 }

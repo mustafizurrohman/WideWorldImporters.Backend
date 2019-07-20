@@ -20,8 +20,8 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="fileLogger">File Logger</param>
         public AppLoggers(ConsoleLogger consoleLogger, NLogFileLogger fileLogger)
         {
-            this._consoleLogger = consoleLogger;
-            this._fileLogger = fileLogger;
+            _consoleLogger = consoleLogger;
+            _fileLogger = fileLogger;
         }
 
         /// <summary>

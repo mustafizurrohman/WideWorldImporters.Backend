@@ -39,7 +39,7 @@ namespace WideWorldImporters.Tests.ServiceUnitTests
         {
             var randomInt = IntHelpers.GetRandomNumber(100);
 
-            await _redisService.SetAsync<int>(RedisKeys.Default, randomInt);
+            await _redisService.SetAsync(RedisKeys.Default, randomInt);
 
             Assert.True(_redisService.Exist(RedisKeys.Default));
         }
@@ -59,7 +59,7 @@ namespace WideWorldImporters.Tests.ServiceUnitTests
 
             foreach (var randomKey in randomKeys)
             {
-                await _redisService.SetAsync<string>(randomKey, StringHelpers.GetRandomString());
+                await _redisService.SetAsync(randomKey, StringHelpers.GetRandomString());
             }
 
             randomKeys = randomKeys.Shuffle().ToList();

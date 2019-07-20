@@ -63,7 +63,7 @@ namespace WideWorldImporters.Core.Helpers
             var randomNumber = Next(max);
 
             // Map (0 to max) to (min to max)
-            var ratio = ((decimal)max - (decimal)min) / (decimal)max;
+            var ratio = (max - (decimal)min) / max;
 
             decimal scaledNumber = min + randomNumber * ratio;
 

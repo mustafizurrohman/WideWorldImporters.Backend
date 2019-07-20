@@ -24,7 +24,7 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
                 .Distinct()
                 .ToList();
 
-            var allStrings = randomStrings.Aggregate((a, b) => a + " " + b);
+            randomStrings.Aggregate((a, b) => a + " " + b);
 
             // Assuming that 10% may be duplicates 
             Assert.True(randomStrings.Count > numberOfTests * 0.9) ;

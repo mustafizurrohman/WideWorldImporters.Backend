@@ -42,7 +42,7 @@ namespace WideWorldImporters.Services.Services
         /// <returns></returns>
         public async Task<IEnumerable<VehicleTemperatures>> GetVehicleTempsAsync()
         {
-            var vehicleTemps = DbContext.VehicleTemperatures;
+            var _ = DbContext.VehicleTemperatures;
 
             var data = await DbContext.VehicleTemperatures
                 .OrderBy(x => x.RecordedWhen)
