@@ -10,6 +10,8 @@ namespace WideWorldImporters.Logger.Implementation
     /// </summary>
     public class ConsoleLogger : IWWILogger
     {
+        // ReSharper disable once StringLiteralTypo
+        private static string DateTimeStamp => DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffff ");
 
         /// <summary>
         /// Logs a message
@@ -17,7 +19,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void Log(string message)
         {
-            Console.WriteLine(message + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "INFO " + message + Environment.NewLine);
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebug(string message)
         {
-            Console.WriteLine(message + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "DEBUG " + message + Environment.NewLine);
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogError(string message)
         {
-            Console.WriteLine(message + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "ERROR " + message + Environment.NewLine);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            Console.WriteLine(exception.ToString() + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "ERROR " + exception.ToString() + Environment.NewLine);
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug information to log</param>
         public void LogInfo(string message)
         {
-            Console.WriteLine(message + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "INFO " + message + Environment.NewLine);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarn(string message)
         {
-            Console.WriteLine(message + Environment.NewLine);
+            Console.WriteLine(DateTimeStamp + "WARN " + message + Environment.NewLine);
         }
     }
 }

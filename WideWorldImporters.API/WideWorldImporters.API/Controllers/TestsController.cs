@@ -55,13 +55,16 @@ namespace WideWorldImporters.API.Controllers
         /// <returns></returns>
         [HttpGet("Log")]
         public IActionResult LogMessage(string message)
-        {
-            // Task.Factory.StartNew(() => Log(message));
-            // Task.Run(() => { Log(message); });
+        { 
+            
+            // BackgroundJob.Enqueue(() => Logger.Log(message));
+            Logger.Log(message);
+            Logger.LogDebug(message);
+            Logger.LogError(message);
+            Logger.LogException(new Exception(message));
+            Logger.LogInfo(message);
+            Logger.LogWarn(message);
 
-            // Logger.Log(message);
-
-            BackgroundJob.Enqueue(() => Logger.Log(message));
 
             return Ok();
         }

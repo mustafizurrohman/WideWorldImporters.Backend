@@ -89,8 +89,8 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            _consoleLogger.Log(exception.ToString());
-            _fileLogger.Log(exception.ToString());
+            _consoleLogger.LogError(exception.ToString());
+            _fileLogger.LogError(exception.ToString());
         }
 
     }
