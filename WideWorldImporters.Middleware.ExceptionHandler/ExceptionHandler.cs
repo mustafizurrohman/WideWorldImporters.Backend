@@ -51,7 +51,15 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
 
             } catch (Exception ex)
             {
-                await HandleExceptionAsync(context, ex);
+                try
+                {
+                    await HandleExceptionAsync(context, ex);
+                }
+                catch (Exception loggingException)
+                {
+                    Logger.LogException(loggingException);
+                    // TODO: Inform dev ops team about this
+                }
             }
         }
 
