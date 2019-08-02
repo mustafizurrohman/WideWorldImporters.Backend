@@ -18,6 +18,16 @@ namespace WideWorldImporters.Services.Interfaces
         Task<Users> AddUserAsync(string username, string password, string email);
 
         /// <summary>
+        /// Adds an user with role
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="email"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        Task<Users> AddUserAndRoleAsync(string username, string password, string email, string role);
+
+        /// <summary>
         /// Adds a role
         /// </summary>
         /// <param name="role"></param>

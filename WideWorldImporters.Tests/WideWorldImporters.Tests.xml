@@ -15,6 +15,16 @@
             </summary>
             <param name="number"></param>
         </member>
+        <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests.TestIfStringHasSpecialCharacters">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Tests.HelpersUnitTest.IntHelperUnitTests">
             <summary>
             Unit-tests for IntHelper

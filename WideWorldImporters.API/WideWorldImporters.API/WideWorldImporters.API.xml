@@ -125,6 +125,24 @@
             <param name="email"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUserWithRole(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddRole(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="role"></param>
+            <param name="isAdmin"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis

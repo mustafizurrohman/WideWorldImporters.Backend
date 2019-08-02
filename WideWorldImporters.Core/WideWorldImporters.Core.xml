@@ -515,6 +515,7 @@
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.ContainsSpecialCharacters(System.String)">
+            TODO: Optimize this
             <summary>
             Returns true of the provided string represents an email. Otherwise false.
             Does not actually verify the email. 

@@ -208,7 +208,9 @@ namespace WideWorldImporters.API
                 options.MaxModelValidationErrors = int.MaxValue;
                 options.MaxValidationDepth = 100;
 
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
 
             #endregion
 

@@ -62,8 +62,50 @@ namespace WideWorldImporters.API.Controllers
                 Logger.Log(ex);
                 return BadRequest(ex.Message);
             }
+        }
 
-            
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="email"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        [HttpPost("users/role")]
+        public async Task<IActionResult> AddUserWithRole(string username, string password, string email, string role)
+        {
+            try
+            {
+                var newUser = await _authenticationService.AddUserAndRoleAsync(username, password, email, role);
+                return Ok(newUser);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="role"></param>
+        /// <param name="isAdmin"></param>
+        /// <returns></returns>
+        [HttpPost("role")]
+        public async Task<IActionResult> AddRole(string role, bool isAdmin)
+        {
+            try
+            {
+                var newRole = await _authenticationService.AddRole(role, isAdmin);
+                return Ok(newRole);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                return BadRequest(ex.Message);
+            }
         }
 
     }

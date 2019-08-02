@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
+using CryptoHelper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using WideWorldImporters.AuthenticationProvider.Database;
@@ -48,6 +50,20 @@ namespace WideWorldImporters.Services.Services
                 throw new ArgumentException("Username must be provided.");
             }
 
+            var emailExists = await AuthDbContext.Users.FirstOrDefaultAsync(usr => usr.Email == email);
+
+            if (emailExists != null)
+            {
+                throw new ArgumentException("A user with that Email ID already exists.");
+            }
+
+            var userExists = await AuthDbContext.Users.FirstOrDefaultAsync(usr => usr.Username == username);
+
+            if (userExists != null)
+            {
+                throw new ArgumentException("User with that name already exists.");
+            }
+
             
             if (!password.IsValidPassword())
             {
@@ -66,7 +82,7 @@ namespace WideWorldImporters.Services.Services
                 Email = email,
                 Username = username,
                 UsersRoles = null, 
-                PasswordHash = password
+                PasswordHash = Crypto.HashPassword(password)
             };
 
             await AuthDbContext.AddAsync(newUser);
@@ -87,7 +103,7 @@ namespace WideWorldImporters.Services.Services
         public async Task<Roles> AddRole(string role, bool isAdmin)
         {
             var existingRole = await AuthDbContext.Roles
-                .SingleAsync(r => r.Role == role);
+                .FirstOrDefaultAsync(r => r.Role == role);
 
             if (existingRole != null)
             {
@@ -101,12 +117,48 @@ namespace WideWorldImporters.Services.Services
                 IsAdmin = isAdmin
             };
 
-            await AuthDbContext.AddAsync(role);
+            await AuthDbContext.AddAsync(newRole);
             await AuthDbContext.SaveChangesAsync();
 
             var addedRole = await AuthDbContext.Roles.SingleAsync(r => r.Role == role);
 
             return addedRole;
+        }
+
+        /// <summary>
+        /// Adds an user with role
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="email"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public async Task<Users> AddUserAndRoleAsync(string username, string password, string email, string role)
+        {
+            var user = await AddUserAsync(username, password, email);
+
+            var dbRole = await AuthDbContext.Roles.FirstOrDefaultAsync(r => r.Role == role);
+
+            if (dbRole == null)
+            {
+                throw new  ArgumentException("Invalid role");
+            }
+
+            var newUserRole = new UsersRoles()
+            {
+                UsersRoleId = Guid.NewGuid(),
+                UserId = user.UserId,
+                RoleId = dbRole.RoleId
+            };
+
+            await AuthDbContext.AddAsync(newUserRole);
+            await AuthDbContext.SaveChangesAsync();
+
+            var newUser = await AuthDbContext.Users.Include(usr => usr.UsersRoles)
+                .Where(usr => usr.UserId == user.UserId)
+                .SingleAsync();
+
+            return newUser;
         }
     }
 }

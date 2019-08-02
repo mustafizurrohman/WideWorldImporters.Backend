@@ -53,6 +53,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return containsUppercase && containsLowercase && containsDigit && containsSpecialChars;
         }
 
+        /// TODO: Optimize this
         /// <summary>
         /// Returns true of the provided string represents an email. Otherwise false.
         /// Does not actually verify the email. 
@@ -61,11 +62,21 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static bool ContainsSpecialCharacters(this string password)
         {
+            /*
             string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
             var regularExpression = new Regex(specialChar);
-            bool containsSpecialChar = regularExpression.IsMatch(password);
+            bool containsSpecialChar = Regex.IsMatch(password, specialChar, RegexOptions.IgnoreCase);
+            */
 
-            return containsSpecialChar;
+            foreach (char c in password)
+            {
+                if (!char.IsLetterOrDigit(c))
+                {
+                    return true;
+                }
+            }
+            
+            return false;
         }
 
     }

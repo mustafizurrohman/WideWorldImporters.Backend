@@ -67,6 +67,16 @@
             <param name="email"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with role
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddRole(System.String,System.Boolean)">
             <summary>
             Adds a role
@@ -222,6 +232,16 @@
             </summary>
             <param name="role"></param>
             <param name="isAdmin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with role
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <param name="role"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
