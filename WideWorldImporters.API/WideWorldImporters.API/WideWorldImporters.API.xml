@@ -55,6 +55,11 @@
             Application Database context
             </summary>
         </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
+            </summary>
+        </member>
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AutoMapper">
             <summary>
             AutoMapper

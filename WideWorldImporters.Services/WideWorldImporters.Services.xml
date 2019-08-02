@@ -80,6 +80,11 @@
             Application Database context
             </summary>
         </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
+            </summary>
+        </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AutoMapper">
             <summary>
             AutoMapper 
@@ -100,7 +105,7 @@
             Logging service
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers)">
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers,WideWorldImporters.AuthenticationProvider.Database.AuthenticationProviderContext)">
             <summary>
             Constructor
             </summary>
@@ -109,6 +114,7 @@
             <param name="memoryCache">Memory Caching</param>
             <param name="redisService">Redis Caching</param>
             <param name="logger">Logging Service</param>
+            <param name="authDbContext">Authorization Database Context</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>
@@ -123,6 +129,11 @@
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.DbContext">
             <summary>
             Application Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AutoMapper">

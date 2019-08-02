@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using NLog;
 using Swashbuckle.AspNetCore.Swagger;
+using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
@@ -76,6 +77,11 @@ namespace WideWorldImporters.API
             services.AddDbContext<WideWorldImportersContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WideWorldDb"));
+            });
+
+            services.AddDbContext<AuthenticationProviderContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AuthenticationDb"));
             });
 
             #endregion
