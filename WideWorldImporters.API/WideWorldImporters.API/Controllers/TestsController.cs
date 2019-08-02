@@ -4,11 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Core.ExtensionMethods;
+using WideWorldImporters.Logger.Implementation;
+using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -20,18 +24,34 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
+        private readonly IJmb _jmb;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService, IJmb jmb) 
             : base(applicationServices)
         {
             _sampleService = sampleService;
+            _jmb = jmb;
+            AppLoggers logger = new AppLoggers(new ConsoleLogger(), new NLogFileLogger());
         }
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        [HttpGet("John")]
+        public IActionResult JohnAsync(string msg)
+        {
+            string hello = _jmb.HelloWorld(msg);
+                
+            return Ok(hello);
+
+        }
 
         /// <summary>
         /// Test

@@ -80,15 +80,15 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             {
                 // Handle Exception in development mode
                 // Do no make the user wait for the logging to finish. Do it in background.
-                // Task.Factory.StartNew(() => Logger.Log(ex));
-                BackgroundJob.Enqueue(() => Logger.Log(ex));
+                Task.Factory.StartNew(() => Logger.Log(ex));
+                // BackgroundJob.Enqueue(() => Logger.Log(ex));
 
             } else
             {
                 // Handle Exception when not in development mode (Staging or Production)
                 // Do no make the user wait for the logging to finish. Do it in background.
-                // Task.Factory.StartNew(() => Logger.LogException(ex));
-                BackgroundJob.Enqueue(() => Logger.LogException(ex));
+                Task.Factory.StartNew(() => Logger.LogException(ex));
+                // BackgroundJob.Enqueue(() => Logger.LogException(ex));
             }
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

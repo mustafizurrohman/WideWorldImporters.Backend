@@ -25,6 +25,8 @@ using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
+using WideWorldImporters.Services.Interfaces;
+using WideWorldImporters.Services.Services;
 
 namespace WideWorldImporters.API
 {
@@ -141,13 +143,14 @@ namespace WideWorldImporters.API
             #region -- Service Configuration --
 
             services.RegisterServices();
+            services.AddTransient<IJmb, Jmb>();
 
             services.AddOData();
 
             #endregion
 
             #region -- Hangfire Configuration
-
+            
             // Add Hangfire services.
             services.AddHangfire(configuration => configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
@@ -165,7 +168,7 @@ namespace WideWorldImporters.API
 
             // Add the processing server as IHostedService
             services.AddHangfireServer();
-
+            
             #endregion
 
             #region -- Logger Configuration --
