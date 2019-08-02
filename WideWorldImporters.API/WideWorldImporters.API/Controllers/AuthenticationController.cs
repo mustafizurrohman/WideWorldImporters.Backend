@@ -133,7 +133,8 @@ namespace WideWorldImporters.API.Controllers
             }
             catch (ArgumentException ex)
             {
-                return Unauthorized(ex.Message);
+                Logger.LogError("Authentication failed for '" + username + "'. " + Environment.NewLine + ex);
+                return Unauthorized("Invalid username or password");
             }
         }
 

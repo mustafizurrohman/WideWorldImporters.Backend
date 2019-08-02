@@ -182,9 +182,9 @@ namespace WideWorldImporters.Services.Services
                 .Include(usr => usr.UsersRoles)
                 .FirstOrDefaultAsync(usr => usr.Username == username);
 
-            if (username == null)
+            if (user == null)
             {
-                throw new ArgumentException("Invalid username");
+                throw new ArgumentException("Invalid username.");
             }
 
             bool validPassword = Crypto.VerifyHashedPassword(user.PasswordHash, password);
