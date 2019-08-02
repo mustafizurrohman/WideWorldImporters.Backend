@@ -98,6 +98,33 @@
             </summary>
             <param name="ex"></param>
         </member>
+        <member name="T:WideWorldImporters.API.Controllers.AuthenticationController">
+            <summary>
+            Controller for Authentication
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.IAuthenticationService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationServices"></param>
+            <param name="authenticationService"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetUsers">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUser(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis

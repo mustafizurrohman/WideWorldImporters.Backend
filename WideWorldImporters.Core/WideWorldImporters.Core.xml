@@ -493,6 +493,35 @@
             <param name="obj2"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.StringExtensions">
+            <summary>
+            Extension methods for string
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.IsValidEmail(System.String)">
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.IsValidPassword(System.String)">
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.ContainsSpecialCharacters(System.String)">
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
             <summary>
             Extensions for Swagger

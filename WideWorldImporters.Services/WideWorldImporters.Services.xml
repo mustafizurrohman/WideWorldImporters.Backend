@@ -53,6 +53,28 @@
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Services.Interfaces.IAuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAsync(System.String,System.String,System.String)">
+            <summary>
+            Adds an user
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddRole(System.String,System.Boolean)">
+            <summary>
+            Adds a role
+            </summary>
+            <param name="role"></param>
+            <param name="isAdmin"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Interface for Sample Service for Testing
@@ -173,6 +195,34 @@
             Logs a message
             </summary>
             <param name="ex"></param>
+        </member>
+        <member name="T:WideWorldImporters.Services.Services.AuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
+            <summary>
+            
+            </summary>
+            <param name="applicationServices"></param>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAsync(System.String,System.String,System.String)">
+            <summary>
+            Adds an user
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddRole(System.String,System.Boolean)">
+            <summary>
+            Adds a role
+            </summary>
+            <param name="role"></param>
+            <param name="isAdmin"></param>
+            <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>
