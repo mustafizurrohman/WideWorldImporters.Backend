@@ -623,6 +623,21 @@
             Describes the lifetime of the service
             </summary>
         </member>
+        <member name="T:WideWorldImporters.Core.Options.JWTKeySettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.ExpireInDays">
+            <summary>
+            Expiry in days
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.SigningKey">
+            <summary>
+            Signing key
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.Options.PerformanceOptions">
             <summary>
             PerformanceOptions

@@ -85,6 +85,14 @@
             <param name="isAdmin"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Interface for Sample Service for Testing
@@ -211,11 +219,12 @@
             
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptions{WideWorldImporters.Core.Options.JWTKeySettings})">
             <summary>
             
             </summary>
             <param name="applicationServices"></param>
+            <param name="jwtOptions"></param>
         </member>
         <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAsync(System.String,System.String,System.String)">
             <summary>
@@ -242,6 +251,14 @@
             <param name="password"></param>
             <param name="email"></param>
             <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">

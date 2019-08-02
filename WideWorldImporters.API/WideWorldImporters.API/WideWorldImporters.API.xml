@@ -143,6 +143,18 @@
             <param name="isAdmin"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetRoles">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetJwtToken(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis

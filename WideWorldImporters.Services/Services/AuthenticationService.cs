@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
 using CryptoHelper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
+using WideWorldImporters.Core.Options;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Services.Services.Base;
@@ -23,12 +28,16 @@ namespace WideWorldImporters.Services.Services
     [ServiceLifeTime(ServiceLifetime.Lifetime.Transient)]
     public class AuthenticationService : BaseService, IAuthenticationService
     {
+        private JWTKeySettings JwtOptions { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="applicationServices"></param>
-        public AuthenticationService(ApplicationServices applicationServices) : base(applicationServices)
+        /// <param name="jwtOptions"></param>
+        public AuthenticationService(ApplicationServices applicationServices, IOptions<JWTKeySettings> jwtOptions) : base(applicationServices)
         {
+            JwtOptions = jwtOptions.Value;
         }
 
         /// <summary>
@@ -159,6 +168,65 @@ namespace WideWorldImporters.Services.Services
                 .SingleAsync();
 
             return newUser;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public async Task<string> AuthenticateUserAsync(string username, string password)
+        {
+            Users user = await AuthDbContext.Users
+                .Include(usr => usr.UsersRoles)
+                .FirstOrDefaultAsync(usr => usr.Username == username);
+
+            if (username == null)
+            {
+                throw new ArgumentException("Invalid username");
+            }
+
+            bool validPassword = Crypto.VerifyHashedPassword(user.PasswordHash, password);
+
+            if (!validPassword)
+            {
+                throw new ArgumentException("Invalid password.");
+            }
+
+            
+            List<Guid> userRolesIds = user.UsersRoles.Select(x => x.RoleId).ToList();
+
+            var userRoles = await AuthDbContext.Roles
+                .Where(r => userRolesIds.Contains(r.RoleId))
+                .ToListAsync();
+
+            List<Claim> claimList = userRoles.Select(r => r.Role)
+                .Select(currentRole => new Claim(ClaimTypes.Role, currentRole))
+                .ToList();
+
+            Claim name = new Claim(ClaimTypes.Name, user.Username);
+            claimList.Add(name);
+
+            Claim email = new Claim(ClaimTypes.Email, user.Email);
+            claimList.Add(email);
+            SigningCredentials signingCredentials = new SigningCredentials(new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(JwtOptions.SigningKey)), 
+                SecurityAlgorithms.HmacSha256Signature);
+
+            SecurityTokenDescriptor securityTokenDescriptor = new SecurityTokenDescriptor()
+            {
+                Subject = new ClaimsIdentity(claimList),
+                Expires = DateTime.Now.Add(TimeSpan.FromDays(JwtOptions.ExpireInDays)),
+                SigningCredentials = signingCredentials
+            };
+
+            JwtSecurityTokenHandler jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken securityToken = jwtSecurityTokenHandler.CreateJwtSecurityToken(securityTokenDescriptor);
+            string token = jwtSecurityTokenHandler.WriteToken(securityToken);
+
+            return token;
+
         }
     }
 }

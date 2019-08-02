@@ -62,7 +62,9 @@ namespace WideWorldImporters.API
         {
 
             Configuration.GetSection("PerformanceOptions").Bind(_performanceOptions);
-    
+
+            services.Configure<JWTKeySettings>(Configuration.GetSection("JWTKeySettings"));
+
             #region -- Swagger Configuration --
 
             Configuration.GetSection("Swagger").Bind(_info);

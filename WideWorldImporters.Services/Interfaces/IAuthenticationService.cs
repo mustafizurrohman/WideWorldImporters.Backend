@@ -34,5 +34,13 @@ namespace WideWorldImporters.Services.Interfaces
         /// <param name="isAdmin"></param>
         /// <returns></returns>
         Task<Roles> AddRole(string role, bool isAdmin);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        Task<string> AuthenticateUserAsync(string username, string password);
     }
 }

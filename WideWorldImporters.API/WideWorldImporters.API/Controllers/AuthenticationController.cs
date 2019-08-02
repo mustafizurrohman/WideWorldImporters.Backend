@@ -108,5 +108,34 @@ namespace WideWorldImporters.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetRoles()
+        {
+           var roles = await AuthDbContext.Roles.ToListAsync();
+           return Ok(roles);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("jwt")]
+        public async Task<IActionResult> GetJwtToken(string username, string password)
+        {
+            try
+            {
+                var token = await _authenticationService.AuthenticateUserAsync(username, password);
+                return Ok(token);
+            }
+            catch (ArgumentException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
+        }
+
     }
 }
