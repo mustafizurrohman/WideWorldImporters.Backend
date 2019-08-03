@@ -60,7 +60,7 @@ namespace WideWorldImporters.Core.Helpers
         {
             if (length < 8)
             {
-                throw new ArgumentException("Password must be at least 8 characters.");
+                throw new ArgumentException("Password must be at least 8 characters.", nameof(length));
             }
 
             string password = string.Empty;

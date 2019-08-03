@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -46,6 +49,10 @@ namespace WideWorldImporters.Core.ExtensionMethods
                     In = apiKeyScheme?.In,
                     Type = apiKeyScheme?.Type
                 });
+
+                var xmlFile = $"WideWorldImporters.API.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
 
 
             });

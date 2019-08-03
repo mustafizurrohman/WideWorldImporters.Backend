@@ -21,6 +21,23 @@
             </summary>
             <param name="context"></param>
         </member>
+        <member name="T:WideWorldImporters.API.ActionFilters.InsecureAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.InsecureAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Executed before the start of execution
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.InsecureAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Executed after the end of execution
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:WideWorldImporters.API.ActionFilters.ValidateModelAttribute">
             <summary>
             Validate Model Attribute
@@ -112,13 +129,15 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetUsers">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
             </summary>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUser(System.String,System.String,System.String)">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
+            In production we will make sure that this request is made by an admin
             </summary>
             <param name="username"></param>
             <param name="password"></param>
@@ -127,7 +146,8 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUserWithRole(System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
+            In production we will make sure that this request is made by an admin
             </summary>
             <param name="username"></param>
             <param name="password"></param>
@@ -137,7 +157,8 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddRole(System.String,System.Boolean)">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
             </summary>
             <param name="role"></param>
             <param name="isAdmin"></param>
@@ -145,19 +166,19 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetRoles">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
             </summary>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetJwtToken(System.String,System.String)">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
             </summary>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.UpdatePassword(System.String,System.String,System.String)">
             <summary>
-            
+            Warning: Insecure. Not Production ready.
             </summary>
             <param name="username"></param>
             <param name="oldPassword"></param>
@@ -166,7 +187,9 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.ResetPassword(System.String)">
             <summary>
-            
+            Resets a password for a given username
+            Warning: Insecure. Not Production ready.
+            In production code we will never send the password back
             </summary>
             <param name="username"></param>
             <returns></returns>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Exceptions;
@@ -15,6 +16,7 @@ namespace WideWorldImporters.API.Controllers
     /// <summary>
     /// Controller for Authentication
     /// </summary>
+    [Insecure]
     public class AuthenticationController : BaseAPIController
     {
         private readonly IAuthenticationService _authenticationService;
