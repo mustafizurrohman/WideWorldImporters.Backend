@@ -75,9 +75,34 @@ namespace WideWorldImporters.Core.Helpers
                 password += CharHelpers.GetRandomCharacter();
             }
 
+            password = ReplaceDuplicateCharacters(password);
+
             password = password.Randomize().Randomize();
 
             return password;
+        }
+
+        /// <summary>
+        /// Replaces the duplicate characters in a string by a random character at the end
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ReplaceDuplicateCharacters(string input)
+        {
+            var stringWithoutDuplicates = input.RemoveDuplicates();
+
+            if (stringWithoutDuplicates.Length == input.Length)
+            {
+                return input;
+            }
+
+            for (int i = 0; i < input.Length - stringWithoutDuplicates.Length; i++)
+            {
+                stringWithoutDuplicates += CharHelpers.GetRandomCharacter();
+            }
+
+            return ReplaceDuplicateCharacters(stringWithoutDuplicates);
+
         }
 
     }

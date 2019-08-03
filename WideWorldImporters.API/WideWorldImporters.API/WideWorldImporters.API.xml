@@ -23,7 +23,7 @@
         </member>
         <member name="T:WideWorldImporters.API.ActionFilters.InsecureAttribute">
             <summary>
-            
+            Adds a header to indicate that this API must not be available in production. 
             </summary>
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.InsecureAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
@@ -167,6 +167,7 @@
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetRoles">
             <summary>
             Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
             </summary>
             <returns></returns>
         </member>
@@ -189,7 +190,7 @@
             <summary>
             Resets a password for a given username
             Warning: Insecure. Not Production ready.
-            In production code we will never send the password back
+            In production code we will never send the password back here.
             </summary>
             <param name="username"></param>
             <returns></returns>

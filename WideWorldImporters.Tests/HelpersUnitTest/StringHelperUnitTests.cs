@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Helpers;
@@ -38,18 +39,38 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
         /// <param name="numberOfTests"></param>
         /// <param name="passwordLength"></param>
         [Theory]
-        [InlineData(10000, 20)]
+        [InlineData(1000, 20)]
         public void TestPasswordGeneration(int numberOfTests, int passwordLength)
         {
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+
             var passwords = Enumerable.Range(0, numberOfTests)
                 .Select(x => StringHelpers.GetRandomPassword(passwordLength))
                 .ToList();
+
+            stopwatch.Stop();
+
+            var time = stopwatch.ElapsedMilliseconds;
 
             foreach (var password in passwords)
             {
                 Assert.True(password.IsValidPassword());
             }
-            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Fact]
+        public void TestReplace()
+        {
+            var string1 = "abcdcddum__292";
+            var string1Res = StringHelpers.ReplaceDuplicateCharacters(string1);
+
+            Assert.True(string1 != string1Res);
+
 
         }
 

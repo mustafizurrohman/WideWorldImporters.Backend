@@ -63,6 +63,11 @@
             <param name="numberOfTests"></param>
             <param name="passwordLength"></param>
         </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestReplace">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Tests.ServiceUnitTests.RedisTests">
             <summary>
             Tests for RedisService

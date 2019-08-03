@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace WideWorldImporters.API.ActionFilters
 {
     /// <summary>
-    /// 
+    /// Adds a header to indicate that this API must not be available in production. 
     /// </summary>
     public class InsecureAttribute : ActionFilterAttribute
     {
@@ -25,7 +25,7 @@ namespace WideWorldImporters.API.ActionFilters
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            context.HttpContext.Response.Headers.Add("x-warning", "Insecure method. DO NOT USE IN PRODUCTION. Testing only.");
+            context.HttpContext.Response.Headers.Add("x-warning", "Insecure method. NOT FOR PRODUCTION. Testing only.");
         }
     }
 }

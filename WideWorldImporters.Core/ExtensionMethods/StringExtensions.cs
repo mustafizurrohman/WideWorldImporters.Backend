@@ -83,6 +83,16 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return new string(input.ToCharArray().OrderBy(x => Guid.NewGuid()).ToArray());
         }
 
+        /// <summary>
+        /// Remove duplicate characters from a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string RemoveDuplicates(this string input)
+        {
+            return new string(input.ToCharArray().Distinct().ToArray());
+        }
+
 
     }
 }

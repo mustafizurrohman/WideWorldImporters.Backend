@@ -551,6 +551,13 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.RemoveDuplicates(System.String)">
+            <summary>
+            Remove duplicate characters from a string
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
             <summary>
             Extensions for Swagger
@@ -665,6 +672,13 @@
             
             </summary>
             <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.StringHelpers.ReplaceDuplicateCharacters(System.String)">
+            <summary>
+            Replaces the duplicate characters in a string by a random character at the end
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.InternalModels.ApiServiceDescription">

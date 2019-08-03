@@ -117,6 +117,7 @@ namespace WideWorldImporters.API.Controllers
 
         /// <summary>
         /// Warning: Insecure. Not Production ready.
+        /// This should NEVER be a part of Public API
         /// </summary>
         /// <returns></returns>
         [HttpGet("roles")]
@@ -175,7 +176,7 @@ namespace WideWorldImporters.API.Controllers
         /// <summary>
         /// Resets a password for a given username
         /// Warning: Insecure. Not Production ready.
-        /// In production code we will never send the password back
+        /// In production code we will never send the password back here.
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
