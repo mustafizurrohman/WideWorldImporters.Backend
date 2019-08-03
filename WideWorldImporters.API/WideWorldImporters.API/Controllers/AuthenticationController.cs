@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.AuthenticationProvider.Database;
+using WideWorldImporters.Core.Exceptions;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -54,7 +55,7 @@ namespace WideWorldImporters.API.Controllers
         {
             try
             {
-                var newUser = await _authenticationService.AddUserAsync(username, password, email);
+                var newUser = await _authenticationService.AddUserAsync(username, password, email, string.Empty);
                 return Ok(newUser);
             }
             catch (Exception ex)
@@ -77,7 +78,7 @@ namespace WideWorldImporters.API.Controllers
         {
             try
             {
-                var newUser = await _authenticationService.AddUserAndRoleAsync(username, password, email, role);
+                var newUser = await _authenticationService.AddUserAndRoleAsync(username, password, email, role, string.Empty);
                 return Ok(newUser);
             }
             catch (Exception ex)
@@ -98,7 +99,7 @@ namespace WideWorldImporters.API.Controllers
         {
             try
             {
-                var newRole = await _authenticationService.AddRole(role, isAdmin);
+                var newRole = await _authenticationService.AddRole(role, isAdmin, string.Empty);
                 return Ok(newRole);
             }
             catch (Exception ex)
@@ -135,6 +136,33 @@ namespace WideWorldImporters.API.Controllers
             {
                 Logger.LogError("Authentication failed for '" + username + "'. " + Environment.NewLine + ex);
                 return Unauthorized("Invalid username or password");
+            }
+            catch (PasswordExpiredException ex)
+            {
+                Logger.LogError(ex.Message);
+                return Unauthorized(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="oldPassword"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        [HttpPut("updatepassword")]
+        public async Task<IActionResult> UpdatePassword(string username, string oldPassword, string newPassword)
+        {
+            try
+            {
+                var password = await _authenticationService.UpdatePasswordAsync(username, oldPassword, newPassword, string.Empty);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                return Unauthorized(ex.Message);
             }
         }
 

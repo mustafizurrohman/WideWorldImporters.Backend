@@ -19,5 +19,10 @@ namespace WideWorldImporters.Core.Options
         /// Signing key
         /// </summary>
         public string SigningKey { get; set; }
+
+        /// <summary>
+        /// Api Key
+        /// </summary>
+        public string ApiKey { get; set; }
     }
 }

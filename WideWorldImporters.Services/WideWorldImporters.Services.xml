@@ -58,16 +58,17 @@
             
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAsync(System.String,System.String,System.String)">
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
             <summary>
             Adds an user
             </summary>
             <param name="username"></param>
             <param name="password"></param>
             <param name="email"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Adds an user with role
             </summary>
@@ -75,14 +76,16 @@
             <param name="password"></param>
             <param name="email"></param>
             <param name="role"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddRole(System.String,System.Boolean)">
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
             <summary>
             Adds a role
             </summary>
             <param name="role"></param>
             <param name="isAdmin"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
@@ -91,6 +94,16 @@
             </summary>
             <param name="username"></param>
             <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
@@ -219,31 +232,34 @@
             
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptions{WideWorldImporters.Core.Options.JWTKeySettings})">
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptions{WideWorldImporters.Core.Options.JWTKeySettings},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             
             </summary>
             <param name="applicationServices"></param>
             <param name="jwtOptions"></param>
+            <param name="hostingEnvironment"></param>
         </member>
-        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAsync(System.String,System.String,System.String)">
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
             <summary>
             Adds an user
             </summary>
             <param name="username"></param>
             <param name="password"></param>
             <param name="email"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddRole(System.String,System.Boolean)">
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddRole(System.String,System.Boolean,System.String)">
             <summary>
             Adds a role
             </summary>
             <param name="role"></param>
             <param name="isAdmin"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
-        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Adds an user with role
             </summary>
@@ -251,6 +267,7 @@
             <param name="password"></param>
             <param name="email"></param>
             <param name="role"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Services.AuthenticationService.AuthenticateUserAsync(System.String,System.String)">
@@ -259,6 +276,16 @@
             </summary>
             <param name="username"></param>
             <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+            <param name="apiKey"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">

@@ -155,6 +155,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.UpdatePassword(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis

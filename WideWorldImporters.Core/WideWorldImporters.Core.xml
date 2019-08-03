@@ -184,6 +184,27 @@
             Transient service
             </summary>
         </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.PasswordExpiredException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExpiredException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExpiredException.#ctor(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+        </member>
+        <member name="P:WideWorldImporters.Core.Exceptions.PasswordExpiredException.Message">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions">
             <summary>
             ExtensionMethods for IApplicationBuilder
@@ -636,6 +657,11 @@
         <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.SigningKey">
             <summary>
             Signing key
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.ApiKey">
+            <summary>
+            Api Key
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Options.PerformanceOptions">
