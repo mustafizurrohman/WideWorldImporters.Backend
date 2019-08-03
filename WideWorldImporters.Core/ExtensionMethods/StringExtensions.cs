@@ -62,12 +62,6 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static bool ContainsSpecialCharacters(this string password)
         {
-            /*
-            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
-            var regularExpression = new Regex(specialChar);
-            bool containsSpecialChar = Regex.IsMatch(password, specialChar, RegexOptions.IgnoreCase);
-            */
-
             foreach (char c in password)
             {
                 if (!char.IsLetterOrDigit(c))
@@ -78,6 +72,17 @@ namespace WideWorldImporters.Core.ExtensionMethods
             
             return false;
         }
+
+        /// <summary>
+        /// Randomizes a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string Randomize(this string input)
+        {
+            return new string(input.ToCharArray().OrderBy(x => Guid.NewGuid()).ToArray());
+        }
+
 
     }
 }

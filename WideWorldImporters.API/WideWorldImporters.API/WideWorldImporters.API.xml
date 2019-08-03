@@ -164,6 +164,13 @@
             <param name="newPassword"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.ResetPassword(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
             Controller for Redis

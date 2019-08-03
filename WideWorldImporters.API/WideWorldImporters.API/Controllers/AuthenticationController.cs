@@ -32,7 +32,8 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
+        /// This should NEVER be a part of Public API
         /// </summary>
         /// <returns></returns>
         [HttpGet("users")]
@@ -44,7 +45,8 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
+        /// In production we will make sure that this request is made by an admin
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -66,7 +68,8 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
+        /// In production we will make sure that this request is made by an admin
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -89,7 +92,8 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
+        /// This should NEVER be a part of Public API
         /// </summary>
         /// <param name="role"></param>
         /// <param name="isAdmin"></param>
@@ -110,7 +114,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <returns></returns>
         [HttpGet("roles")]
@@ -121,7 +125,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <returns></returns>
         [HttpGet("jwt")]
@@ -145,13 +149,13 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <param name="username"></param>
         /// <param name="oldPassword"></param>
         /// <param name="newPassword"></param>
         /// <returns></returns>
-        [HttpPut("updatepassword")]
+        [HttpPut("password/update")]
         public async Task<IActionResult> UpdatePassword(string username, string oldPassword, string newPassword)
         {
             try
@@ -166,5 +170,26 @@ namespace WideWorldImporters.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Resets a password for a given username
+        /// Warning: Insecure. Not Production ready.
+        /// In production code we will never send the password back
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        [HttpPut("password/reset")]
+        public async Task<IActionResult> ResetPassword(string username)
+        {
+            try
+            {
+                var password = await _authenticationService.ResetPasswordAsync(username, string.Empty);
+                return Ok(password);
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                return Unauthorized(ex.Message);
+            }
+        }
     }
 }

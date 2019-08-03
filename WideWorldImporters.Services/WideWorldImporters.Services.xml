@@ -106,6 +106,14 @@
             <param name="apiKey"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IAuthenticationService.ResetPasswordAsync(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
+            <param name="apiKey"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Interface for Sample Service for Testing
@@ -285,6 +293,14 @@
             <param name="username"></param>
             <param name="oldPassword"></param>
             <param name="newPassword"></param>
+            <param name="apiKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.AuthenticationService.ResetPasswordAsync(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="username"></param>
             <param name="apiKey"></param>
             <returns></returns>
         </member>

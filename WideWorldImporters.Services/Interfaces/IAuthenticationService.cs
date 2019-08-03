@@ -55,5 +55,13 @@ namespace WideWorldImporters.Services.Interfaces
         /// <param name="apiKey"></param>
         /// <returns></returns>
         Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword, string apiKey);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
+        Task<string> ResetPasswordAsync(string username, string apiKey);
     }
 }

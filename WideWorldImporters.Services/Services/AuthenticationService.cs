@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NLog.Internal;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Core.Enumerations;
@@ -216,8 +217,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="newPassword"></param>
         /// <param name="apiKey"></param>
         /// <returns></returns>
-        public async Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword,
-            string apiKey)
+        public async Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword, string apiKey)
         {
             if (apiKey != JwtOptions.ApiKey && IsInProduction)
             {
@@ -257,6 +257,41 @@ namespace WideWorldImporters.Services.Services
 
             return newPassword;
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
+        public async Task<string> ResetPasswordAsync(string username, string apiKey)
+        {
+            if (apiKey != JwtOptions.ApiKey && IsInProduction)
+            {
+                throw new ArgumentException("Invalid API Key.");
+            }
+
+            Users user = await AuthDbContext.Users
+                .FirstOrDefaultAsync(usr => usr.Username == username);
+
+            if (user == null)
+            {
+                throw new ArgumentException("Invalid username.");
+            }
+
+            var newPassword = Core.Helpers.StringHelpers.GetRandomPassword(8);
+
+            DateTime now = DateTime.Now;
+
+            user.PasswordCreatedOn = now;
+            user.PasswordExpiresOn = now.AddMonths(6);
+            user.PasswordHash = Crypto.HashPassword(newPassword);
+
+            AuthDbContext.Update(user);
+            await AuthDbContext.SaveChangesAsync();
+
+            return newPassword;
         }
 
         private async Task<string> AuthenticateUsernameAndPasswordAsync(string username, string password, bool verifyPasswordValidity)

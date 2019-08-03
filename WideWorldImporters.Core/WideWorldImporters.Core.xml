@@ -544,6 +544,13 @@
             <param name="password"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.Randomize(System.String)">
+            <summary>
+            Randomizes a string
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
             <summary>
             Extensions for Swagger
@@ -564,6 +571,35 @@
             </summary>
             <param name="app"></param>
             <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Helpers.CharHelpers">
+            <summary>
+            Utility functions for characters
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomUppercaseCharacter">
+            <summary>
+            Returns a random uppercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomLowercaseCharacter">
+            <summary>
+            Returns a random lowercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomSpecialCharacter">
+            <summary>
+            Returns a random lowercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomCharacter">
+            <summary>
+            Returns a random character
+            </summary>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.Helpers.IntHelpers">
@@ -622,6 +658,13 @@
             </summary>
             <param name="length"></param>
             <param name="printable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.StringHelpers.GetRandomPassword(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="length"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.InternalModels.ApiServiceDescription">
