@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.API.Controllers.Base;
-using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Exceptions;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
@@ -41,7 +39,9 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("users")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await AuthDbContext.Users.ToListAsync();
+            var users = await AuthDbContext.Users
+                .Select(usr => new { usr.Username, usr.Email })
+                .ToListAsync();
 
             return Ok(users);
         }
@@ -194,5 +194,6 @@ namespace WideWorldImporters.API.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
     }
 }

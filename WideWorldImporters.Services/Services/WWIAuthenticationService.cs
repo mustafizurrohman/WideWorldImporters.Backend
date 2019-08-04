@@ -38,11 +38,11 @@ namespace WideWorldImporters.Services.Services
         private bool IsInProduction => !HostingEnvironment.IsDevelopment();
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
-        /// <param name="applicationServices"></param>
-        /// <param name="jwtOptions"></param>
-        /// <param name="hostingEnvironment"></param>
+        /// <param name="applicationServices">Application Services</param>
+        /// <param name="jwtOptions">JWT Options</param>
+        /// <param name="hostingEnvironment">Hosting Environment</param>
         public WWIAuthenticationService(ApplicationServices applicationServices, IOptionsSnapshot<JWTKeySettings> jwtOptions, 
             IHostingEnvironment hostingEnvironment) : base(applicationServices)
         {

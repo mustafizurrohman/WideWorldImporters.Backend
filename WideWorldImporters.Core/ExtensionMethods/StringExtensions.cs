@@ -80,7 +80,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static string Randomize(this string input)
         {
-            return new string(input.ToCharArray().OrderBy(x => Guid.NewGuid()).ToArray());
+            return new string(input.ToCharArray().OrderBy(c => Guid.NewGuid()).ToArray());
         }
 
         /// <summary>
