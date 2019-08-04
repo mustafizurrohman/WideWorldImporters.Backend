@@ -20,14 +20,16 @@ using WideWorldImporters.Core.Options;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Services.Services.Base;
+using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
 
 namespace WideWorldImporters.Services.Services
 {
     /// <summary>
     /// 
     /// </summary>
-    [ServiceLifeTime(ServiceLifetime.Lifetime.Transient)]
-    public class AuthenticationService : BaseService, IAuthenticationService
+    [ServiceLifeTime(Lifetime.Transient)]
+    // ReSharper disable once InconsistentNaming
+    public class WWIAuthenticationService : BaseService, Interfaces.IWWIAuthenticationService
     {
         private JWTKeySettings JwtOptions { get; }
 
@@ -41,7 +43,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="applicationServices"></param>
         /// <param name="jwtOptions"></param>
         /// <param name="hostingEnvironment"></param>
-        public AuthenticationService(ApplicationServices applicationServices, IOptions<JWTKeySettings> jwtOptions, 
+        public WWIAuthenticationService(ApplicationServices applicationServices, IOptionsSnapshot<JWTKeySettings> jwtOptions, 
             IHostingEnvironment hostingEnvironment) : base(applicationServices)
         {
             JwtOptions = jwtOptions.Value;
@@ -51,10 +53,10 @@ namespace WideWorldImporters.Services.Services
         /// <summary>
         /// Adds an user
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="email"></param>
-        /// <param name="apiKey"></param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <param name="email">Email</param>
+        /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         public async Task<Users> AddUserAsync(string username, string password, string email, string apiKey)
         {
@@ -68,26 +70,25 @@ namespace WideWorldImporters.Services.Services
                 throw new ArgumentException("Invalid email.");
             }
 
+            var emailExists = await AuthDbContext.Users.AnyAsync(usr => usr.Email == email);
+
+            if (emailExists)
+            {
+                throw new ArgumentException("A user with that Email ID already exists.");
+            }
+
             if (string.IsNullOrWhiteSpace(username))
             {
                 throw new ArgumentException("Username must be provided.");
             }
 
-            var emailExists = await AuthDbContext.Users.FirstOrDefaultAsync(usr => usr.Email == email);
+            var usernameExists = await AuthDbContext.Users.AnyAsync(usr => usr.Username == username);
 
-            if (emailExists != null)
+            if (usernameExists)
             {
-                throw new ArgumentException("A user with that Email ID already exists.");
+                throw new ArgumentException("Username already exists.");
             }
 
-            var userExists = await AuthDbContext.Users.FirstOrDefaultAsync(usr => usr.Username == username);
-
-            if (userExists != null)
-            {
-                throw new ArgumentException("User with that name already exists.");
-            }
-
-            
             if (!password.IsValidPassword())
             {
                 throw new ArgumentException("Invalid password. It must contain at least 8 " +
@@ -122,9 +123,9 @@ namespace WideWorldImporters.Services.Services
         /// <summary>
         /// Adds a role
         /// </summary>
-        /// <param name="role"></param>
-        /// <param name="isAdmin"></param>
-        /// <param name="apiKey"></param>
+        /// <param name="role">Role</param>
+        /// <param name="isAdmin">Indicates if this role is an Admin role</param>
+        /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         public async Task<Roles> AddRole(string role, bool isAdmin, string apiKey)
         {
@@ -133,10 +134,10 @@ namespace WideWorldImporters.Services.Services
                 throw new ArgumentException("Invalid API Key.");
             }
 
-            var existingRole = await AuthDbContext.Roles
-                .FirstOrDefaultAsync(r => r.Role == role);
+            var roleExists = await AuthDbContext.Roles
+                .AnyAsync(r => r.Role == role);
 
-            if (existingRole != null)
+            if (roleExists)
             {
                 throw new ArgumentException("Role already exists");
             }
@@ -151,19 +152,17 @@ namespace WideWorldImporters.Services.Services
             await AuthDbContext.AddAsync(newRole);
             await AuthDbContext.SaveChangesAsync();
 
-            var addedRole = await AuthDbContext.Roles.SingleAsync(r => r.Role == role);
-
-            return addedRole;
+            return newRole;
         }
 
         /// <summary>
         /// Adds an user with role
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <param name="email"></param>
-        /// <param name="role"></param>
-        /// <param name="apiKey"></param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <param name="email">Email</param>
+        /// <param name="role">Role</param>
+        /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         public async Task<Users> AddUserAndRoleAsync(string username, string password, string email, string role, string apiKey)
         {
@@ -174,7 +173,7 @@ namespace WideWorldImporters.Services.Services
 
             var user = await AddUserAsync(username, password, email, apiKey);
 
-            var dbRole = await AuthDbContext.Roles.FirstOrDefaultAsync(r => r.Role == role);
+            var dbRole = await AuthDbContext.Roles.SingleOrDefaultAsync(r => r.Role == role);
 
             if (dbRole == null)
             {
@@ -191,18 +190,18 @@ namespace WideWorldImporters.Services.Services
             await AuthDbContext.AddAsync(newUserRole);
             await AuthDbContext.SaveChangesAsync();
 
-            var newUser = await AuthDbContext.Users.Include(usr => usr.UsersRoles)
-                .Where(usr => usr.UserId == user.UserId)
-                .SingleAsync();
+            var newUser = await AuthDbContext.Users
+                .Include(usr => usr.UsersRoles)
+                .SingleAsync(usr => usr.UserId == user.UserId);
 
             return newUser;
         }
 
         /// <summary>
-        /// 
+        /// Authenticates a user with a given username and password
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
         /// <returns></returns>
         public async Task<string> AuthenticateUserAsync(string username, string password)
         {
@@ -210,12 +209,12 @@ namespace WideWorldImporters.Services.Services
         }
 
         /// <summary>
-        /// 
+        /// Updates the password for a username. 
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="oldPassword"></param>
-        /// <param name="newPassword"></param>
-        /// <param name="apiKey"></param>
+        /// <param name="username">Username</param>
+        /// <param name="oldPassword">Old password</param>
+        /// <param name="newPassword">New password</param>
+        /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         public async Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword, string apiKey)
         {
@@ -260,10 +259,10 @@ namespace WideWorldImporters.Services.Services
         }
 
         /// <summary>
-        /// 
+        /// Resets the password for a username. A new password is randomly generated and assigned.
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="apiKey"></param>
+        /// <param name="username">Username</param>
+        /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         public async Task<string> ResetPasswordAsync(string username, string apiKey)
         {
@@ -294,6 +293,15 @@ namespace WideWorldImporters.Services.Services
             return newPassword;
         }
 
+        #region -- Private Methods --
+
+        /// <summary>
+        /// Authenticates a username and password and generated a JWT if the credentials are correct
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="verifyPasswordValidity"></param>
+        /// <returns></returns>
         private async Task<string> AuthenticateUsernameAndPasswordAsync(string username, string password, bool verifyPasswordValidity)
         {
             Users user =  await VerifyUsernameAndPassword(username, password, verifyPasswordValidity);
@@ -301,6 +309,13 @@ namespace WideWorldImporters.Services.Services
             return await GenerateJwtTokenAsync(user);
         }
 
+        /// <summary>
+        /// Verifies a username and password
+        /// </summary>
+        /// <param name="username">Username</param>
+        /// <param name="password">Password</param>
+        /// <param name="verifyPasswordValidity">Indicates if the validity of the password must be verified</param>
+        /// <returns></returns>
         private async Task<Users> VerifyUsernameAndPassword(string username, string password, bool verifyPasswordValidity)
         {
             Users user = await AuthDbContext.Users
@@ -319,6 +334,7 @@ namespace WideWorldImporters.Services.Services
                 throw new ArgumentException("Invalid password.");
             }
 
+            // TODO: Verify
             if (user.PasswordExpiresOn.GetValueOrDefault(DateTime.MinValue) < DateTime.Now && verifyPasswordValidity)
             {
                 throw new PasswordExpiredException(user.PasswordExpiresOn.GetValueOrDefault(DateTime.MinValue));
@@ -327,6 +343,11 @@ namespace WideWorldImporters.Services.Services
             return user;
         }
 
+        /// <summary>
+        /// Generates a JWT for a given user
+        /// </summary>
+        /// <param name="user">User for whom the token must be generated.</param>
+        /// <returns></returns>
         private async Task<string> GenerateJwtTokenAsync(Users user)
         {
             List<Guid> userRolesIds = user.UsersRoles.Select(x => x.RoleId).ToList();
@@ -339,11 +360,11 @@ namespace WideWorldImporters.Services.Services
                 .Select(currentRole => new Claim(ClaimTypes.Role, currentRole))
                 .ToList();
 
-            Claim name = new Claim(ClaimTypes.Name, user.Username);
-            claimList.Add(name);
+            Claim nameClaim = new Claim(ClaimTypes.Name, user.Username);
+            claimList.Add(nameClaim);
 
-            Claim email = new Claim(ClaimTypes.Email, user.Email);
-            claimList.Add(email);
+            Claim emailClaim = new Claim(ClaimTypes.Email, user.Email);
+            claimList.Add(emailClaim);
 
             SigningCredentials signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtOptions.SigningKey)),
@@ -362,6 +383,8 @@ namespace WideWorldImporters.Services.Services
 
             return token;
         }
+
+        #endregion
 
     }
 }

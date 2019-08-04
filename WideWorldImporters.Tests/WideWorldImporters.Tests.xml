@@ -68,6 +68,11 @@
             
             </summary>
         </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestDuplicateRemoval">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Tests.ServiceUnitTests.RedisTests">
             <summary>
             Tests for RedisService

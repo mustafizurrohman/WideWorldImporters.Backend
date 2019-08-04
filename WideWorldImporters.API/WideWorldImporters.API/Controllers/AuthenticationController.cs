@@ -19,7 +19,7 @@ namespace WideWorldImporters.API.Controllers
     [Insecure]
     public class AuthenticationController : BaseAPIController
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly IWWIAuthenticationService _authenticationService;
 
         /// <summary>
         /// Constructor
@@ -27,7 +27,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="applicationServices"></param>
         /// <param name="authenticationService"></param>
         public AuthenticationController(ApplicationServices applicationServices,
-            IAuthenticationService authenticationService)
+            IWWIAuthenticationService authenticationService)
             : base(applicationServices)
         {
             _authenticationService = authenticationService;

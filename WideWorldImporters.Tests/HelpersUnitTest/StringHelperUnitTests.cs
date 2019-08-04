@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Helpers;
@@ -10,6 +12,7 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
     /// <summary>
     /// Unit test for String helpers
     /// </summary>
+    [SuppressMessage("ReSharper", "StringLiteralTypo")]
     public class StringHelperUnitTests
     {
 
@@ -54,9 +57,12 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
 
             var time = stopwatch.ElapsedMilliseconds;
 
+            var allPasswords = passwords.Aggregate((a, b) => a + Environment.NewLine + b);
+
             foreach (var password in passwords)
             {
                 Assert.True(password.IsValidPassword());
+                Assert.True(password.RemoveDuplicates().Length == password.Length);
             }
         }
 
@@ -72,6 +78,18 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
             Assert.True(string1 != string1Res);
 
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Fact]
+        public void TestDuplicateRemoval()
+        {
+            var string1 = "abcdcddum__292";
+            var string1Res = string1.RemoveDuplicates();
+
+            Assert.True(string1Res == "abcdum_29");
         }
 
     }

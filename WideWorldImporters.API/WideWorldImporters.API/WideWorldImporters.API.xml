@@ -120,7 +120,7 @@
             Controller for Authentication
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.IAuthenticationService)">
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.IWWIAuthenticationService)">
             <summary>
             Constructor
             </summary>
