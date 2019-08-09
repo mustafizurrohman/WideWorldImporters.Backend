@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WideWorldImporters.AuthenticationProvider.Database;
+using WideWorldImporters.Core.Exceptions.AuthenticationExceptions;
 
 namespace WideWorldImporters.Services.Interfaces
 {
@@ -46,6 +47,7 @@ namespace WideWorldImporters.Services.Interfaces
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns></returns>
+        /// <exception cref="AuthenticationException">Authentication Exception</exception>
         Task<string> AuthenticateUserAsync(string username, string password);
 
         /// <summary>

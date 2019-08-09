@@ -184,23 +184,62 @@
             Transient service
             </summary>
         </member>
-        <member name="T:WideWorldImporters.Core.Exceptions.PasswordExpiredException">
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">
+            <summary>
+            This exception is thrown when a user tries to login using an expired password.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException"/> class.
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException">
+            <summary>
+            Thrown when the password is invalid
+            </summary>
+            <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException"/> class.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException">
+            <summary>
+            Thrown when the username is invalid
+            </summary>
+            <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException"/> class.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor">
             <summary>
             
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExpiredException.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExpiredException.#ctor(System.DateTime)">
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor(System.DateTime)">
             <summary>
             
             </summary>
             <param name="dateTime"></param>
         </member>
-        <member name="P:WideWorldImporters.Core.Exceptions.PasswordExpiredException.Message">
+        <member name="P:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.Message">
             <summary>
             
             </summary>

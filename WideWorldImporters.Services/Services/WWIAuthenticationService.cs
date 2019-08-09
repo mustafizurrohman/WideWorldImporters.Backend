@@ -10,14 +10,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NLog.Internal;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.ClassAttributes;
-using WideWorldImporters.Core.Enumerations;
-using WideWorldImporters.Core.Exceptions;
+using WideWorldImporters.Core.Exceptions.AuthenticationExceptions;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
-using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Services.Services.Base;
 using static WideWorldImporters.Core.Enumerations.ServiceLifetime;
@@ -171,14 +168,14 @@ namespace WideWorldImporters.Services.Services
                 throw new ArgumentException("Invalid API Key.");
             }
 
-            var user = await AddUserAsync(username, password, email, apiKey);
-
             var dbRole = await AuthDbContext.Roles.SingleOrDefaultAsync(r => r.Role == role);
 
             if (dbRole == null)
             {
-                throw new  ArgumentException("Invalid role");
+                throw new ArgumentException("Invalid role");
             }
+
+            var user = await AddUserAsync(username, password, email, apiKey);
 
             var newUserRole = new UsersRoles()
             {
@@ -203,6 +200,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns></returns>
+        /// <exception cref="AuthenticationException">Authentication Exception</exception>
         public async Task<string> AuthenticateUserAsync(string username, string password)
         {
             return await AuthenticateUsernameAndPasswordAsync(username, password, true);
@@ -216,6 +214,8 @@ namespace WideWorldImporters.Services.Services
         /// <param name="newPassword">New password</param>
         /// <param name="apiKey">API Key</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Invalid username, password or API Key</exception>
+        /// <exception cref="PasswordExpiredException">Expired password</exception>
         public async Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword, string apiKey)
         {
             if (apiKey != JwtOptions.ApiKey && IsInProduction)
@@ -302,6 +302,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="password"></param>
         /// <param name="verifyPasswordValidity"></param>
         /// <returns></returns>
+        /// <exception cref="AuthenticationException">Authentication Exception</exception>
         private async Task<string> AuthenticateUsernameAndPasswordAsync(string username, string password, bool verifyPasswordValidity)
         {
             Users user =  await VerifyUsernameAndPassword(username, password, verifyPasswordValidity);
@@ -316,6 +317,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="password">Password</param>
         /// <param name="verifyPasswordValidity">Indicates if the validity of the password must be verified</param>
         /// <returns></returns>
+        /// <exception cref="AuthenticationException">Authentication Exception</exception>
         private async Task<Users> VerifyUsernameAndPassword(string username, string password, bool verifyPasswordValidity)
         {
             Users user = await AuthDbContext.Users
@@ -324,14 +326,14 @@ namespace WideWorldImporters.Services.Services
 
             if (user == null)
             {
-                throw new ArgumentException("Invalid username.");
+                throw new InvalidUsernameException();
             }
 
             bool validPassword = Crypto.VerifyHashedPassword(user.PasswordHash, password);
 
             if (!validPassword)
             {
-                throw new ArgumentException("Invalid password.");
+                throw new InvalidPasswordException();
             }
 
             // TODO: Verify

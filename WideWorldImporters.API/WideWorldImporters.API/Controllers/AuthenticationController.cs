@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.API.Controllers.Base;
-using WideWorldImporters.Core.Exceptions;
+using WideWorldImporters.Core.Exceptions.AuthenticationExceptions;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 
@@ -134,20 +134,16 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("jwt")]
         public async Task<IActionResult> GetJwtToken(string username, string password)
         {
+            /// <exception cref="AuthenticationException">Authentication Exception</exception>
             try
             {
                 var token = await _authenticationService.AuthenticateUserAsync(username, password);
                 return Ok(token);
             }
-            catch (ArgumentException ex)
+            catch (AuthenticationException ex)
             {
                 Logger.LogError("Authentication failed for '" + username + "'. " + Environment.NewLine + ex);
-                return Unauthorized("Invalid username or password");
-            }
-            catch (PasswordExpiredException ex)
-            {
-                Logger.LogError(ex.Message);
-                return Unauthorized(ex.Message);
+                return Unauthorized("Authentication failed.");
             }
         }
 

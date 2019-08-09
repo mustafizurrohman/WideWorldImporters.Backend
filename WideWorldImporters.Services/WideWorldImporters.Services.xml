@@ -79,56 +79,56 @@
             <summary>
             Adds an user
             </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-            <param name="email"></param>
-            <param name="apiKey"></param>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Adds an user with role
             </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-            <param name="email"></param>
-            <param name="role"></param>
-            <param name="apiKey"></param>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="role">Role</param>
+            <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
             <summary>
             Adds a role
             </summary>
-            <param name="role"></param>
-            <param name="isAdmin"></param>
-            <param name="apiKey"></param>
+            <param name="role">Role</param>
+            <param name="isAdmin">Indicates if this role is an Admin role</param>
+            <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
             <summary>
-            
+            Authenticates a user with a given username and password
             </summary>
-            <param name="username"></param>
-            <param name="password"></param>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Updates the password for a username. 
             </summary>
-            <param name="username"></param>
-            <param name="oldPassword"></param>
-            <param name="newPassword"></param>
-            <param name="apiKey"></param>
+            <param name="username">Username</param>
+            <param name="oldPassword">Old password</param>
+            <param name="newPassword">New password</param>
+            <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
             <summary>
-            
+            Resets the password for a username. A new password is randomly generated and assigned.
             </summary>
-            <param name="username"></param>
-            <param name="apiKey"></param>
+            <param name="username">Username</param>
+            <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.ServiceCollections.ApplicationServices">
@@ -235,75 +235,6 @@
             </summary>
             <param name="ex"></param>
         </member>
-        <member name="T:WideWorldImporters.Services.Services.IWWIAuthenticationService">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptionsSnapshot{WideWorldImporters.Core.Options.JWTKeySettings},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
-            <summary>
-            
-            </summary>
-            <param name="applicationServices"></param>
-            <param name="jwtOptions"></param>
-            <param name="hostingEnvironment"></param>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
-            <summary>
-            Adds an user
-            </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-            <param name="email"></param>
-            <param name="apiKey"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
-            <summary>
-            Adds a role
-            </summary>
-            <param name="role"></param>
-            <param name="isAdmin"></param>
-            <param name="apiKey"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Adds an user with role
-            </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-            <param name="email"></param>
-            <param name="role"></param>
-            <param name="apiKey"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="username"></param>
-            <param name="oldPassword"></param>
-            <param name="newPassword"></param>
-            <param name="apiKey"></param>
-            <returns></returns>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.IWWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="username"></param>
-            <param name="apiKey"></param>
-            <returns></returns>
-        </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>
             Sample Service for Testing
@@ -325,6 +256,105 @@
             <summary>
             
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Services.Services.WWIAuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptionsSnapshot{WideWorldImporters.Core.Options.JWTKeySettings},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationServices">Application Services</param>
+            <param name="jwtOptions">JWT Options</param>
+            <param name="hostingEnvironment">Hosting Environment</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
+            <summary>
+            Adds a role
+            </summary>
+            <param name="role">Role</param>
+            <param name="isAdmin">Indicates if this role is an Admin role</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with role
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="role">Role</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            Authenticates a user with a given username and password
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Updates the password for a username. 
+            </summary>
+            <param name="username">Username</param>
+            <param name="oldPassword">Old password</param>
+            <param name="newPassword">New password</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Invalid username, password or API Key</exception>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException">Expired password</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
+            <summary>
+            Resets the password for a username. A new password is randomly generated and assigned.
+            </summary>
+            <param name="username">Username</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AuthenticateUsernameAndPasswordAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Authenticates a username and password and generated a JWT if the credentials are correct
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="verifyPasswordValidity"></param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.VerifyUsernameAndPassword(System.String,System.String,System.Boolean)">
+            <summary>
+            Verifies a username and password
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="verifyPasswordValidity">Indicates if the validity of the password must be verified</param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.GenerateJwtTokenAsync(WideWorldImporters.AuthenticationProvider.Database.Users)">
+            <summary>
+            Generates a JWT for a given user
+            </summary>
+            <param name="user">User for whom the token must be generated.</param>
             <returns></returns>
         </member>
     </members>
