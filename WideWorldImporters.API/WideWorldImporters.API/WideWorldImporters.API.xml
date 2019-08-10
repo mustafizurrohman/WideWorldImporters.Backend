@@ -176,6 +176,7 @@
             Warning: Insecure. Not Production ready.
             </summary>
             <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.UpdatePassword(System.String,System.String,System.String)">
             <summary>

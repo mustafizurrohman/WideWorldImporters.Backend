@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.API.Controllers.Base;
+using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Exceptions.AuthenticationExceptions;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
@@ -37,6 +40,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("users")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetUsers()
         {
             var users = await AuthDbContext.Users
@@ -55,6 +59,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="email"></param>
         /// <returns></returns>
         [HttpPost("users")]
+        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AddUser(string username, string password, string email)
         {
             try
@@ -79,6 +84,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="role"></param>
         /// <returns></returns>
         [HttpPost("users/role")]
+        [ProducesResponseType(typeof(Users), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AddUserWithRole(string username, string password, string email, string role)
         {
             try
@@ -101,6 +107,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="isAdmin"></param>
         /// <returns></returns>
         [HttpPost("role")]
+        [ProducesResponseType(typeof(Roles), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AddRole(string role, bool isAdmin)
         {
             try
@@ -121,6 +128,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("roles")]
+        [ProducesResponseType(typeof(Roles), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetRoles()
         {
            var roles = await AuthDbContext.Roles.ToListAsync();
@@ -131,10 +139,11 @@ namespace WideWorldImporters.API.Controllers
         /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="AuthenticationException">Authentication Exception</exception>
         [HttpGet("jwt")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetJwtToken(string username, string password)
         {
-            /// <exception cref="AuthenticationException">Authentication Exception</exception>
             try
             {
                 var token = await _authenticationService.AuthenticateUserAsync(username, password);
@@ -155,6 +164,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="newPassword"></param>
         /// <returns></returns>
         [HttpPut("password/update")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdatePassword(string username, string oldPassword, string newPassword)
         {
             try
@@ -177,6 +187,7 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="username"></param>
         /// <returns></returns>
         [HttpPut("password/reset")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> ResetPassword(string username)
         {
             try

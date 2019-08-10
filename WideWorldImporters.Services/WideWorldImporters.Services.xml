@@ -92,7 +92,7 @@
             <param name="username">Username</param>
             <param name="password">Password</param>
             <param name="email">Email</param>
-            <param name="role">Role</param>
+            <param name="role">RoleName</param>
             <param name="apiKey">API Key</param>
             <returns></returns>
         </member>
@@ -100,7 +100,7 @@
             <summary>
             Adds a role
             </summary>
-            <param name="role">Role</param>
+            <param name="role">RoleName</param>
             <param name="isAdmin">Indicates if this role is an Admin role</param>
             <param name="apiKey">API Key</param>
             <returns></returns>
@@ -112,6 +112,7 @@
             <param name="username">Username</param>
             <param name="password">Password</param>
             <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
         </member>
         <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
             <summary>

@@ -242,9 +242,7 @@ namespace WideWorldImporters.Services.Services
 
             if (!newPassword.IsValidPassword())
             {
-                throw new ArgumentException("Invalid password. It must contain at least 8 " +
-                                            "characters, one upper case character, one lower case character " +
-                                            "and one special character. ");
+                throw new InvalidPasswordException();
             }
 
             user.PasswordCreatedOn = DateTime.Now;

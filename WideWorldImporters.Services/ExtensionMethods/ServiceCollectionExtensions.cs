@@ -51,14 +51,6 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 serviceCollection.AddScoped(scoped.Interface, scoped.Implementation);
             } 
             */
-            
-
-
-            serviceCollection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-            serviceCollection.AddMemoryCache();
-
-            serviceCollection.AddTransient(typeof(ApplicationServices));
 
             return serviceCollection;
         }

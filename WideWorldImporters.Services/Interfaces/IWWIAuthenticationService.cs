@@ -27,7 +27,7 @@ namespace WideWorldImporters.Services.Interfaces
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <param name="email">Email</param>
-        /// <param name="role">Role</param>
+        /// <param name="role">RoleName</param>
         /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         Task<Users> AddUserAndRoleAsync(string username, string password, string email, string role, string apiKey);
@@ -35,7 +35,7 @@ namespace WideWorldImporters.Services.Interfaces
         /// <summary>
         /// Adds a role
         /// </summary>
-        /// <param name="role">Role</param>
+        /// <param name="role">RoleName</param>
         /// <param name="isAdmin">Indicates if this role is an Admin role</param>
         /// <param name="apiKey">API Key</param>
         /// <returns></returns>

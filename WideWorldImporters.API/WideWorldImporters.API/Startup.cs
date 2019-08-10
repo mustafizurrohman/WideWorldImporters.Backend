@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using AutoMapper;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNet.OData.Extensions;
@@ -26,6 +27,7 @@ using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
+using WideWorldImporters.Services.ServiceCollections;
 
 namespace WideWorldImporters.API
 {
@@ -150,6 +152,12 @@ namespace WideWorldImporters.API
 
             services.RegisterServices();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddMemoryCache();
+
+            services.AddTransient(typeof(ApplicationServices));
+
             services.AddOData();
 
             #endregion
@@ -262,8 +270,9 @@ namespace WideWorldImporters.API
             if (!_allowedCorsOrigins.IsEmpty())
             {
                 app.UseCors(CorsPolicies.CorsWithSpecificOrigins);
+            }
 
-            } 
+            // app.MigrateDatabase();
 
             app.UseCors();
             

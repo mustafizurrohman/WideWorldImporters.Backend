@@ -10,8 +10,10 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
     /// <seealso cref="System.Exception" />
     public abstract class AuthenticationException : Exception
     {
-
-        private readonly string _message;
+        /// <summary>
+        /// The message
+        /// </summary>
+        private static string _message;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationException"/> class.
@@ -19,6 +21,14 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
         public AuthenticationException(string message)
         {
             _message = message;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationException"/> class.
+        /// </summary>
+        public AuthenticationException()
+        {
+            _message = "An Authentication Exception occured.";
         }
 
         /// <summary>
