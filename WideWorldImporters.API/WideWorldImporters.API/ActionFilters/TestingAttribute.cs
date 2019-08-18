@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WideWorldImporters.API.ActionFilters
 {
     /// <summary>
-    /// Adds a header to indicate that this API must not be available in production. 
+    /// 
     /// </summary>
-    public class InsecureAttribute : ActionFilterAttribute
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+    public class TestingAttribute : ActionFilterAttribute
     {
         /// <summary>
         /// Executed before the start of execution
@@ -21,7 +26,7 @@ namespace WideWorldImporters.API.ActionFilters
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            context.HttpContext.Response.Headers.Add("x-warning", "Insecure method. Do not use for production.");
+            context.HttpContext.Response.Headers.Add("x-testing-info", "Testing only. Not for production.");
         }
     }
 }

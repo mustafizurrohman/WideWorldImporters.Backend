@@ -238,11 +238,6 @@
             </summary>
             <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
         </member>
-        <member name="F:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException._expiryDateTime">
-            <summary>
-            The expiry date time
-            </summary>
-        </member>
         <member name="F:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException._message">
             <summary>
             The message
@@ -253,7 +248,7 @@
             Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException"/> class.
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor(System.DateTime)">
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor(System.Nullable{System.DateTime})">
             <summary>
             Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException"/> class.
             </summary>

@@ -18,6 +18,7 @@ namespace WideWorldImporters.API.Controllers
     /// Controller for Authentication
     /// </summary>
     [Insecure]
+    [Testing]
     public class AuthenticationController : BaseAPIController
     {
         private readonly IWWIAuthenticationService _authenticationService;
@@ -35,6 +36,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Gets a list of uesrs
         /// Warning: Insecure. Not Production ready.
         /// This should NEVER be a part of Public API
         /// </summary>
@@ -51,6 +53,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Adds an user 
         /// Warning: Insecure. Not Production ready.
         /// In production we will make sure that this request is made by an admin
         /// </summary>
@@ -75,6 +78,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Adds an user with a role
         /// Warning: Insecure. Not Production ready.
         /// In production we will make sure that this request is made by an admin
         /// </summary>
@@ -100,6 +104,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Adds a role
         /// Warning: Insecure. Not Production ready.
         /// This should NEVER be a part of Public API
         /// </summary>
@@ -123,6 +128,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Get list of roles
         /// Warning: Insecure. Not Production ready.
         /// This should NEVER be a part of Public API
         /// </summary>
@@ -136,6 +142,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Authenticate a user with username and password.
         /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <returns></returns>
@@ -157,6 +164,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
+        /// Update a password when correct credentials are provided.
         /// Warning: Insecure. Not Production ready.
         /// </summary>
         /// <param name="username"></param>
@@ -180,9 +188,9 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// Resets a password for a given username
+        /// Resets a password for a given username.
+        /// Could be used only by an Admin to generate a new password for a user.
         /// Warning: Insecure. Not Production ready.
-        /// In production code we will never send the password back here.
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>

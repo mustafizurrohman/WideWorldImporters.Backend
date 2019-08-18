@@ -76,8 +76,6 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
             var string1Res = StringHelpers.ReplaceDuplicateCharacters(string1);
 
             Assert.True(string1 != string1Res);
-
-
         }
 
         /// <summary>

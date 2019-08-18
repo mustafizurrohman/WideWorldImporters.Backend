@@ -11,10 +11,6 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
     /// <seealso cref="AuthenticationException" />
     public class PasswordExpiredException : AuthenticationException
     {
-        /// <summary>
-        /// The expiry date time
-        /// </summary>
-        private readonly DateTime? _expiryDateTime;
 
         /// <summary>
         /// The message
@@ -26,7 +22,6 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
         /// </summary>
         public PasswordExpiredException() : base(_message)
         {
-            _expiryDateTime = null;
             _message = "The password has expired. Please update your password before logging in.";
         }
 
@@ -34,10 +29,9 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
         /// Initializes a new instance of the <see cref="PasswordExpiredException"/> class.
         /// </summary>
         /// <param name="dateTime">The date time.</param>
-        public PasswordExpiredException(DateTime dateTime) : base(_message)
+        public PasswordExpiredException(DateTime? dateTime) : base(_message)
         {
-            _expiryDateTime = dateTime;
-            _message = "The password has expired on " + _expiryDateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") 
+            _message = "The password has expired on " + dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") 
                 + ". Please update your password before logging in.";
         }
 
