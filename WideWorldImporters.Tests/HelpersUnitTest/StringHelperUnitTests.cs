@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Helpers;
 using Xunit;
@@ -36,28 +37,42 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
 
         }
 
+        // Stopwatch restart
         /// <summary>
         /// 
         /// </summary>
         /// <param name="numberOfTests"></param>
         /// <param name="passwordLength"></param>
         [Theory]
-        [InlineData(1000, 20)]
+        [InlineData(5000, 16)]
         public void TestPasswordGeneration(int numberOfTests, int passwordLength)
         {
-            Stopwatch stopwatch = new Stopwatch();
-
-            stopwatch.Start();
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
 
             var passwords = Enumerable.Range(0, numberOfTests)
                 .Select(x => StringHelpers.GetRandomPassword(passwordLength))
                 .ToList();
+            var time = stopwatch1.ElapsedMilliseconds;
 
-            stopwatch.Stop();
+            stopwatch1.Restart();
+            var allPasswordsAggr = passwords.Aggregate((a, b) => a + Environment.NewLine + b);
+            var time2 = stopwatch1.ElapsedMilliseconds;
 
-            var time = stopwatch.ElapsedMilliseconds;
+            stopwatch1.Restart();
+            StringBuilder allPasswords = new StringBuilder();
+            foreach (string password in passwords)
+            {
+                allPasswords.Append(password + Environment.NewLine);
+            }
 
-            var allPasswords = passwords.Aggregate((a, b) => a + Environment.NewLine + b);
+            stopwatch1.Stop();
+            var time3 = stopwatch1.ElapsedMilliseconds;
+
+            // Lol
+            Assert.True(time3 < time2);
+
+            var allPasswordsStringLength = allPasswords.ToString().Length;
 
             foreach (var password in passwords)
             {

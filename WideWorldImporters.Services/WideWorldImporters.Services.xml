@@ -348,7 +348,6 @@
             <param name="apiKey">API Key</param>
             <returns></returns>
             <exception cref="T:System.ArgumentException">Invalid username, password or API Key</exception>
-            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException">Expired password</exception>
         </member>
         <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
             <summary>

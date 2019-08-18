@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.ClassAttributes;
+using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.Exceptions.AuthenticationExceptions;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
@@ -88,7 +89,7 @@ namespace WideWorldImporters.Services.Services
 
             if (!password.IsValidPassword())
             {
-                throw new InvalidPasswordException();
+                throw new AuthenticationException("Invalid password", AuthenticationExceptionType.InvalidPassword);
             }
 
             DateTime now = DateTime.Now;
@@ -213,7 +214,6 @@ namespace WideWorldImporters.Services.Services
         /// <param name="apiKey">API Key</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">Invalid username, password or API Key</exception>
-        /// <exception cref="PasswordExpiredException">Expired password</exception>
         public async Task<string> UpdatePasswordAsync(string username, string oldPassword, string newPassword, string apiKey)
         {
             if (apiKey != JwtOptions.ApiKey && IsInProduction)
@@ -240,7 +240,7 @@ namespace WideWorldImporters.Services.Services
 
             if (!newPassword.IsValidPassword())
             {
-                throw new InvalidPasswordException();
+                throw new AuthenticationException("Invalid password", AuthenticationExceptionType.InvalidPassword);
             }
 
             user.PasswordCreatedOn = DateTime.Now;
@@ -322,20 +322,21 @@ namespace WideWorldImporters.Services.Services
 
             if (user == null)
             {
-                throw new InvalidUsernameException();
+                // throw new InvalidUsernameException();
+                throw new AuthenticationException("Invalid password", AuthenticationExceptionType.InvalidUsername);
             }
 
             bool validPassword = Crypto.VerifyHashedPassword(user.PasswordHash, password);
 
             if (!validPassword)
             {
-                throw new InvalidPasswordException();
+                throw new AuthenticationException("Password is not valid.", AuthenticationExceptionType.InvalidPassword);
             }
 
             // TODO: Verify
             if (user.PasswordExpiresOn.GetValueOrDefault(DateTime.MinValue) < DateTime.Now && verifyPasswordValidity)
             {
-                throw new PasswordExpiredException(user.PasswordExpiresOn.GetValueOrDefault(DateTime.MinValue));
+                throw new AuthenticationException("Password expired.", AuthenticationExceptionType.PasswordExpired);
             }
 
             return user;

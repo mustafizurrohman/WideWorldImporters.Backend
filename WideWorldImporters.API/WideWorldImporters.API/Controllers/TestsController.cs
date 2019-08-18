@@ -162,19 +162,13 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("partition")]
         public IActionResult ListPartition(int number)
         {
-            IEnumerable<int> list = Enumerable.Range(0, number)
-                .Select(num => IntHelpers.GetRandomNumber(number * 2));
+            IEnumerable<int> list = Enumerable.Range(0, number);
+                //.Select(num => IntHelpers.GetRandomNumber(number * 2));
 
-            IEnumerable<IEnumerable<int>> partition = list.ToList().Partition();
+            var partition = list.ToList().Partition().Partition();
 
-            // var partition2 = list.ToList().Partition().Partition().Partition().Partition();
-
-            List<List<int>> partitionList = partition
-                .Select(x => x.ToList())
-                .ToList();
-
-
-            return Ok(partitionList);
+            
+            return Ok(partition);
         }
 
         /// <summary>

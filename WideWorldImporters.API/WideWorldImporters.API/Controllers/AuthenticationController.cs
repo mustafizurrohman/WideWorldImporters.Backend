@@ -158,6 +158,8 @@ namespace WideWorldImporters.API.Controllers
             }
             catch (AuthenticationException ex)
             {
+                var type1 = ex.ExceptionType;
+                var type2 = ex.GetExceptionType();
                 Logger.LogError("Authentication failed for '" + username + "'. " + Environment.NewLine + ex);
                 return Unauthorized("Authentication failed.");
             }
