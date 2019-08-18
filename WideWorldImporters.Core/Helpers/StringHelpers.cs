@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WideWorldImporters.Core.ExtensionMethods;
 
 namespace WideWorldImporters.Core.Helpers
 {
@@ -48,6 +49,59 @@ namespace WideWorldImporters.Core.Helpers
                                                ).ToArray());
 
             return generatedString;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GetRandomPassword(int length = 10)
+        {
+            if (length < 8)
+            {
+                throw new ArgumentException("Password must be at least 8 characters.", nameof(length));
+            }
+
+            string password = string.Empty;
+
+            password += CharHelpers.GetRandomLowercaseCharacter();
+            password += CharHelpers.GetRandomUppercaseCharacter();
+            password += CharHelpers.GetRandomSpecialCharacter();
+            password += IntHelpers.GetRandomNumber(0, 9);
+
+            for (int i = 4; i < length; i++)
+            {
+                password += CharHelpers.GetRandomCharacter();
+            }
+
+            password = ReplaceDuplicateCharacters(password);
+
+            password = password.Randomize().Randomize();
+
+            return password;
+        }
+
+        /// <summary>
+        /// Replaces the duplicate characters in a string by a random character at the end
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ReplaceDuplicateCharacters(string input)
+        {
+            var stringWithoutDuplicates = input.RemoveDuplicates();
+
+            if (stringWithoutDuplicates.Length == input.Length)
+            {
+                return input;
+            }
+
+            for (int i = 0; i < input.Length - stringWithoutDuplicates.Length; i++)
+            {
+                stringWithoutDuplicates += CharHelpers.GetRandomCharacter();
+            }
+
+            return ReplaceDuplicateCharacters(stringWithoutDuplicates);
 
         }
 

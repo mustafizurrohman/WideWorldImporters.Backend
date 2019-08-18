@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Memory;
+using WideWorldImporters.AuthenticationProvider.Database;
 using Microsoft.Extensions.DependencyInjection;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
@@ -17,6 +18,11 @@ namespace WideWorldImporters.Services.ServiceCollections
         /// Application Database context
         /// </summary>
         public WideWorldImportersContext DbContext { get; }
+
+        /// <summary>
+        /// Authentication Provider DATA
+        /// </summary>
+        public AuthenticationProviderContext AuthDbContext { get; }
 
         /// <summary>
         /// AutoMapper 
@@ -46,13 +52,16 @@ namespace WideWorldImporters.Services.ServiceCollections
         /// <param name="memoryCache">Memory Caching</param>
         /// <param name="redisService">Redis Caching</param>
         /// <param name="logger">Logging Service</param>
+        /// <param name="authDbContext">Authorization Database Context</param>
         public ApplicationServices(WideWorldImportersContext dbContext, IMapper autoMapper, 
-            IMemoryCache memoryCache, IRedisService redisService, AppLoggers logger)
+            IMemoryCache memoryCache, IRedisService redisService, AppLoggers logger,
+            AuthenticationProviderContext authDbContext)
         {
             DbContext = dbContext;
             AutoMapper = autoMapper;
             MemoryCache = memoryCache;
             RedisService = redisService;
+            AuthDbContext = authDbContext;
             Logger = logger;
         }
 

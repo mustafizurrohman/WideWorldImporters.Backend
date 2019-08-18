@@ -81,6 +81,68 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with role
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="role">RoleName</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
+            <summary>
+            Adds a role
+            </summary>
+            <param name="role">RoleName</param>
+            <param name="isAdmin">Indicates if this role is an Admin role</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            Authenticates a user with a given username and password
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Updates the password for a username. 
+            </summary>
+            <param name="username">Username</param>
+            <param name="oldPassword">Old password</param>
+            <param name="newPassword">New password</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Interfaces.IWWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
+            <summary>
+            Resets the password for a username. A new password is randomly generated and assigned.
+            </summary>
+            <param name="username">Username</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Services.ServiceCollections.ApplicationServices">
             <summary>
             Services for the application
@@ -89,6 +151,11 @@
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.DbContext">
             <summary>
             Application Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.AutoMapper">
@@ -111,7 +178,7 @@
             Logging service
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers)">
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers,WideWorldImporters.AuthenticationProvider.Database.AuthenticationProviderContext)">
             <summary>
             Constructor
             </summary>
@@ -120,6 +187,7 @@
             <param name="memoryCache">Memory Caching</param>
             <param name="redisService">Redis Caching</param>
             <param name="logger">Logging Service</param>
+            <param name="authDbContext">Authorization Database Context</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>
@@ -134,6 +202,11 @@
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.DbContext">
             <summary>
             Application Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AutoMapper">
@@ -211,6 +284,105 @@
             <summary>
             
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Services.Services.WWIAuthenticationService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,Microsoft.Extensions.Options.IOptionsSnapshot{WideWorldImporters.Core.Options.JWTKeySettings},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationServices">Application Services</param>
+            <param name="jwtOptions">JWT Options</param>
+            <param name="hostingEnvironment">Hosting Environment</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddUserAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddRole(System.String,System.Boolean,System.String)">
+            <summary>
+            Adds a role
+            </summary>
+            <param name="role">Role</param>
+            <param name="isAdmin">Indicates if this role is an Admin role</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AddUserAndRoleAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with role
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="email">Email</param>
+            <param name="role">Role</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AuthenticateUserAsync(System.String,System.String)">
+            <summary>
+            Authenticates a user with a given username and password
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.UpdatePasswordAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Updates the password for a username. 
+            </summary>
+            <param name="username">Username</param>
+            <param name="oldPassword">Old password</param>
+            <param name="newPassword">New password</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Invalid username, password or API Key</exception>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException">Expired password</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.ResetPasswordAsync(System.String,System.String)">
+            <summary>
+            Resets the password for a username. A new password is randomly generated and assigned.
+            </summary>
+            <param name="username">Username</param>
+            <param name="apiKey">API Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.AuthenticateUsernameAndPasswordAsync(System.String,System.String,System.Boolean)">
+            <summary>
+            Authenticates a username and password and generated a JWT if the credentials are correct
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="verifyPasswordValidity"></param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.VerifyUsernameAndPassword(System.String,System.String,System.Boolean)">
+            <summary>
+            Verifies a username and password
+            </summary>
+            <param name="username">Username</param>
+            <param name="password">Password</param>
+            <param name="verifyPasswordValidity">Indicates if the validity of the password must be verified</param>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.Services.Services.WWIAuthenticationService.GenerateJwtTokenAsync(WideWorldImporters.AuthenticationProvider.Database.Users)">
+            <summary>
+            Generates a JWT for a given user
+            </summary>
+            <param name="user">User for whom the token must be generated.</param>
             <returns></returns>
         </member>
     </members>

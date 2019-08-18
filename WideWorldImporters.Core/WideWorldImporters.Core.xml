@@ -6,7 +6,7 @@
     <members>
         <member name="T:WideWorldImporters.Core.AutoMapper.MappingProfile">
             <summary>
-            AutoMapper profiles
+            AutoMapper profiles:
             Add the AutoMapper profiles here
             </summary>
         </member>
@@ -184,6 +184,97 @@
             Transient service
             </summary>
         </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">
+            <summary>
+            This exception is thrown when authentication fails.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="F:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException._message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException"/> class.
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException"/> class.
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException">
+            <summary>
+            Thrown when the password is invalid
+            </summary>
+            <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidPasswordException"/> class.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException">
+            <summary>
+            Thrown when the username is invalid
+            </summary>
+            <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.InvalidUsernameException"/> class.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException">
+            <summary>
+            Thrown when the user tries to login using an expired password.
+            </summary>
+            <seealso cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException" />
+        </member>
+        <member name="F:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException._message">
+            <summary>
+            The message
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException"/> class.
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.#ctor(System.Nullable{System.DateTime})">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException"/> class.
+            </summary>
+            <param name="dateTime">The date time.</param>
+        </member>
+        <member name="P:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.PasswordExpiredException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException"/> class.
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException.Message">
+            <summary>
+            Gets a message that describes the current exception.
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions">
             <summary>
             ExtensionMethods for IApplicationBuilder
@@ -193,7 +284,14 @@
             <summary>
             Extension Method to use custom exception handler
             </summary>
-            <param name="app"></param>
+            <param name="applicationBuilder">Application Builder</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions.MigrateDatabase(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Migrates the database.
+            </summary>
+            <param name="applicationBuilder">The application builder.</param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.DatetimeExtensions">
@@ -493,6 +591,50 @@
             <param name="obj2"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.StringExtensions">
+            <summary>
+            Extension methods for string
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.IsValidEmail(System.String)">
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.IsValidPassword(System.String)">
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.ContainsSpecialCharacters(System.String)">
+            TODO: Optimize this
+            <summary>
+            Returns true of the provided string represents an email. Otherwise false.
+            Does not actually verify the email. 
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.Randomize(System.String)">
+            <summary>
+            Randomizes a string
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.StringExtensions.RemoveDuplicates(System.String)">
+            <summary>
+            Remove duplicate characters from a string
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.SwaggerExtensions">
             <summary>
             Extensions for Swagger
@@ -513,6 +655,35 @@
             </summary>
             <param name="app"></param>
             <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WideWorldImporters.Core.Helpers.CharHelpers">
+            <summary>
+            Utility functions for characters
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomUppercaseCharacter">
+            <summary>
+            Returns a random uppercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomLowercaseCharacter">
+            <summary>
+            Returns a random lowercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomSpecialCharacter">
+            <summary>
+            Returns a random lowercase character
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.CharHelpers.GetRandomCharacter">
+            <summary>
+            Returns a random character
+            </summary>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.Helpers.IntHelpers">
@@ -573,6 +744,20 @@
             <param name="printable"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.Helpers.StringHelpers.GetRandomPassword(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.Helpers.StringHelpers.ReplaceDuplicateCharacters(System.String)">
+            <summary>
+            Replaces the duplicate characters in a string by a random character at the end
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.InternalModels.ApiServiceDescription">
             <summary>
             Describes a service
@@ -591,6 +776,26 @@
         <member name="P:WideWorldImporters.Core.InternalModels.ApiServiceDescription.Lifetime">
             <summary>
             Describes the lifetime of the service
+            </summary>
+        </member>
+        <member name="T:WideWorldImporters.Core.Options.JWTKeySettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.ExpireInDays">
+            <summary>
+            Expiry in days
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.SigningKey">
+            <summary>
+            Signing key
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Core.Options.JWTKeySettings.ApiKey">
+            <summary>
+            Api Key
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Options.PerformanceOptions">

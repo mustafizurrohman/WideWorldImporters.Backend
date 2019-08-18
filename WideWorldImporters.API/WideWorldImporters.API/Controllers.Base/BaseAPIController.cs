@@ -6,6 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Threading.Tasks;
 using WideWorldImporters.API.ActionFilters;
+using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Models.Database;
@@ -36,6 +37,11 @@ namespace WideWorldImporters.API.Controllers.Base
         /// Application Database context
         /// </summary>
         protected WideWorldImportersContext DbContext { get; }
+
+        /// <summary>
+        /// Authentication Provider DATA
+        /// </summary>
+        protected AuthenticationProviderContext AuthDbContext { get; }
 
         /// <summary>
         /// AutoMapper
@@ -70,6 +76,7 @@ namespace WideWorldImporters.API.Controllers.Base
             AppServices = applicationServices;
 
             DbContext = applicationServices.DbContext;
+            AuthDbContext = applicationServices.AuthDbContext;
             AutoMapper = applicationServices.AutoMapper;
             MemoryCache = applicationServices.MemoryCache;
             RedisService = applicationServices.RedisService;

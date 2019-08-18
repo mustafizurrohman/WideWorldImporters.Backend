@@ -11,13 +11,24 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
+    <PackageReference Include="CryptoHelper" Version="3.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WideWorldImporters.AuthenticationProvider\WideWorldImporters.AuthenticationProvider.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Core\WideWorldImporters.Core.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Logger\WideWorldImporters.Logger.csproj" />
     <ProjectReference Include="..\WideWorldImporters.Models\WideWorldImporters.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.identitymodel.tokens\5.3.0\lib\netstandard2.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\system.identitymodel.tokens.jwt\5.3.0\lib\netstandard2.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

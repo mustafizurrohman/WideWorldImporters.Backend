@@ -15,6 +15,23 @@
             </summary>
             <param name="number"></param>
         </member>
+        <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests">
+            <summary>
+            Unit tests for String extension methods
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests.TestIfStringHasSpecialCharacters">
+            <summary>
+            Check if a couple of strings contains special characters or not
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests.TestStringRandomization(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="numberOfTests"></param>
+            <param name="stringLength"></param>
+        </member>
         <member name="T:WideWorldImporters.Tests.HelpersUnitTest.IntHelperUnitTests">
             <summary>
             Unit-tests for IntHelper
@@ -38,6 +55,23 @@
             
             </summary>
             <param name="numberOfTests"></param>
+        </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestPasswordGeneration(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="numberOfTests"></param>
+            <param name="passwordLength"></param>
+        </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestReplace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.HelpersUnitTest.StringHelperUnitTests.TestDuplicateRemoval">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:WideWorldImporters.Tests.ServiceUnitTests.RedisTests">
             <summary>

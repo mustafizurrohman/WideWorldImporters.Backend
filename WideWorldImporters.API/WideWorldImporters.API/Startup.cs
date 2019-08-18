@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using AutoMapper;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNet.OData.Extensions;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using NLog;
 using Swashbuckle.AspNetCore.Swagger;
+using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Options;
@@ -25,6 +27,7 @@ using WideWorldImporters.Logger.Implementation;
 using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
+using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.Services;
 
@@ -63,7 +66,9 @@ namespace WideWorldImporters.API
         {
 
             Configuration.GetSection("PerformanceOptions").Bind(_performanceOptions);
-    
+
+            services.Configure<JWTKeySettings>(Configuration.GetSection("JWTKeySettings"));
+
             #region -- Swagger Configuration --
 
             Configuration.GetSection("Swagger").Bind(_info);
@@ -78,6 +83,11 @@ namespace WideWorldImporters.API
             services.AddDbContext<WideWorldImportersContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("WideWorldDb"));
+            });
+
+            services.AddDbContext<AuthenticationProviderContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AuthenticationDb"));
             });
 
             #endregion
@@ -145,6 +155,12 @@ namespace WideWorldImporters.API
             services.RegisterServices();
             services.AddTransient<IJmb, Jmb>();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddMemoryCache();
+
+            services.AddTransient(typeof(ApplicationServices));
+
             services.AddOData();
 
             #endregion
@@ -205,7 +221,9 @@ namespace WideWorldImporters.API
                 options.MaxModelValidationErrors = int.MaxValue;
                 options.MaxValidationDepth = 100;
 
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
 
             #endregion
 
@@ -255,8 +273,9 @@ namespace WideWorldImporters.API
             if (!_allowedCorsOrigins.IsEmpty())
             {
                 app.UseCors(CorsPolicies.CorsWithSpecificOrigins);
+            }
 
-            } 
+            // app.MigrateDatabase();
 
             app.UseCors();
             

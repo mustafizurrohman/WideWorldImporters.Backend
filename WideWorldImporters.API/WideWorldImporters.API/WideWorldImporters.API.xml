@@ -21,6 +21,41 @@
             </summary>
             <param name="context"></param>
         </member>
+        <member name="T:WideWorldImporters.API.ActionFilters.InsecureAttribute">
+            <summary>
+            Adds a header to indicate that this API must not be available in production. 
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.InsecureAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Executed before the start of execution
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.InsecureAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Executed after the end of execution
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:WideWorldImporters.API.ActionFilters.TestingAttribute">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.TestingAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Executed before the start of execution
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.ActionFilters.TestingAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Executed after the end of execution
+            </summary>
+            <param name="context"></param>
+        </member>
         <member name="T:WideWorldImporters.API.ActionFilters.ValidateModelAttribute">
             <summary>
             Validate Model Attribute
@@ -53,6 +88,11 @@
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.DbContext">
             <summary>
             Application Database context
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AuthDbContext">
+            <summary>
+            Authentication Provider DATA
             </summary>
         </member>
         <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.AutoMapper">
@@ -92,6 +132,94 @@
             Logs an exception
             </summary>
             <param name="ex"></param>
+        </member>
+        <member name="T:WideWorldImporters.API.Controllers.AuthenticationController">
+            <summary>
+            Controller for Authentication
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.IWWIAuthenticationService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="applicationServices"></param>
+            <param name="authenticationService"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetUsers">
+            <summary>
+            Gets a list of uesrs
+            Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUser(System.String,System.String,System.String)">
+            <summary>
+            Adds an user 
+            Warning: Insecure. Not Production ready.
+            In production we will make sure that this request is made by an admin
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddUserWithRole(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an user with a role
+            Warning: Insecure. Not Production ready.
+            In production we will make sure that this request is made by an admin
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <param name="email"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.AddRole(System.String,System.Boolean)">
+            <summary>
+            Adds a role
+            Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
+            </summary>
+            <param name="role"></param>
+            <param name="isAdmin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetRoles">
+            <summary>
+            Get list of roles
+            Warning: Insecure. Not Production ready.
+            This should NEVER be a part of Public API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.GetJwtToken(System.String,System.String)">
+            <summary>
+            Authenticate a user with username and password.
+            Warning: Insecure. Not Production ready.
+            </summary>
+            <returns></returns>
+            <exception cref="T:WideWorldImporters.Core.Exceptions.AuthenticationExceptions.AuthenticationException">Authentication Exception</exception>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.UpdatePassword(System.String,System.String,System.String)">
+            <summary>
+            Update a password when correct credentials are provided.
+            Warning: Insecure. Not Production ready.
+            </summary>
+            <param name="username"></param>
+            <param name="oldPassword"></param>
+            <param name="newPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.AuthenticationController.ResetPassword(System.String)">
+            <summary>
+            Resets a password for a given username.
+            Could be used only by an Admin to generate a new password for a user.
+            Warning: Insecure. Not Production ready.
+            </summary>
+            <param name="username"></param>
+            <returns></returns>
         </member>
         <member name="T:WideWorldImporters.API.Controllers.RedisController">
             <summary>
