@@ -137,8 +137,9 @@ namespace WideWorldImporters.API.Controllers
         [ProducesResponseType(typeof(Roles), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetRoles()
         {
-           var roles = await AuthDbContext.Roles.ToListAsync();
-           return Ok(roles);
+            var roles1 = await AuthDbContext.Roles.ToListAsync();
+            List<Roles> roles2 = await AuthDbContext.Roles.ToListAsync();
+            return Ok(roles1);
         }
 
         /// <summary>
@@ -211,6 +212,8 @@ namespace WideWorldImporters.API.Controllers
                 return Unauthorized(ex.Message);
             }
         }
+
+        
 
     }
 }

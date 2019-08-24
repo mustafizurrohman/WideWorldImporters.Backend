@@ -19,6 +19,14 @@ namespace WideWorldImporters.Core.ClassAttributes
         private readonly Lifetime _lifetime;
 
         /// <summary>
+        /// Gets the lifetime.
+        /// </summary>
+        /// <value>
+        /// The lifetime.
+        /// </value>
+        public Lifetime Lifetime => _lifetime;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="lifetime">Lifetime attribute</param>

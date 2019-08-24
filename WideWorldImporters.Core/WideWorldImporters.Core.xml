@@ -22,6 +22,14 @@
             Readonly means that it can set only in the constructor
             </summary>
         </member>
+        <member name="P:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.Lifetime">
+            <summary>
+            Gets the lifetime.
+            </summary>
+            <value>
+            The lifetime.
+            </value>
+        </member>
         <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
             <summary>
             Constructor

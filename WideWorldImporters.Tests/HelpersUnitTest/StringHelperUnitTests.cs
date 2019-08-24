@@ -44,7 +44,7 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
         /// <param name="numberOfTests"></param>
         /// <param name="passwordLength"></param>
         [Theory]
-        [InlineData(5000, 16)]
+        [InlineData(75000, 15)]
         public void TestPasswordGeneration(int numberOfTests, int passwordLength)
         {
             Stopwatch stopwatch1 = new Stopwatch();

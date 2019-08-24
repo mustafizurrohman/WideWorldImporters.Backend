@@ -124,7 +124,7 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 {
                     Implementation = asm,
                     Interface = asm.GetInterfaces().First(),
-                    Lifetime = ((ServiceLifeTime)asm.GetCustomAttributes(typeof(ServiceLifeTime), true).Single()).GetLifetime()
+                    Lifetime = ((ServiceLifeTime)asm.GetCustomAttributes(typeof(ServiceLifeTime), true).Single()).Lifetime
                 })
                 .ToList();
 
