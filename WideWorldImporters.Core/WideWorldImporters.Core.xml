@@ -447,6 +447,21 @@
             <param name="dbSet">DbSet</param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.DictionaryExtensions">
+            <summary>
+            Extension Methods for Dictionary
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0)">
+            <summary>
+            Gets the value or default.
+            </summary>
+            <typeparam name="T1">The type of the 1.</typeparam>
+            <typeparam name="T2">The type of the 2.</typeparam>
+            <param name="dictionary">The dictionary.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions">
             <summary>
             Extension methods for IEnumerable
@@ -480,10 +495,10 @@
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
-            
+            Shuffles the specified source.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="source"></param>
+            <param name="source">The source.</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.GetRandomShuffled``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
@@ -505,19 +520,19 @@
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
-            
+            Partitions the list into specified chunk size.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="sourceList"></param>
-            <param name="chunkSize"></param>
+            <param name="sourceList">The source list.</param>
+            <param name="chunkSize">Size of the chunk.</param>
             <returns></returns>
         </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Partition``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
-            
+            Partitions the specified source list.
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="sourceList"></param>
+            <param name="sourceList">The source list.</param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.ListExtensions">

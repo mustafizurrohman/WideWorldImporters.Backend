@@ -58,12 +58,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return source.ElementAt(randomNumber);
         }
 
-
         /// <summary>
-        /// 
+        /// Shuffles the specified source.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
+        /// <param name="source">The source.</param>
         /// <returns></returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
@@ -102,13 +101,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return (list == null || !list.Any());
         }
 
-
         /// <summary>
-        /// 
+        /// Partitions the list into specified chunk size.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="sourceList"></param>
-        /// <param name="chunkSize"></param>
+        /// <param name="sourceList">The source list.</param>
+        /// <param name="chunkSize">Size of the chunk.</param>
         /// <returns></returns>
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList, int chunkSize)
         { 
@@ -120,10 +118,10 @@ namespace WideWorldImporters.Core.ExtensionMethods
         }
 
         /// <summary>
-        /// 
+        /// Partitions the specified source list.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="sourceList"></param>
+        /// <param name="sourceList">The source list.</param>
         /// <returns></returns>
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList)
         {
@@ -132,6 +130,20 @@ namespace WideWorldImporters.Core.ExtensionMethods
 
             return Partition(sourceList, chunkSize);
         }
+
+        /*
+        /// <summary>
+        /// Maximums the or default.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns></returns>
+        public static T MaxOrDefault<T>(this IEnumerable<T> enumerable, T defaultValue = default)
+        {
+            return enumerable.DefaultIfEmpty().Max();
+        }
+        */
 
     }
 }

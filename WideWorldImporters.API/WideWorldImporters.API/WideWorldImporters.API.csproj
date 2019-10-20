@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <LangVersion>preview</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <UserSecretsId>a78c0be6-d771-4923-b118-d87103251dcb</UserSecretsId>
   </PropertyGroup>
 
