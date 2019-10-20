@@ -53,17 +53,6 @@
             <param name="namespaceName"></param>
             <returns></returns>
         </member>
-        <member name="T:WideWorldImporters.Services.Interfaces.IJmb">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Services.Interfaces.IJmb.HelloWorld(System.String)">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:WideWorldImporters.Services.Interfaces.ISampleService">
             <summary>
             Interface for Sample Service for Testing
@@ -246,22 +235,6 @@
             Logs a message
             </summary>
             <param name="ex"></param>
-        </member>
-        <member name="T:WideWorldImporters.Services.Services.Jmb">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.Jmb.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:WideWorldImporters.Services.Services.Jmb.HelloWorld(System.String)">
-            <summary>
-            
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>

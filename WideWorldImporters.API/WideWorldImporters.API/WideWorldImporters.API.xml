@@ -255,19 +255,12 @@
             Sample controller
             </summary>
         </member>
-        <member name="M:WideWorldImporters.API.Controllers.TestsController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService,WideWorldImporters.Services.Interfaces.IJmb)">
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices,WideWorldImporters.Services.Interfaces.ISampleService)">
             <summary>
             Constructor
             </summary>
             <param name="applicationServices"></param>
             <param name="sampleService"></param>
-        </member>
-        <member name="M:WideWorldImporters.API.Controllers.TestsController.JohnAsync(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="msg"></param>
-            <returns></returns>
         </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.Test">
             <summary>

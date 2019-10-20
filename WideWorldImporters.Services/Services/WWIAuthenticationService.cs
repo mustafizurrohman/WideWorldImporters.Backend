@@ -110,10 +110,7 @@ namespace WideWorldImporters.Services.Services
             await AuthDbContext.AddAsync(newUser);
             await AuthDbContext.SaveChangesAsync();
 
-            var user = await AuthDbContext.Users
-                .SingleAsync(usr => usr.Username == username);
-
-            return user;
+            return newUser;
         }
 
         /// <summary>
@@ -186,11 +183,7 @@ namespace WideWorldImporters.Services.Services
             await AuthDbContext.AddAsync(newUserRole);
             await AuthDbContext.SaveChangesAsync();
 
-            var newUser = await AuthDbContext.Users
-                .Include(usr => usr.UsersRoles)
-                .SingleAsync(usr => usr.UserId == user.UserId);
-
-            return newUser;
+            return user;
         }
 
         /// <summary>

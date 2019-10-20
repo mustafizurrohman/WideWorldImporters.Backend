@@ -24,33 +24,17 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
-        private readonly IJmb _jmb;
+        
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public TestsController(ApplicationServices applicationServices, ISampleService sampleService, IJmb jmb) 
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
             : base(applicationServices)
         {
             _sampleService = sampleService;
-            _jmb = jmb;
-            AppLoggers logger = new AppLoggers(new ConsoleLogger(), new NLogFileLogger());
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <returns></returns>
-        [HttpGet("John")]
-        public IActionResult JohnAsync(string msg)
-        {
-            string hello = _jmb.HelloWorld(msg);
-                
-            return Ok(hello);
-
         }
 
         /// <summary>

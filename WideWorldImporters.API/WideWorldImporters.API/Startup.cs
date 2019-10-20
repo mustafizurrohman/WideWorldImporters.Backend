@@ -153,7 +153,6 @@ namespace WideWorldImporters.API
             #region -- Service Configuration --
 
             services.RegisterServices();
-            services.AddTransient<IJmb, Jmb>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
