@@ -18,17 +18,17 @@ namespace WideWorldImporters.Services.Services.Base
     {
 
         /// <summary>
-        /// Application Services
+        /// Application Services Collection
         /// </summary>
-        protected ApplicationServices AppServices { get; }
+        private ApplicationServices AppServices { get; }
 
         /// <summary>
-        /// Application Database context
+        /// Application Database Db Context
         /// </summary>
         protected WideWorldImportersContext DbContext { get; }
 
         /// <summary>
-        /// Authentication Provider DATA
+        /// Authentication Provider Db Context
         /// </summary>
         protected AuthenticationProviderContext AuthDbContext { get; }
 
@@ -73,13 +73,13 @@ namespace WideWorldImporters.Services.Services.Base
         /// <summary>
         /// Logs a message
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">Message to log</param>
         public void Log(string message) => Task.Factory.StartNew(() => Logger.Log(message));
 
         /// <summary>
         /// Logs a message
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="ex">Exception to log</param>
         public void Log(Exception ex) => Task.Factory.StartNew(() => Logger.Log(ex));
 
         #endregion

@@ -18,12 +18,13 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <typeparam name="T2">The type of the 2.</typeparam>
         /// <param name="dictionary">The dictionary.</param>
         /// <param name="key">The key.</param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static T2 GetValueOrDefault<T1, T2>(this Dictionary<T1, T2> dictionary, T1 key)
+        public static T2 GetValueOrDefault<T1, T2>(this Dictionary<T1, T2> dictionary, T1 key, T2 defaultValue = default)
         {
             if (!dictionary.ContainsKey(key))
             {
-                return default;
+                return defaultValue;
             }
 
             return dictionary[key];

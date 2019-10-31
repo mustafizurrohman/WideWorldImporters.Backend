@@ -452,7 +452,7 @@
             Extension Methods for Dictionary
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0)">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
             <summary>
             Gets the value or default.
             </summary>
@@ -460,6 +460,7 @@
             <typeparam name="T2">The type of the 2.</typeparam>
             <param name="dictionary">The dictionary.</param>
             <param name="key">The key.</param>
+            <param name="defaultValue"></param>
             <returns></returns>
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions">

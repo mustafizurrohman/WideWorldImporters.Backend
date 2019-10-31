@@ -4,6 +4,24 @@
         <name>WideWorldImporters.Tests</name>
     </assembly>
     <members>
+        <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.DictonaryUnitTests">
+            <summary>
+            Unit Tests for Dictionary
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.DictonaryUnitTests.TestValidRetrival(System.String)">
+            <summary>
+            Test retrival of valid key
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.DictonaryUnitTests.TestInvalidRetrival(System.String,System.String)">
+            <summary>
+            Test if retrival of invalid key leads to the return of a default value
+            </summary>
+            <param name="key"></param>
+            <param name="defaultValue"></param>
+        </member>
         <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.EnumerableUnitTests">
             <summary>
             

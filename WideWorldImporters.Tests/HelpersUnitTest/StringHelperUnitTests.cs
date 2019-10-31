@@ -55,9 +55,9 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
                 .ToList();
             var time = stopwatch1.ElapsedMilliseconds;
 
-            stopwatch1.Restart();
-            var allPasswordsAggr = passwords.Aggregate((a, b) => a + Environment.NewLine + b);
-            var time2 = stopwatch1.ElapsedMilliseconds;
+            // stopwatch1.Restart();
+            // var allPasswordsAggr = passwords.Aggregate((a, b) => a + Environment.NewLine + b);
+            // var time2 = stopwatch1.ElapsedMilliseconds;
 
             stopwatch1.Restart();
             StringBuilder allPasswords = new StringBuilder();
@@ -70,7 +70,7 @@ namespace WideWorldImporters.Tests.HelpersUnitTest
             var time3 = stopwatch1.ElapsedMilliseconds;
 
             // Lol
-            Assert.True(time3 < time2);
+            // Assert.True(time3 < time2);
 
             var allPasswordsStringLength = allPasswords.ToString().Length;
 

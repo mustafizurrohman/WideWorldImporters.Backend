@@ -185,17 +185,17 @@
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AppServices">
             <summary>
-            Application Services
+            Application Services Collection
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.DbContext">
             <summary>
-            Application Database context
+            Application Database Db Context
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AuthDbContext">
             <summary>
-            Authentication Provider DATA
+            Authentication Provider Db Context
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.Services.Base.BaseService.AutoMapper">
@@ -228,13 +228,13 @@
             <summary>
             Logs a message
             </summary>
-            <param name="message"></param>
+            <param name="message">Message to log</param>
         </member>
         <member name="M:WideWorldImporters.Services.Services.Base.BaseService.Log(System.Exception)">
             <summary>
             Logs a message
             </summary>
-            <param name="ex"></param>
+            <param name="ex">Exception to log</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.SampleService">
             <summary>
