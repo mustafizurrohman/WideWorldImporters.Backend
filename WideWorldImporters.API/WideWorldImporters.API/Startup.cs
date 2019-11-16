@@ -28,8 +28,6 @@ using WideWorldImporters.Logger.Interfaces;
 using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.ExtensionMethods;
 using WideWorldImporters.Services.ServiceCollections;
-using WideWorldImporters.Services.Interfaces;
-using WideWorldImporters.Services.Services;
 
 namespace WideWorldImporters.API
 {
@@ -74,7 +72,6 @@ namespace WideWorldImporters.API
             Configuration.GetSection("Swagger").Bind(_info);
             Configuration.GetSection("ApiKeyScheme").Bind(_apiKeyScheme);
             services.AddSwaggerDocumentation(_info, _apiKeyScheme);
-
 
             #endregion
 
@@ -125,7 +122,6 @@ namespace WideWorldImporters.API
 
             Configuration.GetSection("AllowedCorsOrigins").Bind(_allowedCorsOrigins);
 
-            
             // Cors policy allowing only specific origins
             services.AddCors(options =>
             {

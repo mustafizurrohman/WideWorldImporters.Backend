@@ -142,8 +142,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static T MaxOrDefault<T>(this IEnumerable<T> enumerable, T defaultValue = default)
         {
             return enumerable.DefaultIfEmpty().Max();
-        }
-        */
+        } */
 
     }
 }

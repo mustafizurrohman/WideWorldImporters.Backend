@@ -64,7 +64,5 @@ namespace WideWorldImporters.Core.Helpers
             return chars[randomNumber];
         }
 
-
-
     }
 }

@@ -4,15 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Core.ExtensionMethods;
-using WideWorldImporters.Logger.Implementation;
-using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers
 {
