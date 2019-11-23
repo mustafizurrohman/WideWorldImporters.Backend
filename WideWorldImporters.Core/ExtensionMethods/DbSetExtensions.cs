@@ -34,6 +34,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <exception cref="Exception"></exception>
         public static void AddOrUpdate<T>(this DbSet<T> dbSet, T data) where T : class
         {
+            if (data == null)
+            {
+                return;
+            }
+
             var context = dbSet.GetContext();
             var ids = context.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties.Select(x => x.Name);
 
@@ -78,6 +83,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <exception cref="Exception"></exception>
         public static void AddOrUpdate<T>(this DbSet<T> dbSet, Expression<Func<T, object>> key, T data) where T : class
         {
+            if (data == null)
+            {
+                return;
+            }
+
             var context = dbSet.GetContext();
             var ids = context.Model.FindEntityType(typeof(T)).FindPrimaryKey().Properties.Select(x => x.Name);
             var t = typeof(T);
