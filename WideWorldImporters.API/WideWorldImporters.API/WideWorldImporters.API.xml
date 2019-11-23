@@ -311,6 +311,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.ChunkIQueryableAsync(System.Int32,System.Int32)">
+            <summary>
+            IQueryable Chunking
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.SqlQuery">
+            <summary>
+            IQueryable Chunking
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.Get">
             <summary>
             GET api/values

@@ -602,6 +602,33 @@
             <param name="obj2"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions">
+            <summary>
+            Extension methods for IQueryable
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ChunkData``1(System.Linq.IQueryable{``0},System.Int32)">
+            <summary>
+            Simple method to chunk a source IQueryable into smaller (more manageable) lists
+            </summary>
+            <param name="source">The large IQueryable to split</param>
+            <param name="chunkSize">The maximum number of items each subset should contain</param>
+            <returns>An IEnumerable of the original source IEnumerable in bite size chunks</returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ChunkData``1(System.Linq.IQueryable{``0})">
+            <summary>
+            Simple method to chunk a source IQueryable into smaller (more manageable) lists
+            </summary>
+            <param name="source">The large IQueryable to split</param>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ToSql``1(System.Linq.IQueryable{``0})">
+            <summary>
+            Converts a IQueryable to equivalent SQL Statement.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.StringExtensions">
             <summary>
             Extension methods for string

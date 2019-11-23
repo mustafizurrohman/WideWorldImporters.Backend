@@ -167,6 +167,30 @@ namespace WideWorldImporters.API.Controllers
             return Ok(new Tuple<IEnumerable<int>, IEnumerable<int>>(list, shuffled));
         }
 
+        /// <summary>
+        /// IQueryable Chunking
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("chunk")]
+        public IActionResult ChunkIQueryableAsync(int total = 1000, int chunkSize = 50)
+        {
+            var testQuery = DbContext.Colors.Take(total).ChunkData(chunkSize);
+
+            return Ok(testQuery);
+        }
+
+        /// <summary>
+        /// IQueryable Chunking
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("sql")]
+        public IActionResult SqlQuery()
+        {
+            var testQuery = DbContext.Colors.Take(10).Skip(10);
+
+            return Ok(testQuery.ToSql());
+        }
+
         #region -- Sample Methods -- 
 
         /// <summary>
