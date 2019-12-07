@@ -447,6 +447,33 @@
             <param name="dbSet">DbSet</param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DbSetExtensions.AddOrUpdate``1(Microsoft.EntityFrameworkCore.DbSet{``0},``0)">
+            <summary>
+            Adds the or update.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dbSet">The database set.</param>
+            <param name="data">The data.</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DbSetExtensions.AddOrUpdate``1(Microsoft.EntityFrameworkCore.DbSet{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},``0)">
+            <summary>
+            Adds the or update.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dbSet">The database set.</param>
+            <param name="key">The key.</param>
+            <param name="data">The data.</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.DbSetExtensions.GetContext``1(Microsoft.EntityFrameworkCore.DbSet{``0})">
+            <summary>
+            Gets the context.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="dbSet">The database set.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.DictionaryExtensions">
             <summary>
             Extension Methods for Dictionary

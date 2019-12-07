@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace WideWorldImporters.Core.ExtensionMethods
 {
@@ -22,12 +20,12 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static T2 GetValueOrDefault<T1, T2>(this Dictionary<T1, T2> dictionary, T1 key, T2 defaultValue = default)
         {
-            if (!dictionary.ContainsKey(key))
+            if (dictionary.ContainsKey(key))
             {
-                return defaultValue;
+                return dictionary[key];
             }
 
-            return dictionary[key];
+            return defaultValue;
         }
 
 

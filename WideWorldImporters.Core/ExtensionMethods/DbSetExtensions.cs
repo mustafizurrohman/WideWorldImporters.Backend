@@ -134,8 +134,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="dbSet">The database set.</param>
         /// <returns></returns>
-        public static DbContext GetContext<TEntity>(this DbSet<TEntity> dbSet)
-        where TEntity : class
+        public static DbContext GetContext<TEntity>(this DbSet<TEntity> dbSet) where TEntity : class
         {
             return (DbContext)dbSet
                 .GetType().GetTypeInfo()

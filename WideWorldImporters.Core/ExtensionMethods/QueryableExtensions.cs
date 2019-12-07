@@ -31,23 +31,13 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// Simple method to chunk a source IQueryable into smaller (more manageable) lists
         /// </summary>
         /// <param name="source">The large IQueryable to split</param>
-        public static IEnumerable<IEnumerable<TSource>> ChunkData<TSource>(this IQueryable<TSource> source)
+        public static IEnumerable<IQueryable<TSource>> ChunkData<TSource>(this IQueryable<TSource> source)
         {
             int chunkSize = (int)Math.Sqrt(source.Count());
 
             for (int i = 0; i < source.Count(); i += chunkSize)
                 yield return source.Skip(i).Take(chunkSize);
         }
-
-        private static readonly TypeInfo QueryCompilerTypeInfo = typeof(QueryCompiler).GetTypeInfo();
-
-        private static readonly FieldInfo QueryCompilerField = typeof(EntityQueryProvider).GetTypeInfo().DeclaredFields.First(x => x.Name == "_queryCompiler");
-
-        private static readonly FieldInfo QueryModelGeneratorField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_queryModelGenerator");
-
-        private static readonly FieldInfo DataBaseField = QueryCompilerTypeInfo.DeclaredFields.Single(x => x.Name == "_database");
-
-        private static readonly PropertyInfo DatabaseDependenciesField = typeof(Database).GetTypeInfo().DeclaredProperties.Single(x => x.Name == "Dependencies");
 
         /// <summary>
         /// Converts a IQueryable to equivalent SQL Statement.
@@ -57,6 +47,16 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static string ToSql<TEntity>(this IQueryable<TEntity> query) where TEntity : class
         {
+            TypeInfo QueryCompilerTypeInfo = typeof(QueryCompiler).GetTypeInfo();
+
+            FieldInfo QueryCompilerField = typeof(EntityQueryProvider).GetTypeInfo().DeclaredFields.First(x => x.Name == "_queryCompiler");
+
+            FieldInfo QueryModelGeneratorField = QueryCompilerTypeInfo.DeclaredFields.First(x => x.Name == "_queryModelGenerator");
+
+            FieldInfo DataBaseField = QueryCompilerTypeInfo.DeclaredFields.Single(x => x.Name == "_database");
+
+            PropertyInfo DatabaseDependenciesField = typeof(Database).GetTypeInfo().DeclaredProperties.Single(x => x.Name == "Dependencies");
+
             var queryCompiler = (QueryCompiler)QueryCompilerField.GetValue(query.Provider);
             var modelGenerator = (QueryModelGenerator)QueryModelGeneratorField.GetValue(queryCompiler);
             var queryModel = modelGenerator.ParseQuery(query.Expression);
