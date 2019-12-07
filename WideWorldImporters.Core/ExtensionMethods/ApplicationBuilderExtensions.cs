@@ -37,7 +37,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
                     context.Database.Migrate();
                 }
             }
-            using var contextAuthProvider = serviceScope.ServiceProvider.GetService<AuthenticationProviderContext>()
+            using var contextAuthProvider = serviceScope.ServiceProvider.GetService<AuthenticationProviderContext>();
             { 
                 contextAuthProvider.Database.Migrate();
             }

@@ -722,6 +722,11 @@
             <param name="info"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.TypeExtensions">
+            <summary>
+            Extension methods for Type
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.Helpers.CharHelpers">
             <summary>
             Utility functions for characters
