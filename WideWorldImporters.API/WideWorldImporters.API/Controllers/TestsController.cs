@@ -147,7 +147,6 @@ namespace WideWorldImporters.API.Controllers
 
             var partition = list.ToList().Partition().Partition();
 
-            
             return Ok(partition);
         }
 
@@ -174,7 +173,7 @@ namespace WideWorldImporters.API.Controllers
         [HttpGet("chunk")]
         public IActionResult ChunkIQueryableAsync(int total = 1000, int chunkSize = 50)
         {
-            var testQuery = DbContext.Colors.Take(total).ChunkData(chunkSize);
+            var testQuery = DbContext.Colors.Take(total).Chunk(chunkSize);
 
             return Ok(testQuery);
         }

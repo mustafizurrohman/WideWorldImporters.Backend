@@ -144,7 +144,27 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return true;
         }
 
+        /// <summary>
+        /// Gets the copy of a object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectToCopy">The s.</param>
+        /// <returns></returns>
+        public static T GetCopy<T>(this T objectToCopy)
+        {
+            T newObject = Activator.CreateInstance<T>();
 
+            foreach (PropertyInfo i in newObject.GetType().GetProperties())
+            {
+                if (i.CanWrite)
+                {
+                    object value = objectToCopy.GetType().GetProperty(i.Name).GetValue(objectToCopy, null);
+                    i.SetValue(newObject, value, null);
+                }
+            }
+
+            return newObject;
+        }
 
     }
 }

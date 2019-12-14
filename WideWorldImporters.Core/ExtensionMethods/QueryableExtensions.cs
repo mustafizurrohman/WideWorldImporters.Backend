@@ -21,7 +21,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="source">The large IQueryable to split</param>
         /// <param name="chunkSize">The maximum number of items each subset should contain</param>
         /// <returns>An IEnumerable of the original source IEnumerable in bite size chunks</returns>
-        public static IEnumerable<IEnumerable<TSource>> ChunkData<TSource>(this IQueryable<TSource> source, int chunkSize)
+        public static IEnumerable<IEnumerable<TSource>> Chunk<TSource>(this IQueryable<TSource> source, int chunkSize)
         {
             for (int i = 0; i < source.Count(); i += chunkSize)
                 yield return source.Skip(i).Take(chunkSize);
@@ -31,7 +31,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// Simple method to chunk a source IQueryable into smaller (more manageable) lists
         /// </summary>
         /// <param name="source">The large IQueryable to split</param>
-        public static IEnumerable<IQueryable<TSource>> ChunkData<TSource>(this IQueryable<TSource> source)
+        public static IEnumerable<IQueryable<TSource>> Chunk<TSource>(this IQueryable<TSource> source)
         {
             int chunkSize = (int)Math.Sqrt(source.Count());
 
@@ -65,7 +65,11 @@ namespace WideWorldImporters.Core.ExtensionMethods
             var queryCompilationContext = databaseDependencies.QueryCompilationContextFactory.Create(false);
             var modelVisitor = (RelationalQueryModelVisitor)queryCompilationContext.CreateQueryModelVisitor();
             modelVisitor.CreateQueryExecutor<TEntity>(queryModel);
-            var sql = modelVisitor.Queries.First().ToString();
+            
+            var sql = modelVisitor.Queries.First().ToString()
+                .Replace("\n", string.Empty)
+                .Replace("\t", string.Empty)
+                .Replace("\r", string.Empty);
 
             return sql;
         }

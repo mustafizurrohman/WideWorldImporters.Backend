@@ -563,6 +563,15 @@
             <param name="sourceList">The source list.</param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.MaxOrDefault``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Maximum or the default.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.ListExtensions">
             <summary>
             Extension methods for IList
@@ -629,12 +638,20 @@
             <param name="obj2"></param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.ObjectExtensions.GetCopy``1(``0)">
+            <summary>
+            Gets the copy of a object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="objectToCopy">The s.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions">
             <summary>
             Extension methods for IQueryable
             </summary>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ChunkData``1(System.Linq.IQueryable{``0},System.Int32)">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.Chunk``1(System.Linq.IQueryable{``0},System.Int32)">
             <summary>
             Simple method to chunk a source IQueryable into smaller (more manageable) lists
             </summary>
@@ -642,7 +659,7 @@
             <param name="chunkSize">The maximum number of items each subset should contain</param>
             <returns>An IEnumerable of the original source IEnumerable in bite size chunks</returns>
         </member>
-        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ChunkData``1(System.Linq.IQueryable{``0})">
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.Chunk``1(System.Linq.IQueryable{``0})">
             <summary>
             Simple method to chunk a source IQueryable into smaller (more manageable) lists
             </summary>

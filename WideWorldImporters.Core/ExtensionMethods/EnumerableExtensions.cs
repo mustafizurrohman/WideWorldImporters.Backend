@@ -13,7 +13,6 @@ namespace WideWorldImporters.Core.ExtensionMethods
     public static class EnumerableExtensions
     {
 
-
         /// <summary>
         /// Converts an IEnumerable to its CSV representation
         /// </summary>
@@ -113,8 +112,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return sourceList
                 .Select((value, index) => new { Index = index, Value = value })
                 .GroupBy(group => group.Index / chunkSize)
-                .Select(group => group.Select(grp => grp.Value))
-                .ToList();
+                .Select(group => group.Select(grp => grp.Value));
         }
 
         /// <summary>
@@ -131,9 +129,25 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return Partition(sourceList, chunkSize);
         }
 
-        /*
         /// <summary>
-        /// Maximums the or default.
+        /// Flattens the specified source.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">The IEnumerable source.</param>
+        /// <returns></returns>
+        public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> source)
+        {
+            if (source.IsEmpty())
+            {
+                return Activator.CreateInstance<IEnumerable<T>>();
+            }
+
+            return source.SelectMany(item => item);
+        }
+
+        
+        /// <summary>
+        /// Maximum or the default.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="enumerable">The enumerable.</param>
@@ -141,8 +155,8 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static T MaxOrDefault<T>(this IEnumerable<T> enumerable, T defaultValue = default)
         {
-            return enumerable.DefaultIfEmpty().Max();
-        } */
+            return enumerable.DefaultIfEmpty(defaultValue).Max();
+        } 
 
     }
 }
