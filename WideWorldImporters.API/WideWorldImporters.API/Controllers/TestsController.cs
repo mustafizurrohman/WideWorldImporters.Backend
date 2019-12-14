@@ -179,7 +179,7 @@ namespace WideWorldImporters.API.Controllers
         }
 
         /// <summary>
-        /// IQueryable Chunking
+        /// SQL Query Generation test
         /// </summary>
         /// <returns></returns>
         [HttpGet("sql")]

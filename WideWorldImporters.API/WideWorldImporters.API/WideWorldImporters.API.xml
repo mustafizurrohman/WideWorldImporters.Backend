@@ -319,7 +319,7 @@
         </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.SqlQuery">
             <summary>
-            IQueryable Chunking
+            SQL Query Generation test
             </summary>
             <returns></returns>
         </member>

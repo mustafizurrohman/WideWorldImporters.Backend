@@ -563,6 +563,14 @@
             <param name="sourceList">The source list.</param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.Flatten``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Flattens the specified source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source">The IEnumerable source.</param>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions.MaxOrDefault``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
             Maximum or the default.
