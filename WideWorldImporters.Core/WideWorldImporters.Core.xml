@@ -681,6 +681,24 @@
             <param name="query">The query.</param>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.ElementExistsAtAsync``1(System.Linq.IQueryable{``0},System.Int32)">
+            <summary>
+            Elements the exists at.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="query">The query.</param>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Core.ExtensionMethods.QueryableExtensions.SmartTakeAsync``1(System.Linq.IQueryable{``0},System.Int32)">
+            <summary>
+            Smarts the take asynchronous.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <param name="query">The query.</param>
+            <param name="take">The take.</param>
+            <returns></returns>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.StringExtensions">
             <summary>
             Extension methods for string

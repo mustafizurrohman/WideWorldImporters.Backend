@@ -154,7 +154,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="defaultValue">The default value.</param>
         /// <returns></returns>
         public static T MaxOrDefault<T>(this IEnumerable<T> enumerable, T defaultValue = default)
-        {
+        { 
             return enumerable.DefaultIfEmpty(defaultValue).Max();
         } 
 

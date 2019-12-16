@@ -323,6 +323,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.TestsController.TestSkip">
+            <summary>
+            Tests the skip.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.TestsController.Get">
             <summary>
             GET api/values

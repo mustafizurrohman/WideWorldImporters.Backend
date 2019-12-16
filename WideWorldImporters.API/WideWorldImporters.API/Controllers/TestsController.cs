@@ -9,6 +9,8 @@ using WideWorldImporters.Core.Helpers;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
 using WideWorldImporters.Core.ExtensionMethods;
+using Microsoft.EntityFrameworkCore;
+using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -171,11 +173,20 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("chunk")]
-        public IActionResult ChunkIQueryableAsync(int total = 1000, int chunkSize = 50)
+        public async Task<IActionResult> ChunkIQueryableAsync(int total = 1000, int chunkSize = 50)
         {
-            var testQuery = DbContext.Colors.Take(total).Chunk(chunkSize);
+            var chunkedQuery = DbContext.Colors.Take(total).Chunk(chunkSize);
 
-            return Ok(testQuery);
+            List<List<Colors>> colors = new List<List<Colors>>();
+
+            // await foreach (var name in GetNamesAsync())
+
+            //await foreach (var query.ToListAsync() in chunkedQuery)
+            //{
+            //    await query.ToListAsync()
+            //}
+
+            return Ok(true);
         }
 
         /// <summary>
@@ -189,6 +200,31 @@ namespace WideWorldImporters.API.Controllers
 
             return Ok(testQuery.ToSql());
         }
+
+        /// <summary>
+        /// Tests the skip.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("skip")]
+        public async Task<IActionResult> TestSkip()
+        {
+            var count = await DbContext.Colors.CountAsync();
+
+            var colors = DbContext.Colors.AsNonTrackingQueryable();
+
+            var skipresult1 = await colors.SmartTakeAsync(count / 2);
+            var skipresult2 = await colors.SmartTakeAsync(count * 2);
+
+            List<bool> response = new List<bool>();
+
+            response.Add(skipresult1.Item2);
+            response.Add(skipresult2.Item2);
+
+            return Ok(response);
+            
+        
+        }
+
 
         #region -- Sample Methods -- 
 
