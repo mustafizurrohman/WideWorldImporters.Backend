@@ -28,7 +28,7 @@ namespace WideWorldImporters.Tests.ExtensionMethodsUnitTest
             Assert.False(take.Item2);
 
             take = originalList.SmartTake(number);
-            Assert.False(take.Item2);
+            Assert.True(take.Item2);
 
             take = originalList.SmartTake(number -1);
             Assert.True(take.Item2);
