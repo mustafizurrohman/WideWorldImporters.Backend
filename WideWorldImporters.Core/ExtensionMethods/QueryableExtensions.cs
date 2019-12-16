@@ -85,17 +85,20 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="query">The query.</param>
         /// <param name="position"></param>
         /// <returns></returns>
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Not important in this situation")]
-        public static async Task<bool> ElementExistsAtAsync<TEntity>(this IQueryable<TEntity> query, int position)
+        public static bool ElementExistsAt<TEntity>(this IQueryable<TEntity> query, int position)
         {
             try
             {
-                var val = await query.Skip(position).Take(1).FirstOrDefaultAsync();
+                var val = query.Skip(position).Take(1).First();
 
                 return val != null;
 
             }
-            catch (Exception)
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+            catch(ArgumentNullException)
             {
                 return false;
             }
@@ -103,17 +106,17 @@ namespace WideWorldImporters.Core.ExtensionMethods
         }
 
         /// <summary>
-        /// Smarts the take asynchronous.
+        /// Smark Take
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="query">The query.</param>
         /// <param name="take">The take.</param>
         /// <returns></returns>
-        public static async Task<Tuple<IQueryable<TEntity>, bool>> SmartTakeAsync<TEntity>(this IQueryable<TEntity> query, int take)
+        public static Tuple<IQueryable<TEntity>, bool> SmartTake<TEntity>(this IQueryable<TEntity> query, int take)
         {
             query = query.Take(take);
 
-            var elementExistsAtLast = await query.ElementExistsAtAsync(take - 1);
+            var elementExistsAtLast = query.ElementExistsAt(take - 1);
 
             return new Tuple<IQueryable<TEntity>, bool>(query, elementExistsAtLast);
 

@@ -33,6 +33,23 @@
             </summary>
             <param name="number"></param>
         </member>
+        <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.QueryableUnitTests">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.QueryableUnitTests.TestSmartTakeFalse(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="number"></param>
+        </member>
+        <member name="M:WideWorldImporters.Tests.ExtensionMethodsUnitTest.QueryableUnitTests.TestSmartTakeTrue(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="number"></param>
+        </member>
         <member name="T:WideWorldImporters.Tests.ExtensionMethodsUnitTest.StringUnitTests">
             <summary>
             Unit tests for String extension methods
