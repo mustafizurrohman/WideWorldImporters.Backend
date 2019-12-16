@@ -216,13 +216,15 @@ namespace WideWorldImporters.API.Controllers
             var skipresult2 = colors.SmartTake(count * 2);
             var skipresult3 = colors.SmartTake(count + 2);
             var skipresult4 = colors.SmartTake(count - 2);
+            var skipresult5 = colors.SmartTake(count);
 
             List<bool> response = new List<bool>
             {
                 skipresult1.Item2,
                 skipresult2.Item2, 
                 skipresult3.Item2,
-                skipresult4.Item2
+                skipresult4.Item2,
+                skipresult5.Item2
             };
 
             return Ok(response);

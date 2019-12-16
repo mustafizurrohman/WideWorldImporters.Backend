@@ -89,7 +89,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         {
             try
             {
-                var val = query.ElementAt(position - 1);
+                var val = query.Skip(position).First();
 
                 return val != null;
 
@@ -98,7 +98,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             {
                 return false;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 return false;
             }
@@ -114,9 +114,8 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static Tuple<IQueryable<TEntity>, bool> SmartTake<TEntity>(this IQueryable<TEntity> query, int take)
         {
-            query = query.Take(take);
-
             var elementExistsAtLast = query.ElementExistsAt(take);
+            query = query.Take(take);
 
             return new Tuple<IQueryable<TEntity>, bool>(query, elementExistsAtLast);
 
