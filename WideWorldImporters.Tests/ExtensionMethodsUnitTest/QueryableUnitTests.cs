@@ -18,7 +18,7 @@ namespace WideWorldImporters.Tests.ExtensionMethodsUnitTest
         /// </summary>
         /// <param name="number"></param>
         [Theory]
-        [InlineData(100)]
+        [InlineData(5)]
         public void TestSmartTakeFalse(int number)
         {
             var originalList = Enumerable.Range(0, number).AsQueryable();
@@ -26,6 +26,13 @@ namespace WideWorldImporters.Tests.ExtensionMethodsUnitTest
             var take = originalList.SmartTake(number + 2);
 
             Assert.False(take.Item2);
+
+            take = originalList.SmartTake(number);
+            Assert.True(take.Item2);
+
+            take = originalList.SmartTake(number -1);
+            Assert.True(take.Item2);
+
         }
 
         /// <summary>

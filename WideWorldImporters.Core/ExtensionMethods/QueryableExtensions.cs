@@ -89,16 +89,16 @@ namespace WideWorldImporters.Core.ExtensionMethods
         {
             try
             {
-                var val = query.Skip(position).Take(1).First();
+                var val = query.ElementAt(position - 1);
 
                 return val != null;
 
             }
-            catch (InvalidOperationException)
+            catch (ArgumentOutOfRangeException)
             {
                 return false;
             }
-            catch(ArgumentNullException)
+            catch(Exception)
             {
                 return false;
             }
@@ -116,7 +116,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         {
             query = query.Take(take);
 
-            var elementExistsAtLast = query.ElementExistsAt(take - 1);
+            var elementExistsAtLast = query.ElementExistsAt(take);
 
             return new Tuple<IQueryable<TEntity>, bool>(query, elementExistsAtLast);
 
