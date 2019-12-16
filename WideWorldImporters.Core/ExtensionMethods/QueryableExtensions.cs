@@ -114,7 +114,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static Tuple<IQueryable<TEntity>, bool> SmartTake<TEntity>(this IQueryable<TEntity> query, int take)
         {
-            var elementExistsAtLast = query.ElementExistsAt(take);
+            var elementExistsAtLast = query.ElementExistsAt(take -1);
             query = query.Take(take);
 
             return new Tuple<IQueryable<TEntity>, bool>(query, elementExistsAtLast);

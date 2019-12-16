@@ -205,29 +205,15 @@ namespace WideWorldImporters.API.Controllers
         /// Tests the skip.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("skip")]
+        [HttpGet("smarttake")]
         public async Task<IActionResult> TestSkip()
         {
-            var count = await DbContext.Colors.CountAsync();
+            var numbers = Enumerable.Range(0, 10).AsQueryable();
 
-            var colors = DbContext.Colors.AsNonTrackingQueryable();
+            var res = numbers.SmartTake(11);
 
-            var skipresult1 = colors.SmartTake(count / 2);
-            var skipresult2 = colors.SmartTake(count * 2);
-            var skipresult3 = colors.SmartTake(count + 2);
-            var skipresult4 = colors.SmartTake(count - 2);
-            var skipresult5 = colors.SmartTake(count);
 
-            List<bool> response = new List<bool>
-            {
-                skipresult1.Item2,
-                skipresult2.Item2, 
-                skipresult3.Item2,
-                skipresult4.Item2,
-                skipresult5.Item2
-            };
-
-            return Ok(response);
+            return Ok(res);
             
         
         }
