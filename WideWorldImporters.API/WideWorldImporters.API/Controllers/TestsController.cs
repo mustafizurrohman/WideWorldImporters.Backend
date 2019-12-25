@@ -206,7 +206,7 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("smarttake")]
-        public async Task<IActionResult> TestSkip()
+        public IActionResult TestSkip()
         {
             var numbers = Enumerable.Range(0, 10).AsQueryable();
 

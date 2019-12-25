@@ -490,6 +490,11 @@
             <param name="defaultValue"></param>
             <returns></returns>
         </member>
+        <member name="T:WideWorldImporters.Core.ExtensionMethods.EntityFrameworkExtensions">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.EnumerableExtensions">
             <summary>
             Extension methods for IEnumerable

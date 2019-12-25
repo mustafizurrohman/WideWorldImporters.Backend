@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
+﻿using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace WideWorldImporters.Core.ExtensionMethods
 {
@@ -68,7 +65,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             var queryCompilationContext = databaseDependencies.QueryCompilationContextFactory.Create(false);
             var modelVisitor = (RelationalQueryModelVisitor)queryCompilationContext.CreateQueryModelVisitor();
             modelVisitor.CreateQueryExecutor<TEntity>(queryModel);
-            
+
             var sql = modelVisitor.Queries.First().ToString()
                 .Replace("\n", string.Empty)
                 .Replace("\t", string.Empty)
@@ -98,7 +95,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             {
                 return false;
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -114,7 +111,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static Tuple<IQueryable<TEntity>, bool> SmartTake<TEntity>(this IQueryable<TEntity> query, int take)
         {
-            var elementExistsAtLast = query.ElementExistsAt(take -1);
+            var elementExistsAtLast = query.ElementExistsAt(take - 1);
             query = query.Take(take);
 
             return new Tuple<IQueryable<TEntity>, bool>(query, elementExistsAtLast);

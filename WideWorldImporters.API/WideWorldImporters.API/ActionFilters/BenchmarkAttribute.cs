@@ -11,7 +11,7 @@ namespace WideWorldImporters.API.ActionFilters
 
         private Stopwatch _timer = new Stopwatch();
 
-        
+
         /// <summary>
         /// Executed before the start of execution
         /// </summary>
