@@ -30,17 +30,17 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static void MigrateDatabase(this IApplicationBuilder applicationBuilder)
         {
-            using var serviceScope = applicationBuilder.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
-            { 
-                using (var context = serviceScope.ServiceProvider.GetService<WideWorldImportersContext>())
-                {
-                    context.Database.Migrate();
-                }
-            }
-            using var contextAuthProvider = serviceScope.ServiceProvider.GetService<AuthenticationProviderContext>();
-            { 
+            using IServiceScope serviceScope = applicationBuilder.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            {
+                using var context = serviceScope.ServiceProvider.GetService<WideWorldImportersContext>();
+                context.Database.Migrate();
+
+                using var contextAuthProvider = serviceScope.ServiceProvider.GetService<AuthenticationProviderContext>();
                 contextAuthProvider.Database.Migrate();
+
             }
+
+
         }
 
     }

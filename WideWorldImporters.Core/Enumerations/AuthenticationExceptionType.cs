@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WideWorldImporters.Core.Enumerations
+﻿namespace WideWorldImporters.Core.Enumerations
 {
     /// <summary>
     /// 
     /// </summary>
-    public enum AuthenticationExceptionType {
-        
+    public enum AuthenticationExceptionType
+    {
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        Unspecified,
+
         /// <summary>
         /// Invalid password
         /// </summary>
         InvalidPassword,
-        
+
         /// <summary>
         /// Invalid username
         /// </summary>
         InvalidUsername,
-        
+
         /// <summary>
         /// Password expired
         /// </summary>

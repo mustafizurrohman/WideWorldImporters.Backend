@@ -152,6 +152,11 @@
             
             </summary>
         </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType.Unspecified">
+            <summary>
+            Unspecified
+            </summary>
+        </member>
         <member name="F:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType.InvalidPassword">
             <summary>
             Invalid password

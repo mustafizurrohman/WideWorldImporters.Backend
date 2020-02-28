@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WideWorldImporters.Core.Enumerations;
 
 namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
@@ -24,7 +22,7 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationException"/> class.
         /// </summary>
-        public AuthenticationException(string message, AuthenticationExceptionType exceptionType)
+        public AuthenticationException(string message, AuthenticationExceptionType exceptionType = AuthenticationExceptionType.Unspecified)
         {
             _message = message;
             _exceptionType = exceptionType;
@@ -66,5 +64,5 @@ namespace WideWorldImporters.Core.Exceptions.AuthenticationExceptions
 
     }
 
-    
+
 }

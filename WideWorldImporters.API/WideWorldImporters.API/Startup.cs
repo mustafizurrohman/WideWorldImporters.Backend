@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNet.OData.Extensions;
@@ -19,6 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using NLog;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.Enumerations;
 using WideWorldImporters.Core.ExtensionMethods;
@@ -161,7 +161,7 @@ namespace WideWorldImporters.API
             #endregion
 
             #region -- Hangfire Configuration
-            
+
             // Add Hangfire services.
             services.AddHangfire(configuration => configuration
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
@@ -179,7 +179,7 @@ namespace WideWorldImporters.API
 
             // Add the processing server as IHostedService
             services.AddHangfireServer();
-            
+
             #endregion
 
             #region -- Logger Configuration --
@@ -201,16 +201,19 @@ namespace WideWorldImporters.API
 
             #region -- MVC Configuration --
 
-            services.AddMvc(options => {
+            const string odataFormat = "application/prs.odatatestxx-odata";
+
+            services.AddMvc(options =>
+            {
 
                 foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
                 {
-                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(odataFormat));
                 }
 
                 foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
                 {
-                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue(odataFormat));
                 }
 
                 options.MaxModelValidationErrors = int.MaxValue;
@@ -234,7 +237,8 @@ namespace WideWorldImporters.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            } else
+            }
+            else
             {
                 // Force all communication to go through HTTPS!
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -273,12 +277,13 @@ namespace WideWorldImporters.API
             // app.MigrateDatabase();
 
             app.UseCors();
-            
+
             app.UseHttpsRedirection();
 
             app.UseHangfireDashboard();
 
-            app.UseMvc(routeBuilder => {
+            app.UseMvc(routeBuilder =>
+            {
 
                 routeBuilder.EnableDependencyInjection();
 
