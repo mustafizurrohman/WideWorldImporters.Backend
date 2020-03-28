@@ -134,7 +134,7 @@
         </member>
         <member name="T:WideWorldImporters.Services.ServiceCollections.ApplicationServices">
             <summary>
-            Services for the application
+            Utility Services for the application
             </summary>
         </member>
         <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.DbContext">
@@ -177,6 +177,48 @@
             <param name="redisService">Redis Caching</param>
             <param name="logger">Logging Service</param>
             <param name="authDbContext">Authorization Database Context</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.Log(System.String)">
+            <summary>
+            Logs a message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.Log(System.Exception)">
+            <summary>
+            Logs an exception
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.LogDebug(System.String)">
+            <summary>
+            Logs a debug message.
+            </summary>
+            <param name="message">The Debug message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.LogError(System.String)">
+            <summary>
+            Logs an error message.
+            </summary>
+            <param name="message">The Debug message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.LogException(System.Exception)">
+            <summary>
+            Logs an exception.
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.LogInfo(System.String)">
+            <summary>
+            Logs an informational message.
+            </summary>
+            <param name="message">The informational message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.LogWarn(System.String)">
+            <summary>
+            Logs an warning message.
+            </summary>
+            <param name="message">The warning message to log.</param>
         </member>
         <member name="T:WideWorldImporters.Services.Services.Base.BaseService">
             <summary>

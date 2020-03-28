@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using WideWorldImporters.API.Controllers.Base;
+using WideWorldImporters.Core.ExtensionMethods;
 using WideWorldImporters.Core.Helpers;
+using WideWorldImporters.Models.Database;
 using WideWorldImporters.Services.Interfaces;
 using WideWorldImporters.Services.ServiceCollections;
-using WideWorldImporters.Core.ExtensionMethods;
-using Microsoft.EntityFrameworkCore;
-using WideWorldImporters.Models.Database;
 
 namespace WideWorldImporters.API.Controllers
 {
@@ -22,14 +21,14 @@ namespace WideWorldImporters.API.Controllers
     {
 
         private readonly ISampleService _sampleService;
-        
+
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="applicationServices"></param>
         /// <param name="sampleService"></param>
-        public TestsController(ApplicationServices applicationServices, ISampleService sampleService) 
+        public TestsController(ApplicationServices applicationServices, ISampleService sampleService)
             : base(applicationServices)
         {
             _sampleService = sampleService;
@@ -53,9 +52,9 @@ namespace WideWorldImporters.API.Controllers
         /// <param name="message"></param>
         /// <returns></returns>
         [HttpGet("Log")]
-        public IActionResult LogMessage(string message)
-        { 
-            
+        public IActionResult LogMessage(string message = "Message to test logging")
+        {
+
             // BackgroundJob.Enqueue(() => Logger.Log(message));
             Logger.Log(message);
             Logger.LogDebug(message);
@@ -63,6 +62,8 @@ namespace WideWorldImporters.API.Controllers
             Logger.LogException(new Exception(message));
             Logger.LogInfo(message);
             Logger.LogWarn(message);
+
+            AppServices.Log("Logged via AppServices- " + message);
 
 
             return Ok();
@@ -73,13 +74,12 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("VehicleTemperatures/odata")]
-        [Produces("application/json")]
         public IActionResult GetDataAsync()
         {
             // DbSet<VehicleTemperatures> vehicleTemps = AppServices.DbContext.VehicleTemperatures;
 
             var data = DbContext.VehicleTemperatures.Take(1000);
-            
+
             return Ok(data);
         }
 
@@ -130,7 +130,7 @@ namespace WideWorldImporters.API.Controllers
         {
             if (number % 2 == 0)
                 throw new ArgumentException("Expected a odd number. " + number + " is even!");
-            if (number %2 != 0)
+            if (number % 2 != 0)
                 throw new ArgumentException("Expected a even number. " + number + " is odd!");
 
             throw new ArgumentException("Expected a positive number. " + number + " is negative!");
@@ -145,7 +145,7 @@ namespace WideWorldImporters.API.Controllers
         public IActionResult ListPartition(int number)
         {
             IEnumerable<int> list = Enumerable.Range(0, number);
-                //.Select(num => IntHelpers.GetRandomNumber(number * 2));
+            //.Select(num => IntHelpers.GetRandomNumber(number * 2));
 
             var partition = list.ToList().Partition().Partition();
 
@@ -214,8 +214,8 @@ namespace WideWorldImporters.API.Controllers
 
 
             return Ok(res);
-            
-        
+
+
         }
 
 

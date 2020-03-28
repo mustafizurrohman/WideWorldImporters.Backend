@@ -133,6 +133,36 @@
             </summary>
             <param name="ex"></param>
         </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.LogDebug(System.String)">
+            <summary>
+            Logs a debug message.
+            </summary>
+            <param name="message">The Debug message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.LogError(System.String)">
+            <summary>
+            Logs an error message.
+            </summary>
+            <param name="message">The Debug message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.LogException(System.Exception)">
+            <summary>
+            Logs an exception.
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.LogInfo(System.String)">
+            <summary>
+            Logs an informational message.
+            </summary>
+            <param name="message">The informational message to log.</param>
+        </member>
+        <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.LogWarn(System.String)">
+            <summary>
+            Logs an warning message.
+            </summary>
+            <param name="message">The warning message to log.</param>
+        </member>
         <member name="T:WideWorldImporters.API.Controllers.AuthenticationController">
             <summary>
             Controller for Authentication

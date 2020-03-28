@@ -18,9 +18,10 @@ namespace WideWorldImporters.API.Controllers.Base
     /// <summary>
     /// Base Controller for API Controllers
     /// </summary>
-    [Route("api/[controller]")]
     [Benchmark]
     [ApiController]
+    [Route("api/[controller]")]
+    [Produces("application/json")]
     [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
     // ReSharper disable once InconsistentNaming
     public class BaseAPIController : ControllerBase
@@ -85,21 +86,56 @@ namespace WideWorldImporters.API.Controllers.Base
 
         #endregion
 
-        #region -- Utility Non-Action Functions --
+        #region -- Utility Logging Methods -- 
 
         /// <summary>
         /// Logs a message
         /// </summary>
         /// <param name="message"></param>
         [NonAction]
-        public void Log(string message) => Task.Factory.StartNew(() => Logger.Log(message));
+        public void Log(string message) => Task.Run(() => Logger.LogInfo(message));
 
         /// <summary>
         /// Logs an exception
         /// </summary>
         /// <param name="ex"></param>
         [NonAction]
-        public void Log(Exception ex) => Task.Factory.StartNew(() => Logger.Log(ex));
+        public void Log(Exception ex) => Task.Run(() => Logger.Log(ex));
+
+        /// <summary>
+        /// Logs a debug message.
+        /// </summary>
+        /// <param name="message">The Debug message to log.</param>
+        [NonAction]
+        public void LogDebug(string message) => Task.Run(() => Logger.LogDebug(message));
+
+        /// <summary>
+        /// Logs an error message.
+        /// </summary>
+        /// <param name="message">The Debug message to log.</param>
+        [NonAction]
+        public void LogError(string message) => Task.Run(() => Logger.LogError(message));
+
+        /// <summary>
+        /// Logs an exception.
+        /// </summary>
+        /// <param name="ex"></param>
+        [NonAction]
+        public void LogException(Exception ex) => Task.Run(() => Logger.LogException(ex));
+
+        /// <summary>
+        /// Logs an informational message.
+        /// </summary>
+        /// <param name="message">The informational message to log.</param>
+        [NonAction]
+        public void LogInfo(string message) => Task.Run(() => Logger.LogInfo(message));
+
+        /// <summary>
+        /// Logs an warning message.
+        /// </summary>
+        /// <param name="message">The warning message to log.</param>
+        [NonAction]
+        public void LogWarn(string message) => Task.Run(() => Logger.LogWarn(message));
 
         #endregion
 
