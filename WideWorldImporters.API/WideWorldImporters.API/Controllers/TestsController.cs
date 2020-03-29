@@ -65,7 +65,6 @@ namespace WideWorldImporters.API.Controllers
 
             //AppServices.Log("Logged via AppServices- " + message);
 
-
             return Ok();
         }
 

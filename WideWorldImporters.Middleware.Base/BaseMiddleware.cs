@@ -9,7 +9,7 @@ namespace WideWorldImporters.Middleware.Base
 {
 
     /// <summary>
-    /// Base Middleware- All Middleware inherit this
+    /// Base Middleware- All Middlewares inherit this
     /// </summary>
     public abstract class BaseMiddleware
     {

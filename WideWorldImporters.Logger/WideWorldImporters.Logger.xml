@@ -24,6 +24,11 @@
             Application loggers
             </summary>
         </member>
+        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers._loggers">
+            <summary>
+            The List of Loggers
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.#ctor(WideWorldImporters.Logger.Implementation.ConsoleLogger,WideWorldImporters.Logger.Implementation.NLogFileLogger)">
             <summary>
             Constructor

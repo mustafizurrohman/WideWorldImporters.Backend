@@ -1,5 +1,4 @@
-﻿using Hangfire;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
@@ -32,7 +31,7 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// <param name="requestDelegate">Request Delegate</param>
         /// <param name="hostingEnvironment">Hosting Environment</param>
         /// <param name="serviceProvider">ServiceProvider required Dependency Injection (DI)</param>
-        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider) 
+        public ExceptionHandler(RequestDelegate requestDelegate, IHostingEnvironment hostingEnvironment, IServiceProvider serviceProvider)
             : base(requestDelegate, serviceProvider)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -43,13 +42,13 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
         /// </summary>
         /// <param name="context">Http Context</param>
         /// <returns></returns>
-        public override async Task InvokeAsync(HttpContext context) 
+        public override async Task InvokeAsync(HttpContext context)
         {
             try
             {
                 await Next.Invoke(context);
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 try
                 {
@@ -57,8 +56,8 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
                 }
                 catch (Exception loggingException)
                 {
-                    Logger.LogException(loggingException);
                     // TODO: Inform dev ops team about this
+                    Logger.LogException(loggingException);
                 }
             }
         }
@@ -80,14 +79,15 @@ namespace WideWorldImporters.Middleware.ExceptionHandler
             {
                 // Handle Exception in development mode
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => Logger.Log(ex));
+                Task.Run(() => Logger.Log(ex));
                 // BackgroundJob.Enqueue(() => Logger.Log(ex));
 
-            } else
+            }
+            else
             {
                 // Handle Exception when not in development mode (Staging or Production)
                 // Do no make the user wait for the logging to finish. Do it in background.
-                Task.Factory.StartNew(() => Logger.LogException(ex));
+                Task.Run(() => Logger.LogException(ex));
                 // BackgroundJob.Enqueue(() => Logger.LogException(ex));
             }
 

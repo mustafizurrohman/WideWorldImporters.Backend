@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Logger.Implementation
@@ -12,10 +11,16 @@ namespace WideWorldImporters.Logger.Implementation
     public class AppLoggers : IWWILogger
     {
 
-        private readonly ConsoleLogger _consoleLogger;
-        private readonly NLogFileLogger _fileLogger;
+        #region -- Private Attributes --
 
-        private readonly List<Type> _loggers;
+        /// <summary>
+        /// The List of Loggers
+        /// </summary>
+        private readonly List<IWWILogger> _loggers;
+
+        #endregion
+
+        #region -- Constructor -- 
 
         /// <summary>
         /// Constructor
@@ -24,11 +29,19 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="fileLogger">File Logger</param>
         public AppLoggers(ConsoleLogger consoleLogger, NLogFileLogger fileLogger)
         {
-            _consoleLogger = consoleLogger;
-            _fileLogger = fileLogger;
+            // We are still using DI even when not used!
+            // TODO: Optimize this
 
             if (_loggers == null)
             {
+                _loggers = new List<IWWILogger>
+                {
+                    consoleLogger,
+                    fileLogger
+                };
+
+                // TODO: Can we use reflection here?
+                /*
                 // Reflection is expensive but this is called only once because AppLoggers is Singleton
                 _loggers = AppDomain.CurrentDomain
                     .GetAssemblies()
@@ -37,8 +50,13 @@ namespace WideWorldImporters.Logger.Implementation
                     .Where(typ => typ != typeof(AppLoggers))
                     // .Select(typ => (IWWILogger)typ as IWWILogger)
                     .ToList();
+                */
             }
         }
+
+        #endregion
+
+        #region -- Public Methods --
 
         /// <summary>
         /// Logs a message
@@ -46,17 +64,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void Log(string message)
         {
-
-            //_loggers.ForEach(log =>
-            //{
-            //    var logger = log as IWWILogger;
-
-            //    logger.Log(message);
-
-            //});
-
-            _consoleLogger.Log(message);
-            _fileLogger.Log(message);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.Log(message);
+            });
         }
 
         /// <summary>
@@ -65,7 +76,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void Log(Exception exception)
         {
-            LogException(exception);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogException(exception);
+            });
         }
 
         /// <summary>
@@ -74,8 +88,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebug(string message)
         {
-            _consoleLogger.LogDebug(message);
-            _fileLogger.LogDebug(message);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogDebug(message);
+            });
         }
 
         /// <summary>
@@ -84,8 +100,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug information to log</param>
         public void LogInfo(string message)
         {
-            _consoleLogger.LogInfo(message);
-            _fileLogger.LogInfo(message);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogInfo(message);
+            });
         }
 
         /// <summary>
@@ -94,8 +112,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarn(string message)
         {
-            _consoleLogger.Log(message);
-            _fileLogger.Log(message);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogWarn(message);
+            });
         }
 
         /// <summary>
@@ -104,8 +124,10 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogError(string message)
         {
-            _consoleLogger.LogError(message);
-            _fileLogger.LogError(message);
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogError(message);
+            });
         }
 
         /// <summary>
@@ -114,9 +136,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            _consoleLogger.LogError(exception.ToString());
-            _fileLogger.LogError(exception.ToString());
+            _loggers.ForEach(currentLogger =>
+            {
+                currentLogger.LogError(exception.ToString());
+            });
         }
+
+        #endregion
 
     }
 }
