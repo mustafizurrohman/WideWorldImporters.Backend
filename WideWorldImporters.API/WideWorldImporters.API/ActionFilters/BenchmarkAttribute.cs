@@ -6,7 +6,7 @@ namespace WideWorldImporters.API.ActionFilters
     /// <summary>
     /// Benchmark attribute
     /// </summary>
-    public class BenchmarkAttribute : ActionFilterAttribute
+    public sealed class BenchmarkAttribute : ActionFilterAttribute
     {
 
         private Stopwatch _timer = new Stopwatch();

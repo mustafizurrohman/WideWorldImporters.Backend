@@ -5,7 +5,7 @@ namespace WideWorldImporters.API.ActionFilters
     /// <summary>
     /// Adds a header to indicate that this API must not be available in production. 
     /// </summary>
-    public class InsecureAttribute : ActionFilterAttribute
+    public sealed class InsecureAttribute : ActionFilterAttribute
     {
         /// <summary>
         /// Executed before the start of execution

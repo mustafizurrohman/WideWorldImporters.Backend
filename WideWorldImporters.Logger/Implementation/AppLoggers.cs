@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Logger.Implementation
@@ -13,6 +15,8 @@ namespace WideWorldImporters.Logger.Implementation
         private readonly ConsoleLogger _consoleLogger;
         private readonly NLogFileLogger _fileLogger;
 
+        private readonly List<Type> _loggers;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -22,6 +26,18 @@ namespace WideWorldImporters.Logger.Implementation
         {
             _consoleLogger = consoleLogger;
             _fileLogger = fileLogger;
+
+            if (_loggers == null)
+            {
+                // Reflection is expensive but this is called only once because AppLoggers is Singleton
+                _loggers = AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .SelectMany(asm => asm.GetTypes())
+                    .Where(typ => typeof(IWWILogger).IsAssignableFrom(typ) && !typ.IsInterface && !typ.IsAbstract)
+                    .Where(typ => typ != typeof(AppLoggers))
+                    // .Select(typ => (IWWILogger)typ as IWWILogger)
+                    .ToList();
+            }
         }
 
         /// <summary>
@@ -30,6 +46,15 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void Log(string message)
         {
+
+            //_loggers.ForEach(log =>
+            //{
+            //    var logger = log as IWWILogger;
+
+            //    logger.Log(message);
+
+            //});
+
             _consoleLogger.Log(message);
             _fileLogger.Log(message);
         }

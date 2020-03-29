@@ -5,7 +5,7 @@ namespace WideWorldImporters.Logger.Implementation
 {
 
     /// <summary>
-    /// Console Logging ( Can also be done using NLog)
+    /// Console Logging (Can also be done using NLog)
     /// This is for demonstration only
     /// </summary>
     public class ConsoleLogger : IWWILogger

@@ -6,7 +6,7 @@ namespace WideWorldImporters.API.ActionFilters
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
-    public class TestingAttribute : ActionFilterAttribute
+    public sealed class TestingAttribute : ActionFilterAttribute
     {
         /// <summary>
         /// Executed before the start of execution

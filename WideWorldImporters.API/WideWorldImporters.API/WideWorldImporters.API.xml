@@ -65,13 +65,13 @@
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
             <summary>
-            
+            Overrude of OnActionExecuted Method.
             </summary>
             <param name="context"></param>
         </member>
         <member name="M:WideWorldImporters.API.ActionFilters.ValidateModelAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
             <summary>
-            Override of OnActionExecuting method. 
+            Override of OnActionExecuting Method. 
             </summary>
             <param name="context"></param>
         </member>

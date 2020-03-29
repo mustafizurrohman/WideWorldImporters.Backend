@@ -10,11 +10,11 @@ namespace WideWorldImporters.API.ActionFilters
     /// Not used as the moment as it is done by default by WebApi 2.2.
     /// Should be enabled only when required
     /// </summary>
-    public class ValidateModelAttribute : ActionFilterAttribute
+    public sealed class ValidateModelAttribute : ActionFilterAttribute
     {
 
         /// <summary>
-        /// 
+        /// Overrude of OnActionExecuted Method.
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -22,7 +22,7 @@ namespace WideWorldImporters.API.ActionFilters
         }
 
         /// <summary>
-        /// Override of OnActionExecuting method. 
+        /// Override of OnActionExecuting Method. 
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)

@@ -1,15 +1,15 @@
-﻿using System;
+﻿using CryptoHelper;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using CryptoHelper;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.ClassAttributes;
 using WideWorldImporters.Core.Enumerations;
@@ -41,7 +41,7 @@ namespace WideWorldImporters.Services.Services
         /// <param name="applicationServices">Application Services</param>
         /// <param name="jwtOptions">JWT Options</param>
         /// <param name="hostingEnvironment">Hosting Environment</param>
-        public WWIAuthenticationService(ApplicationServices applicationServices, IOptionsSnapshot<JWTKeySettings> jwtOptions, 
+        public WWIAuthenticationService(ApplicationServices applicationServices, IOptionsSnapshot<JWTKeySettings> jwtOptions,
             IHostingEnvironment hostingEnvironment) : base(applicationServices)
         {
             JwtOptions = jwtOptions.Value;
@@ -60,7 +60,7 @@ namespace WideWorldImporters.Services.Services
         {
             if (apiKey != JwtOptions.ApiKey && IsInProduction)
             {
-                throw new ArgumentException("Invalid API Key.");
+                throw new AuthenticationException("Invalid API Key.", AuthenticationExceptionType.InvalidApiKey);
             }
 
             if (!email.IsValidEmail())
@@ -102,7 +102,7 @@ namespace WideWorldImporters.Services.Services
                 PasswordExpiresOn = now.AddMonths(6),
                 Email = email,
                 Username = username,
-                UsersRoles = null, 
+                UsersRoles = null,
                 PasswordHash = Crypto.HashPassword(password),
                 PasswordCreatedOn = now
             };
@@ -294,7 +294,7 @@ namespace WideWorldImporters.Services.Services
         /// <exception cref="AuthenticationException">Authentication Exception</exception>
         private async Task<string> AuthenticateUsernameAndPasswordAsync(string username, string password, bool verifyPasswordValidity)
         {
-            Users user =  await VerifyUsernameAndPassword(username, password, verifyPasswordValidity);
+            Users user = await VerifyUsernameAndPassword(username, password, verifyPasswordValidity);
 
             return await GenerateJwtTokenAsync(user);
         }

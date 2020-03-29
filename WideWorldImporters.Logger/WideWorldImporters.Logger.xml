@@ -75,7 +75,7 @@
         </member>
         <member name="T:WideWorldImporters.Logger.Implementation.ConsoleLogger">
             <summary>
-            Console Logging ( Can also be done using NLog)
+            Console Logging (Can also be done using NLog)
             This is for demonstration only
             </summary>
         </member>

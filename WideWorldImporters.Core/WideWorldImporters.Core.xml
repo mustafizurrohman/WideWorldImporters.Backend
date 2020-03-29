@@ -149,7 +149,7 @@
         </member>
         <member name="T:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType">
             <summary>
-            
+            Enum for type of Authentication Exception
             </summary>
         </member>
         <member name="F:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType.Unspecified">
@@ -170,6 +170,11 @@
         <member name="F:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType.PasswordExpired">
             <summary>
             Password expired
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Core.Enumerations.AuthenticationExceptionType.InvalidApiKey">
+            <summary>
+            Invalid API key
             </summary>
         </member>
         <member name="T:WideWorldImporters.Core.Enumerations.CorsPolicies">
@@ -261,7 +266,7 @@
         </member>
         <member name="T:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException">
             <summary>
-            
+            InvalidPasswordException
             </summary>
             <seealso cref="T:System.Exception" />
         </member>
@@ -274,6 +279,19 @@
             <summary>
             Gets a message that describes the current exception.
             </summary>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WideWorldImporters.Core.Exceptions.PasswordExceptions.InvalidPasswordException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         </member>
         <member name="T:WideWorldImporters.Core.ExtensionMethods.ApplicationBuilderExtensions">
             <summary>

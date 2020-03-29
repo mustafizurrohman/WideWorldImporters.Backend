@@ -1,7 +1,7 @@
 ﻿namespace WideWorldImporters.Core.Enumerations
 {
     /// <summary>
-    /// 
+    /// Enum for type of Authentication Exception
     /// </summary>
     public enum AuthenticationExceptionType
     {
@@ -24,6 +24,11 @@
         /// <summary>
         /// Password expired
         /// </summary>
-        PasswordExpired
+        PasswordExpired,
+
+        /// <summary>
+        /// Invalid API key
+        /// </summary>
+        InvalidApiKey
     };
 }

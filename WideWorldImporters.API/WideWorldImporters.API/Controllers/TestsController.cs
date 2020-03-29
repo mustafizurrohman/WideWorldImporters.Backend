@@ -51,19 +51,19 @@ namespace WideWorldImporters.API.Controllers
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        [HttpGet("Log")]
+        [HttpPost("Log")]
         public IActionResult LogMessage(string message = "Message to test logging")
         {
 
             // BackgroundJob.Enqueue(() => Logger.Log(message));
             Logger.Log(message);
-            Logger.LogDebug(message);
-            Logger.LogError(message);
-            Logger.LogException(new Exception(message));
-            Logger.LogInfo(message);
-            Logger.LogWarn(message);
+            //Logger.LogDebug(message);
+            //Logger.LogError(message);
+            //Logger.LogException(new Exception(message));
+            //Logger.LogInfo(message);
+            //Logger.LogWarn(message);
 
-            AppServices.Log("Logged via AppServices- " + message);
+            //AppServices.Log("Logged via AppServices- " + message);
 
 
             return Ok();
