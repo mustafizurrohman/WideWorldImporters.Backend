@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Logger.Implementation
@@ -16,7 +17,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <summary>
         /// The List of Loggers
         /// </summary>
-        private readonly List<IWWILogger> _loggers;
+        private readonly List<IWWILogger> _loggers = null;
 
         #endregion
 
@@ -25,32 +26,20 @@ namespace WideWorldImporters.Logger.Implementation
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="consoleLogger">Console Logger</param>
-        /// <param name="fileLogger">File Logger</param>
-        public AppLoggers(ConsoleLogger consoleLogger, NLogFileLogger fileLogger)
+        public AppLoggers()
         {
-            // We are still using DI even when not used!
-            // TODO: Optimize this
-
             if (_loggers == null)
             {
-                _loggers = new List<IWWILogger>
-                {
-                    consoleLogger,
-                    fileLogger
-                };
-
-                // TODO: Can we use reflection here?
-                /*
                 // Reflection is expensive but this is called only once because AppLoggers is Singleton
+                // As long as all new loggers use IWWILogger as interface, this will work without any modification.
                 _loggers = AppDomain.CurrentDomain
                     .GetAssemblies()
                     .SelectMany(asm => asm.GetTypes())
                     .Where(typ => typeof(IWWILogger).IsAssignableFrom(typ) && !typ.IsInterface && !typ.IsAbstract)
                     .Where(typ => typ != typeof(AppLoggers))
-                    // .Select(typ => (IWWILogger)typ as IWWILogger)
+                    .Select(typ => Activator.CreateInstance(typ) as IWWILogger)
                     .ToList();
-                */
+
             }
         }
 
