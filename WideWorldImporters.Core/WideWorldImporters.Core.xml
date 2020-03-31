@@ -10,19 +10,19 @@
             Add the AutoMapper profiles here
             </summary>
         </member>
-        <member name="T:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime">
+        <member name="T:WideWorldImporters.Core.ClassAttributes.Service">
             <summary>
             ServiceLifeTimeAttribute- Used to determine how a service should be injected.
             Can be used only for classes
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime._lifetime">
+        <member name="F:WideWorldImporters.Core.ClassAttributes.Service._lifetime">
             <summary>
             Lifetime (value). 
             Readonly means that it can set only in the constructor
             </summary>
         </member>
-        <member name="P:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.Lifetime">
+        <member name="P:WideWorldImporters.Core.ClassAttributes.Service.Lifetime">
             <summary>
             Gets the lifetime.
             </summary>
@@ -30,13 +30,13 @@
             The lifetime.
             </value>
         </member>
-        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
+        <member name="M:WideWorldImporters.Core.ClassAttributes.Service.#ctor(WideWorldImporters.Core.Enumerations.ServiceLifetime.Lifetime)">
             <summary>
             Constructor
             </summary>
             <param name="lifetime">Lifetime attribute</param>
         </member>
-        <member name="M:WideWorldImporters.Core.ClassAttributes.ServiceLifeTime.GetLifetime">
+        <member name="M:WideWorldImporters.Core.ClassAttributes.Service.GetLifetime">
             <summary>
             Gets the Lifetime of current attribute
             </summary>

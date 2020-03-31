@@ -15,7 +15,7 @@ namespace WideWorldImporters.Services.Services
     /// <summary>
     /// Sample Service for Testing
     /// </summary>
-    [ServiceLifeTime(Lifetime.Transient)]
+    [Service(Lifetime.Transient)]
     public class SampleService : BaseService, ISampleService
     {
 

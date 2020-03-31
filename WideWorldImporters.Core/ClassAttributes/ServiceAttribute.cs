@@ -9,7 +9,7 @@ namespace WideWorldImporters.Core.ClassAttributes
     /// Can be used only for classes
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public sealed class ServiceLifeTime : Attribute
+    public sealed class Service : Attribute
     {
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace WideWorldImporters.Core.ClassAttributes
         /// Constructor
         /// </summary>
         /// <param name="lifetime">Lifetime attribute</param>
-        public ServiceLifeTime(Lifetime lifetime)
+        public Service(Lifetime lifetime)
         {
             _lifetime = lifetime;
         }

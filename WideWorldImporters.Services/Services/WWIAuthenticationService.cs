@@ -25,7 +25,7 @@ namespace WideWorldImporters.Services.Services
     /// <summary>
     /// 
     /// </summary>
-    [ServiceLifeTime(Lifetime.Transient)]
+    [Service(Lifetime.Transient)]
     // ReSharper disable once InconsistentNaming
     public class WWIAuthenticationService : BaseService, Interfaces.IWWIAuthenticationService
     {

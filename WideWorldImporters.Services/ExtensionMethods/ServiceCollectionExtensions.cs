@@ -119,12 +119,12 @@ namespace WideWorldImporters.Services.ExtensionMethods
                 .Where(asm => asm.Namespace.Contains(namespaceName))
                 .Where(asm => !asm.GetInterfaces().IsEmpty())
                 .Where(asm => asm.Assembly.GetName().Name != "mscorlib")
-                .Where(asm => !asm.GetCustomAttributes(typeof(ServiceLifeTime), true).IsEmpty())
+                .Where(asm => !asm.GetCustomAttributes(typeof(Service), true).IsEmpty())
                 .Select(asm => new ApiServiceDescription()
                 {
                     Implementation = asm,
                     Interface = asm.GetInterfaces().First(),
-                    Lifetime = ((ServiceLifeTime)asm.GetCustomAttributes(typeof(ServiceLifeTime), true).Single()).Lifetime
+                    Lifetime = ((Service)asm.GetCustomAttributes(typeof(Service), true).Single()).Lifetime
                 })
                 .ToList();
 

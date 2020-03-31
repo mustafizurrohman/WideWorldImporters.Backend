@@ -36,43 +36,43 @@
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.Log(System.String)">
             <summary>
-            Logs a message
+            Logs a message for all Loggers in Application
             </summary>
             <param name="message">Message to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.Log(System.Exception)">
             <summary>
-            Logs an exception
+            Logs an exception for all Loggers in Application
             </summary>
             <param name="exception">Exception to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogDebug(System.String)">
             <summary>
-            Logs a debug message
+            Logs a debug message for all Loggers in Application
             </summary>
             <param name="message">Debug Information to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogInfo(System.String)">
             <summary>
-            Logs a informational message
+            Logs a informational message for all Loggers in Application
             </summary>
             <param name="message">Debug information to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogWarn(System.String)">
             <summary>
-            Logs a warning
+            Logs a warning for all Loggers in Application
             </summary>
             <param name="message">Warning message to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogError(System.String)">
             <summary>
-            Logs a error message
+            Logs a error message for all Loggers in Application
             </summary>
             <param name="message">Error to log</param>
         </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogException(System.Exception)">
             <summary>
-            Logs an exception
+            Logs an exception for all Loggers in Application
             </summary>
             <param name="exception">Exception to log</param>
         </member>

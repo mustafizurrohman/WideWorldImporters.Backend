@@ -13,7 +13,7 @@ namespace WideWorldImporters.Core.CoreServices.Implementation
     /// <summary>
     /// Implementation of redis caching service (Singleton)
     /// </summary>
-    [ServiceLifeTime(Lifetime.Singleton)]
+    [Service(Lifetime.Singleton)]
     public class RedisService : IRedisService
     {
 
