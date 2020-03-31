@@ -57,13 +57,14 @@ namespace WideWorldImporters.API.Controllers
 
             // BackgroundJob.Enqueue(() => Logger.Log(message));
             Logger.Log(message);
-            //Logger.LogDebug(message);
-            //Logger.LogError(message);
+            Logger.LogDebug(message);
+            Logger.LogError(message);
             //Logger.LogException(new Exception(message));
             //Logger.LogInfo(message);
             //Logger.LogWarn(message);
 
             //AppServices.Log("Logged via AppServices- " + message);
+
 
             return Ok();
         }

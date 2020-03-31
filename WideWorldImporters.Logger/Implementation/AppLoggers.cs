@@ -30,7 +30,8 @@ namespace WideWorldImporters.Logger.Implementation
         {
             if (_loggers == null)
             {
-                // Reflection is expensive but this is called only once because AppLoggers is Singleton
+
+                // Reflection is expensive (takes approx 400ms) but this is called only once because AppLoggers is Singleton
                 // As long as all new loggers use IWWILogger as interface, this will work without any modification.
                 _loggers = AppDomain.CurrentDomain
                     .GetAssemblies()
@@ -39,7 +40,6 @@ namespace WideWorldImporters.Logger.Implementation
                     .Where(typ => typ != typeof(AppLoggers))
                     .Select(typ => Activator.CreateInstance(typ) as IWWILogger)
                     .ToList();
-
             }
         }
 
@@ -48,7 +48,7 @@ namespace WideWorldImporters.Logger.Implementation
         #region -- Public Methods --
 
         /// <summary>
-        /// Logs a message
+        /// Logs a message for all Loggers in Application
         /// </summary>
         /// <param name="message">Message to log</param>
         public void Log(string message)
@@ -60,7 +60,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs an exception
+        /// Logs an exception for all Loggers in Application
         /// </summary>
         /// <param name="exception">Exception to log</param>
         public void Log(Exception exception)
@@ -72,7 +72,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs a debug message
+        /// Logs a debug message for all Loggers in Application
         /// </summary>
         /// <param name="message">Debug Information to log</param>
         public void LogDebug(string message)
@@ -84,7 +84,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs a informational message
+        /// Logs a informational message for all Loggers in Application
         /// </summary>
         /// <param name="message">Debug information to log</param>
         public void LogInfo(string message)
@@ -96,7 +96,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs a warning
+        /// Logs a warning for all Loggers in Application
         /// </summary>
         /// <param name="message">Warning message to log</param>
         public void LogWarn(string message)
@@ -108,7 +108,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs a error message
+        /// Logs a error message for all Loggers in Application
         /// </summary>
         /// <param name="message">Error to log</param>
         public void LogError(string message)
@@ -120,7 +120,7 @@ namespace WideWorldImporters.Logger.Implementation
         }
 
         /// <summary>
-        /// Logs an exception
+        /// Logs an exception for all Loggers in Application
         /// </summary>
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)

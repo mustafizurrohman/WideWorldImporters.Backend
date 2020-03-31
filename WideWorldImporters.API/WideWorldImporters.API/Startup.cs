@@ -188,14 +188,13 @@ namespace WideWorldImporters.API
             // services.AddSingleton<IWWILogger, ConsoleLogger>();
 
             services.AddSingleton<NLogFileLogger>()
-                    .AddSingleton<IWWILogger, NLogFileLogger>(s => s.GetService<NLogFileLogger>());
+                    .AddSingleton<IWWILogger, NLogFileLogger>(svcProvider => svcProvider.GetService<NLogFileLogger>());
 
             services.AddSingleton<ConsoleLogger>()
-                    .AddSingleton<IWWILogger, ConsoleLogger>(s => s.GetService<ConsoleLogger>());
+                    .AddSingleton<IWWILogger, ConsoleLogger>(svcProvider => svcProvider.GetService<ConsoleLogger>());
 
             services.AddSingleton<AppLoggers>()
-                    .AddSingleton<IWWILogger, AppLoggers>(s => s.GetService<AppLoggers>());
-
+                    .AddSingleton<IWWILogger, AppLoggers>(svcProvider => svcProvider.GetService<AppLoggers>());
 
             #endregion
 
@@ -221,7 +220,7 @@ namespace WideWorldImporters.API
 
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
+            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             #endregion
 
