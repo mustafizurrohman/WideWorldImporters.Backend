@@ -411,7 +411,7 @@
         </member>
         <member name="T:WideWorldImporters.API.Startup">
             <summary>
-            Startup
+            Startup class
             </summary>
         </member>
         <member name="M:WideWorldImporters.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">

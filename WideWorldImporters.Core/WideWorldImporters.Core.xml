@@ -16,12 +16,6 @@
             Can be used only for classes
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Core.ClassAttributes.Service._lifetime">
-            <summary>
-            Lifetime (value). 
-            Readonly means that it can set only in the constructor
-            </summary>
-        </member>
         <member name="P:WideWorldImporters.Core.ClassAttributes.Service.Lifetime">
             <summary>
             Gets the lifetime.

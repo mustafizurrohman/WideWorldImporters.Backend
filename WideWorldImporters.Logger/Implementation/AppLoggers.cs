@@ -30,8 +30,7 @@ namespace WideWorldImporters.Logger.Implementation
         {
             if (_loggers == null)
             {
-
-                // Reflection is expensive (takes approx 400ms) but this is called only once because AppLoggers is Singleton
+                // Reflection is expensive (takes approx 400ms) but this is called ONLY ONCE because AppLoggers is Singleton
                 // As long as all new loggers use IWWILogger as interface, this will work without any modification.
                 _loggers = AppDomain.CurrentDomain
                     .GetAssemblies()

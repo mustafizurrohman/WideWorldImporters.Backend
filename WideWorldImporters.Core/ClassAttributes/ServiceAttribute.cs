@@ -13,18 +13,12 @@ namespace WideWorldImporters.Core.ClassAttributes
     {
 
         /// <summary>
-        /// Lifetime (value). 
-        /// Readonly means that it can set only in the constructor
-        /// </summary>
-        private readonly Lifetime _lifetime;
-
-        /// <summary>
         /// Gets the lifetime.
         /// </summary>
         /// <value>
         /// The lifetime.
         /// </value>
-        public Lifetime Lifetime => _lifetime;
+        public Lifetime Lifetime { get; }
 
         /// <summary>
         /// Constructor
@@ -32,7 +26,7 @@ namespace WideWorldImporters.Core.ClassAttributes
         /// <param name="lifetime">Lifetime attribute</param>
         public Service(Lifetime lifetime)
         {
-            _lifetime = lifetime;
+            Lifetime = lifetime;
         }
 
         /// <summary>
@@ -41,7 +35,7 @@ namespace WideWorldImporters.Core.ClassAttributes
         /// <returns></returns>
         public Lifetime GetLifetime()
         {
-            return _lifetime;
+            return Lifetime;
         }
 
     }

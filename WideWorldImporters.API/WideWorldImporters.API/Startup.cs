@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json;
 using NLog;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
@@ -32,14 +33,19 @@ using WideWorldImporters.Services.ServiceCollections;
 namespace WideWorldImporters.API
 {
     /// <summary>
-    /// Startup
+    /// Startup class
     /// </summary>
     public class Startup
     {
+
+        #region -- Private Variables -- 
+
         private readonly Info _info = new Info();
         private readonly ApiKeyScheme _apiKeyScheme = new ApiKeyScheme();
         private readonly PerformanceOptions _performanceOptions = new PerformanceOptions();
         private readonly List<string> _allowedCorsOrigins = new List<string>();
+
+        #endregion
 
         /// <summary>
         /// Startup
@@ -184,9 +190,6 @@ namespace WideWorldImporters.API
 
             #region -- Logger Configuration --
 
-            // services.AddSingleton<IWWILogger, NLogFileLogger>();
-            // services.AddSingleton<IWWILogger, ConsoleLogger>();
-
             services.AddSingleton<NLogFileLogger>()
                     .AddSingleton<IWWILogger, NLogFileLogger>(svcProvider => svcProvider.GetService<NLogFileLogger>());
 
@@ -220,7 +223,7 @@ namespace WideWorldImporters.API
 
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             #endregion
 
