@@ -28,7 +28,7 @@ namespace WideWorldImporters.Services.Services.Base
         protected WideWorldImportersContext DbContext { get; }
 
         /// <summary>
-        /// Authentication Provider Db Context
+        /// Authentication Provider Database Context
         /// </summary>
         protected AuthenticationProviderContext AuthDbContext { get; }
 
