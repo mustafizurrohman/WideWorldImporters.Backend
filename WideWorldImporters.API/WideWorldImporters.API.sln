@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{9C7E9873-1
 		..\Logs\Logs2020-03-28_logfile.log = ..\Logs\Logs2020-03-28_logfile.log
 		..\Logs\Logs2020-03-29_logfile.log = ..\Logs\Logs2020-03-29_logfile.log
 		..\Logs\Logs2020-03-30_logfile.log = ..\Logs\Logs2020-03-30_logfile.log
+		..\Logs\Logs2020-03-31_logfile.log = ..\Logs\Logs2020-03-31_logfile.log
+		..\Logs\Logs2020-04-01_logfile.log = ..\Logs\Logs2020-04-01_logfile.log
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{42AB3AD0-BCB3-4D07-BF9A-80E0B828EF24}"

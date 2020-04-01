@@ -82,6 +82,36 @@ namespace WideWorldImporters.Services.Services.Base
         /// <param name="ex">Exception to log</param>
         public void Log(Exception ex) => Task.Factory.StartNew(() => Logger.Log(ex));
 
+        /// <summary>
+        /// Logs a debug message.
+        /// </summary>
+        /// <param name="message">The Debug message to log.</param>
+        public void LogDebug(string message) => Task.Run(() => Logger.LogDebug(message));
+
+        /// <summary>
+        /// Logs an error message.
+        /// </summary>
+        /// <param name="message">The Debug message to log.</param>
+        public void LogError(string message) => Task.Run(() => Logger.LogError(message));
+
+        /// <summary>
+        /// Logs an exception.
+        /// </summary>
+        /// <param name="ex"></param>
+        public void LogException(Exception ex) => Task.Run(() => Logger.LogException(ex));
+
+        /// <summary>
+        /// Logs an informational message.
+        /// </summary>
+        /// <param name="message">The informational message to log.</param>
+        public void LogInfo(string message) => Task.Run(() => Logger.LogInfo(message));
+
+        /// <summary>
+        /// Logs an warning message.
+        /// </summary>
+        /// <param name="message">The warning message to log.</param>
+        public void LogWarn(string message) => Task.Run(() => Logger.LogWarn(message));
+
         #endregion
 
 
