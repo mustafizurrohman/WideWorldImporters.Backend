@@ -46,7 +46,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         public static T GetRandomElement<T>(this IEnumerable<T> source)
         {
             // If the list is empty then return an empty instance of T
-            if (!source.Any())
+            if (source.IsEmpty())
             {
                 return Activator.CreateInstance<T>();
             }
@@ -65,7 +65,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <returns></returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
-            var shuffled = source.OrderBy(x => RandomHelpers.Next(source.Count()));
+            var shuffled = source.OrderBy(src => RandomHelpers.Next(source.Count()));
 
             return shuffled;
         }
@@ -108,7 +108,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="chunkSize">Size of the chunk.</param>
         /// <returns></returns>
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> sourceList, int chunkSize)
-        { 
+        {
             return sourceList
                 .Select((value, index) => new { Index = index, Value = value })
                 .GroupBy(group => group.Index / chunkSize)
@@ -145,7 +145,7 @@ namespace WideWorldImporters.Core.ExtensionMethods
             return source.SelectMany(item => item);
         }
 
-        
+
         /// <summary>
         /// Maximum or the default.
         /// </summary>
@@ -154,9 +154,9 @@ namespace WideWorldImporters.Core.ExtensionMethods
         /// <param name="defaultValue">The default value.</param>
         /// <returns></returns>
         public static T MaxOrDefault<T>(this IEnumerable<T> enumerable, T defaultValue = default)
-        { 
+        {
             return enumerable.DefaultIfEmpty(defaultValue).Max();
-        } 
+        }
 
     }
 }

@@ -19,6 +19,16 @@ namespace WideWorldImporters.Logger.Implementation
         /// </summary>
         private readonly List<IWWILogger> _loggers = null;
 
+        /// <summary>
+        /// The console logger
+        /// </summary>
+        private readonly ConsoleLogger consoleLogger;
+
+        /// <summary>
+        /// The log file logger
+        /// </summary>
+        private readonly NLogFileLogger fileLogger;
+
         #endregion
 
         #region -- Constructor -- 
@@ -39,12 +49,21 @@ namespace WideWorldImporters.Logger.Implementation
                     .Where(typ => typ != typeof(AppLoggers))
                     .Select(typ => Activator.CreateInstance(typ) as IWWILogger)
                     .ToList();
+
+
+                consoleLogger = _loggers.Where(logger => logger.GetType() == typeof(ConsoleLogger))
+                    .Select(logger => (ConsoleLogger)logger)
+                    .FirstOrDefault();
+
+                fileLogger = _loggers.Where(logger => logger.GetType() == typeof(NLogFileLogger))
+                    .Select(logger => (NLogFileLogger)logger)
+                    .FirstOrDefault();
             }
         }
 
         #endregion
 
-        #region -- Public Methods --
+        #region -- Public Methods for All Loggers --
 
         /// <summary>
         /// Logs a message for all Loggers in Application
@@ -128,6 +147,140 @@ namespace WideWorldImporters.Logger.Implementation
             {
                 currentLogger.LogError(exception.ToString());
             });
+        }
+
+        #endregion
+
+        #region -- Public Methods for Console Logger --
+
+        /// <summary>
+        /// Logs a message using console logger
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        public void LogToConsole(string message)
+        {
+            consoleLogger.Log(message);
+        }
+
+        /// <summary>
+        /// Logs an exception using console logger
+        /// </summary>
+        /// <param name="exception">Exception to log</param>
+        public void LogToConsole(Exception exception)
+        {
+            consoleLogger.LogException(exception);
+        }
+
+        /// <summary>
+        /// Logs a debug message using console logger
+        /// </summary>
+        /// <param name="message">Debug Information to log</param>
+        public void LogDebugToConsole(string message)
+        {
+            consoleLogger.LogDebug(message);
+        }
+
+        /// <summary>
+        /// Logs a informational message using console logger
+        /// </summary>
+        /// <param name="message">Debug information to log</param>
+        public void LogInfoToConsole(string message)
+        {
+            consoleLogger.LogInfo(message);
+        }
+
+        /// <summary>
+        /// Logs a warning using console logger
+        /// </summary>
+        /// <param name="message">Warning message to log</param>
+        public void LogWarnToConsole(string message)
+        {
+            consoleLogger.LogWarn(message);
+        }
+
+        /// <summary>
+        /// Logs a error message using console logger
+        /// </summary>
+        /// <param name="message">Error to log</param>
+        public void LogErrorToConsole(string message)
+        {
+            consoleLogger.LogError(message);
+        }
+
+        /// <summary>
+        /// Logs an exception using console logger
+        /// </summary>
+        /// <param name="exception">Exception to log</param>
+        public void LogExceptionToConsole(Exception exception)
+        {
+            consoleLogger.LogError(exception.ToString());
+        }
+
+        #endregion
+
+        #region -- Public Methods for NLog File Logger --
+
+        /// <summary>
+        /// Logs a message using NLog File Logger
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        public void LogToFile(string message)
+        {
+            fileLogger.Log(message);
+        }
+
+        /// <summary>
+        /// Logs an exception using NLog File Logger
+        /// </summary>
+        /// <param name="exception">Exception to log</param>
+        public void LogToFile(Exception exception)
+        {
+            fileLogger.LogException(exception);
+        }
+
+        /// <summary>
+        /// Logs a debug message using NLog File Logger
+        /// </summary>
+        /// <param name="message">Debug Information to log</param>
+        public void LogDebugToFile(string message)
+        {
+            fileLogger.LogDebug(message);
+        }
+
+        /// <summary>
+        /// Logs a informational message using NLog File Logger
+        /// </summary>
+        /// <param name="message">Debug information to log</param>
+        public void LogInfoToFile(string message)
+        {
+            fileLogger.LogInfo(message);
+        }
+
+        /// <summary>
+        /// Logs a warning using NLog File Logger
+        /// </summary>
+        /// <param name="message">Warning message to log</param>
+        public void LogWarnToFile(string message)
+        {
+            fileLogger.LogWarn(message);
+        }
+
+        /// <summary>
+        /// Logs a error message using NLog File Logger
+        /// </summary>
+        /// <param name="message">Error to log</param>
+        public void LogErrorToFile(string message)
+        {
+            fileLogger.LogError(message);
+        }
+
+        /// <summary>
+        /// Logs an exception using NLog File Logger
+        /// </summary>
+        /// <param name="exception">Exception to log</param>
+        public void LogExceptionToFile(Exception exception)
+        {
+            fileLogger.LogError(exception.ToString());
         }
 
         #endregion
