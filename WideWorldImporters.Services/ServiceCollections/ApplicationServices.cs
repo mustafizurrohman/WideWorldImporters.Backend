@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Threading.Tasks;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.CoreServices.Interfaces;
 using WideWorldImporters.Logger.Implementation;
@@ -97,43 +96,43 @@ namespace WideWorldImporters.Services.ServiceCollections
         /// Logs a message
         /// </summary>
         /// <param name="message"></param>
-        public void Log(string message) => Task.Run(() => Logger.LogInfo(message));
+        public void Log(string message) => Logger.LogInfo(message);
 
         /// <summary>
         /// Logs an exception
         /// </summary>
         /// <param name="ex"></param>
-        public void Log(Exception ex) => Task.Run(() => Logger.Log(ex));
+        public void Log(Exception ex) => Logger.Log(ex);
 
         /// <summary>
         /// Logs a debug message.
         /// </summary>
         /// <param name="message">The Debug message to log.</param>
-        public void LogDebug(string message) => Task.Run(() => Logger.LogDebug(message));
+        public void LogDebug(string message) => Logger.LogDebug(message);
 
         /// <summary>
         /// Logs an error message.
         /// </summary>
         /// <param name="message">The Debug message to log.</param>
-        public void LogError(string message) => Task.Run(() => Logger.LogError(message));
+        public void LogError(string message) => Logger.LogError(message);
 
         /// <summary>
         /// Logs an exception.
         /// </summary>
         /// <param name="ex"></param>
-        public void LogException(Exception ex) => Task.Run(() => Logger.LogException(ex));
+        public void LogException(Exception ex) => Logger.LogException(ex);
 
         /// <summary>
         /// Logs an informational message.
         /// </summary>
         /// <param name="message">The informational message to log.</param>
-        public void LogInfo(string message) => Task.Run(() => Logger.LogInfo(message));
+        public void LogInfo(string message) => Logger.LogInfo(message);
 
         /// <summary>
         /// Logs an warning message.
         /// </summary>
         /// <param name="message">The warning message to log.</param>
-        public void LogWarn(string message) => Task.Run(() => Logger.LogWarn(message));
+        public void LogWarn(string message) => Logger.LogWarn(message);
 
         #endregion
 
