@@ -48,6 +48,16 @@ namespace WideWorldImporters.Services.ServiceCollections
         /// </summary>
         public AppLoggers Logger { get; }
 
+        /// <summary>
+        /// The console logger.
+        /// </summary>
+        public ConsoleLogger ConsoleLogger { get; }
+
+        /// <summary>
+        /// The file logger.
+        /// </summary>
+        public NLogFileLogger FileLogger { get; }
+
         #endregion
 
         #region -- Constructor -- 
@@ -75,6 +85,8 @@ namespace WideWorldImporters.Services.ServiceCollections
             RedisService = redisService;
             AuthDbContext = authDbContext;
             Logger = logger;
+            ConsoleLogger = logger.ConsoleLogger;
+            FileLogger = logger.FileLogger;
         }
 
         #endregion

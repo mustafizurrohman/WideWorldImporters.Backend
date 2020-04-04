@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WideWorldImporters.Logger.Interfaces;
 
 namespace WideWorldImporters.Logger.Implementation
@@ -22,12 +23,12 @@ namespace WideWorldImporters.Logger.Implementation
         /// <summary>
         /// The console logger
         /// </summary>
-        private readonly ConsoleLogger consoleLogger;
+        public readonly ConsoleLogger ConsoleLogger;
 
         /// <summary>
         /// The log file logger
         /// </summary>
-        private readonly NLogFileLogger fileLogger;
+        public readonly NLogFileLogger FileLogger;
 
         #endregion
 
@@ -51,11 +52,11 @@ namespace WideWorldImporters.Logger.Implementation
                     .ToList();
 
 
-                consoleLogger = _loggers.Where(logger => logger.GetType() == typeof(ConsoleLogger))
+                ConsoleLogger = _loggers.Where(logger => logger.GetType() == typeof(ConsoleLogger))
                     .Select(logger => (ConsoleLogger)logger)
                     .FirstOrDefault();
 
-                fileLogger = _loggers.Where(logger => logger.GetType() == typeof(NLogFileLogger))
+                FileLogger = _loggers.Where(logger => logger.GetType() == typeof(NLogFileLogger))
                     .Select(logger => (NLogFileLogger)logger)
                     .FirstOrDefault();
             }
@@ -71,9 +72,12 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void Log(string message)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.Log(message);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.Log(message);
+                });
             });
         }
 
@@ -83,9 +87,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void Log(Exception exception)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogException(exception);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogException(exception);
+                });
+
             });
         }
 
@@ -95,9 +103,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebug(string message)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogDebug(message);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogDebug(message);
+                });
+
             });
         }
 
@@ -107,9 +119,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug information to log</param>
         public void LogInfo(string message)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogInfo(message);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogInfo(message);
+                });
+
             });
         }
 
@@ -119,9 +135,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarn(string message)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogWarn(message);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogWarn(message);
+                });
+
             });
         }
 
@@ -131,9 +151,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogError(string message)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogError(message);
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogError(message);
+                });
+
             });
         }
 
@@ -143,9 +167,13 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogException(Exception exception)
         {
-            _loggers.ForEach(currentLogger =>
+            Task.Run(() =>
             {
-                currentLogger.LogError(exception.ToString());
+                _loggers.ForEach(currentLogger =>
+                {
+                    currentLogger.LogException(exception);
+                });
+
             });
         }
 
@@ -159,7 +187,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void LogToConsole(string message)
         {
-            consoleLogger.Log(message);
+            ConsoleLogger.Log(message);
         }
 
         /// <summary>
@@ -168,7 +196,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogToConsole(Exception exception)
         {
-            consoleLogger.LogException(exception);
+            ConsoleLogger.LogException(exception);
         }
 
         /// <summary>
@@ -177,7 +205,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebugToConsole(string message)
         {
-            consoleLogger.LogDebug(message);
+            ConsoleLogger.LogDebug(message);
         }
 
         /// <summary>
@@ -186,7 +214,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug information to log</param>
         public void LogInfoToConsole(string message)
         {
-            consoleLogger.LogInfo(message);
+            ConsoleLogger.LogInfo(message);
         }
 
         /// <summary>
@@ -195,7 +223,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarnToConsole(string message)
         {
-            consoleLogger.LogWarn(message);
+            ConsoleLogger.LogWarn(message);
         }
 
         /// <summary>
@@ -204,7 +232,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogErrorToConsole(string message)
         {
-            consoleLogger.LogError(message);
+            ConsoleLogger.LogError(message);
         }
 
         /// <summary>
@@ -213,7 +241,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogExceptionToConsole(Exception exception)
         {
-            consoleLogger.LogError(exception.ToString());
+            ConsoleLogger.LogError(exception.ToString());
         }
 
         #endregion
@@ -226,7 +254,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Message to log</param>
         public void LogToFile(string message)
         {
-            fileLogger.Log(message);
+            FileLogger.Log(message);
         }
 
         /// <summary>
@@ -235,7 +263,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogToFile(Exception exception)
         {
-            fileLogger.LogException(exception);
+            FileLogger.LogException(exception);
         }
 
         /// <summary>
@@ -244,7 +272,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug Information to log</param>
         public void LogDebugToFile(string message)
         {
-            fileLogger.LogDebug(message);
+            FileLogger.LogDebug(message);
         }
 
         /// <summary>
@@ -253,7 +281,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Debug information to log</param>
         public void LogInfoToFile(string message)
         {
-            fileLogger.LogInfo(message);
+            FileLogger.LogInfo(message);
         }
 
         /// <summary>
@@ -262,7 +290,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Warning message to log</param>
         public void LogWarnToFile(string message)
         {
-            fileLogger.LogWarn(message);
+            FileLogger.LogWarn(message);
         }
 
         /// <summary>
@@ -271,7 +299,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="message">Error to log</param>
         public void LogErrorToFile(string message)
         {
-            fileLogger.LogError(message);
+            FileLogger.LogError(message);
         }
 
         /// <summary>
@@ -280,7 +308,7 @@ namespace WideWorldImporters.Logger.Implementation
         /// <param name="exception">Exception to log</param>
         public void LogExceptionToFile(Exception exception)
         {
-            fileLogger.LogError(exception.ToString());
+            FileLogger.LogError(exception.ToString());
         }
 
         #endregion

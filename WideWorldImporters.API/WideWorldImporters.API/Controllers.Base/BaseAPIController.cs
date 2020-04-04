@@ -4,7 +4,6 @@ using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Threading.Tasks;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.AuthenticationProvider.Database;
 using WideWorldImporters.Core.CoreServices.Interfaces;
@@ -57,12 +56,22 @@ namespace WideWorldImporters.API.Controllers.Base
         /// <summary>
         /// Redis Cache Service
         /// </summary>
-        public IRedisService RedisService { get; }
+        protected IRedisService RedisService { get; }
 
         /// <summary>
         /// Logging service
         /// </summary>
-        public AppLoggers Logger { get; }
+        protected AppLoggers Logger { get; }
+
+        /// <summary>
+        /// The console logger.
+        /// </summary>
+        protected ConsoleLogger ConsoleLogger { get; }
+
+        /// <summary>
+        /// The file logger.
+        /// </summary>
+        protected NLogFileLogger FileLogger { get; }
 
         #endregion
 
@@ -82,6 +91,8 @@ namespace WideWorldImporters.API.Controllers.Base
             MemoryCache = applicationServices.MemoryCache;
             RedisService = applicationServices.RedisService;
             Logger = applicationServices.Logger;
+            ConsoleLogger = applicationServices.Logger.ConsoleLogger;
+            FileLogger = applicationServices.Logger.FileLogger;
         }
 
         #endregion
@@ -93,49 +104,49 @@ namespace WideWorldImporters.API.Controllers.Base
         /// </summary>
         /// <param name="message"></param>
         [NonAction]
-        public void Log(string message) => Task.Run(() => Logger.LogInfo(message));
+        public void Log(string message) => Logger.LogInfo(message);
 
         /// <summary>
         /// Logs an exception
         /// </summary>
         /// <param name="ex"></param>
         [NonAction]
-        public void Log(Exception ex) => Task.Run(() => Logger.Log(ex));
+        public void Log(Exception ex) => Logger.Log(ex);
 
         /// <summary>
         /// Logs a debug message.
         /// </summary>
         /// <param name="message">The Debug message to log.</param>
         [NonAction]
-        public void LogDebug(string message) => Task.Run(() => Logger.LogDebug(message));
+        public void LogDebug(string message) => Logger.LogDebug(message);
 
         /// <summary>
         /// Logs an error message.
         /// </summary>
         /// <param name="message">The Debug message to log.</param>
         [NonAction]
-        public void LogError(string message) => Task.Run(() => Logger.LogError(message));
+        public void LogError(string message) => Logger.LogError(message);
 
         /// <summary>
         /// Logs an exception.
         /// </summary>
         /// <param name="ex"></param>
         [NonAction]
-        public void LogException(Exception ex) => Task.Run(() => Logger.LogException(ex));
+        public void LogException(Exception ex) => Logger.LogException(ex);
 
         /// <summary>
         /// Logs an informational message.
         /// </summary>
         /// <param name="message">The informational message to log.</param>
         [NonAction]
-        public void LogInfo(string message) => Task.Run(() => Logger.LogInfo(message));
+        public void LogInfo(string message) => Logger.LogInfo(message);
 
         /// <summary>
         /// Logs an warning message.
         /// </summary>
         /// <param name="message">The warning message to log.</param>
         [NonAction]
-        public void LogWarn(string message) => Task.Run(() => Logger.LogWarn(message));
+        public void LogWarn(string message) => Logger.LogWarn(message);
 
         #endregion
 

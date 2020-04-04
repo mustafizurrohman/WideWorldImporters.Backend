@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -55,16 +56,8 @@ namespace WideWorldImporters.API.Controllers
         public IActionResult LogMessage(string message = "Message to test logging")
         {
 
-            // BackgroundJob.Enqueue(() => Logger.Log(message));
+            BackgroundJob.Enqueue(() => Logger.Log(message));
             Logger.Log(message);
-            Logger.LogDebug(message);
-            Logger.LogError(message);
-            //Logger.LogException(new Exception(message));
-            //Logger.LogInfo(message);
-            //Logger.LogWarn(message);
-
-            //AppServices.Log("Logged via AppServices- " + message);
-
 
             return Ok();
         }

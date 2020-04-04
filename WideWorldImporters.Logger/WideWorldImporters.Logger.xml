@@ -29,6 +29,16 @@
             The List of Loggers
             </summary>
         </member>
+        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.consoleLogger">
+            <summary>
+            The console logger
+            </summary>
+        </member>
+        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.fileLogger">
+            <summary>
+            The log file logger
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.#ctor">
             <summary>
             Constructor
@@ -73,6 +83,90 @@
         <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogException(System.Exception)">
             <summary>
             Logs an exception for all Loggers in Application
+            </summary>
+            <param name="exception">Exception to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogToConsole(System.String)">
+            <summary>
+            Logs a message using console logger
+            </summary>
+            <param name="message">Message to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogToConsole(System.Exception)">
+            <summary>
+            Logs an exception using console logger
+            </summary>
+            <param name="exception">Exception to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogDebugToConsole(System.String)">
+            <summary>
+            Logs a debug message using console logger
+            </summary>
+            <param name="message">Debug Information to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogInfoToConsole(System.String)">
+            <summary>
+            Logs a informational message using console logger
+            </summary>
+            <param name="message">Debug information to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogWarnToConsole(System.String)">
+            <summary>
+            Logs a warning using console logger
+            </summary>
+            <param name="message">Warning message to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogErrorToConsole(System.String)">
+            <summary>
+            Logs a error message using console logger
+            </summary>
+            <param name="message">Error to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogExceptionToConsole(System.Exception)">
+            <summary>
+            Logs an exception using console logger
+            </summary>
+            <param name="exception">Exception to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogToFile(System.String)">
+            <summary>
+            Logs a message using NLog File Logger
+            </summary>
+            <param name="message">Message to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogToFile(System.Exception)">
+            <summary>
+            Logs an exception using NLog File Logger
+            </summary>
+            <param name="exception">Exception to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogDebugToFile(System.String)">
+            <summary>
+            Logs a debug message using NLog File Logger
+            </summary>
+            <param name="message">Debug Information to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogInfoToFile(System.String)">
+            <summary>
+            Logs a informational message using NLog File Logger
+            </summary>
+            <param name="message">Debug information to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogWarnToFile(System.String)">
+            <summary>
+            Logs a warning using NLog File Logger
+            </summary>
+            <param name="message">Warning message to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogErrorToFile(System.String)">
+            <summary>
+            Logs a error message using NLog File Logger
+            </summary>
+            <param name="message">Error to log</param>
+        </member>
+        <member name="M:WideWorldImporters.Logger.Implementation.AppLoggers.LogExceptionToFile(System.Exception)">
+            <summary>
+            Logs an exception using NLog File Logger
             </summary>
             <param name="exception">Exception to log</param>
         </member>
