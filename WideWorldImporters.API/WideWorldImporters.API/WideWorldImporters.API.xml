@@ -115,6 +115,16 @@
             Logging service
             </summary>
         </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.ConsoleLogger">
+            <summary>
+            The console logger.
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.API.Controllers.Base.BaseAPIController.FileLogger">
+            <summary>
+            The file logger.
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.API.Controllers.Base.BaseAPIController.#ctor(WideWorldImporters.Services.ServiceCollections.ApplicationServices)">
             <summary>
             Constructor

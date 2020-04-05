@@ -29,12 +29,12 @@
             The List of Loggers
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.consoleLogger">
+        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.ConsoleLogger">
             <summary>
             The console logger
             </summary>
         </member>
-        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.fileLogger">
+        <member name="F:WideWorldImporters.Logger.Implementation.AppLoggers.FileLogger">
             <summary>
             The log file logger
             </summary>

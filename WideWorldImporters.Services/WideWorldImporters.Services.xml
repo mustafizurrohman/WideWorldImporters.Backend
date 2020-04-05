@@ -167,6 +167,16 @@
             Logging service
             </summary>
         </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.ConsoleLogger">
+            <summary>
+            The console logger.
+            </summary>
+        </member>
+        <member name="P:WideWorldImporters.Services.ServiceCollections.ApplicationServices.FileLogger">
+            <summary>
+            The file logger.
+            </summary>
+        </member>
         <member name="M:WideWorldImporters.Services.ServiceCollections.ApplicationServices.#ctor(WideWorldImporters.Models.Database.WideWorldImportersContext,AutoMapper.IMapper,Microsoft.Extensions.Caching.Memory.IMemoryCache,WideWorldImporters.Core.CoreServices.Interfaces.IRedisService,WideWorldImporters.Logger.Implementation.AppLoggers,WideWorldImporters.AuthenticationProvider.Database.AuthenticationProviderContext)">
             <summary>
             Constructor

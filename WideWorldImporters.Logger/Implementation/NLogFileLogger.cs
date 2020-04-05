@@ -28,6 +28,7 @@ namespace WideWorldImporters.Logger.Implementation
         public void Log(Exception exception)
         {
             LogException(exception);
+            Log(Environment.NewLine);
         }
 
         /// <summary>
