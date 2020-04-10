@@ -4,6 +4,7 @@ WideWorldImporters WebAPI
 - Custom Exception Handler Middleware
     - Logs exception in Background without blocking the thread
 - Logging using **NLog**
+    - **NOT Optimal** at the moment. Will be fixed soon. 
 - Tests using **XUnit**
 - **Hangfire** for Background Tasks
 

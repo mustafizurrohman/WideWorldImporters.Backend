@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WideWorldImporters.API.ActionFilters;
 using WideWorldImporters.API.Controllers.Base;
 using WideWorldImporters.AuthenticationProvider.Database;
@@ -120,6 +120,10 @@ namespace WideWorldImporters.API.Controllers
                 var newRole = await _authenticationService.AddRole(role, isAdmin, string.Empty);
                 return Ok(newRole);
             }
+            catch (ArgumentException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
                 Logger.Log(ex);
@@ -213,7 +217,7 @@ namespace WideWorldImporters.API.Controllers
             }
         }
 
-        
+
 
     }
 }
