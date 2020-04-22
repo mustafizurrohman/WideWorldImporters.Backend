@@ -13,3 +13,4 @@ Authorization Controller **must never be** a part of public API. Only for testin
 
 - **Clean Coding** and **SOLID** principles
 
+**22.04.2020- THIS PROJECT IS NO LONGER ACTIVELY MAINTAINED.**
